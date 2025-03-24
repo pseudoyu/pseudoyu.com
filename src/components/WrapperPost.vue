@@ -1,0 +1,264 @@
+<script setup lang='ts'>
+import { formatDate } from '~/logics'
+
+// Add TypeScript declarations for window properties
+declare global {
+  interface Window {
+    remark_config: {
+      host: string
+      site_id: string
+      components: string[]
+      max_shown_comments: number
+      simple_view: boolean
+      theme: string
+      url: string
+    }
+    REMARK42?: {
+      destroy: () => void
+      createInstance: (config: any) => void
+    }
+  }
+}
+
+const { frontmatter } = defineProps({
+  frontmatter: {
+    type: Object,
+    required: true,
+  },
+})
+
+const router = useRouter()
+const route = useRoute()
+const content = ref<HTMLDivElement>()
+
+// Computed property to check if current page is a blog post or note
+const shouldShowComments = computed(() => {
+  const path = route.path
+
+  // Don't show on homepage
+  if (path === '/')
+    return false
+
+  // Show on /notes
+  if (path === '/notes' || path.startsWith('/notes/'))
+    return true
+
+  // Show on blog posts with date pattern like /zh/YYYY/MM/DD/title
+  const datePattern = /\/zh\/\d{4}\/\d{2}\/\d{2}\//
+  if (datePattern.test(path))
+    return true
+
+  // Show on posts
+  if (path.startsWith('/posts/'))
+    return true
+
+  return false
+})
+
+onMounted(() => {
+  const navigate = () => {
+    if (location.hash) {
+      const el = document.querySelector(decodeURIComponent(location.hash))
+      if (el) {
+        const rect = el.getBoundingClientRect()
+        const y = window.scrollY + rect.top - 40
+        window.scrollTo({
+          top: y,
+          behavior: 'smooth',
+        })
+        return true
+      }
+    }
+  }
+
+  const handleAnchors = (
+    event: MouseEvent & { target: HTMLElement },
+  ) => {
+    const link = event.target.closest('a')
+
+    if (
+      !event.defaultPrevented
+      && link
+      && event.button === 0
+      && link.target !== '_blank'
+      && link.rel !== 'external'
+      && !link.download
+      && !event.metaKey
+      && !event.ctrlKey
+      && !event.shiftKey
+      && !event.altKey
+    ) {
+      const url = new URL(link.href)
+      if (url.origin !== window.location.origin)
+        return
+
+      event.preventDefault()
+      const { pathname, hash } = url
+      if (hash && (!pathname || pathname === location.pathname)) {
+        window.history.replaceState({}, '', hash)
+        navigate()
+      }
+      else {
+        router.push({ path: pathname, hash })
+      }
+    }
+  }
+
+  useEventListener(window, 'hashchange', navigate)
+  useEventListener(content.value!, 'click', handleAnchors, { passive: false })
+
+  setTimeout(() => {
+    if (!navigate())
+      setTimeout(navigate, 1000)
+  }, 1)
+
+  // Only initialize Remark42 if we should show comments
+  if (shouldShowComments.value) {
+    // Initialize Remark42
+    const remark_config = {
+      host: 'https://comments.pseudoyu.com',
+      site_id: 'pseudoyu.com',
+      components: ['embed', 'counter'],
+      max_shown_comments: 20,
+      simple_view: true,
+      theme: 'light',
+      url: route.path,
+    }
+
+    window.remark_config = remark_config
+
+    // Load Remark42 scripts
+    if (!document.getElementById('remark42-script')) {
+      for (const component of remark_config.components) {
+        const script = document.createElement('script')
+        script.src = `${remark_config.host}/web/${component}.mjs`
+        script.type = 'module'
+        script.defer = true
+        script.id = `remark42-${component}-script`
+        script.setAttribute('data-no-instant', '')
+        document.head.appendChild(script)
+      }
+    }
+    else {
+      // Reset Remark42 if already loaded
+      const remark42 = window.REMARK42
+      if (remark42) {
+        remark42.destroy()
+        remark42.createInstance(remark_config)
+      }
+    }
+  }
+})
+
+const ArtComponent = computed(() => {
+  let art = frontmatter.art
+  if (art === 'random')
+    art = Math.random() > 0.5 ? 'plum' : 'dots'
+  if (typeof window !== 'undefined') {
+    if (art === 'plum')
+      return defineAsyncComponent(() => import('./ArtPlum.vue'))
+    else if (art === 'dots')
+      return defineAsyncComponent(() => import('./ArtDots.vue'))
+  }
+  return undefined
+})
+</script>
+
+<template>
+  <div>
+    <ClientOnly v-if="ArtComponent">
+      <component :is="ArtComponent" />
+    </ClientOnly>
+    <div
+      v-if="frontmatter.display ?? frontmatter.title"
+      class="prose m-auto mb-8"
+      :class="[frontmatter.wrapperClass]"
+    >
+      <h1 class="mb-0 slide-enter-50">
+        {{ frontmatter.display ?? frontmatter.title }}
+      </h1>
+      <p
+        v-if="frontmatter.date"
+        class="opacity-50 !-mt-6 slide-enter-50"
+      >
+        {{ formatDate(frontmatter.date, false) }} <span v-if="frontmatter.duration">· {{ frontmatter.duration }}</span>
+      </p>
+      <p v-if="frontmatter.place" class="mt--4!">
+        <span op50>at </span>
+        <a v-if="frontmatter.placeLink" :href="frontmatter.placeLink" target="_blank">
+          {{ frontmatter.place }}
+        </a>
+        <span v-else font-bold>
+          {{ frontmatter.place }}
+        </span>
+      </p>
+      <p
+        v-if="frontmatter.subtitle"
+        class="opacity-50 !-mt-6 italic slide-enter"
+      >
+        {{ frontmatter.subtitle }}
+      </p>
+      <p
+        v-if="frontmatter.draft"
+        class="slide-enter" bg-orange-4:10 text-orange-4 border="l-3 orange-4" px4 py2
+      >
+        This is a draft post, the content may be incomplete. Please check back later.
+      </p>
+    </div>
+    <article ref="content" :class="[frontmatter.tocAlwaysOn ? 'toc-always-on' : '', frontmatter.class]">
+      <slot />
+    </article>
+
+    <!-- Comments section with Remark42 - only shown on blog posts and notes -->
+    <div v-if="shouldShowComments" class="prose m-auto mt-8 mb-8 slide-enter animate-delay-500 print:hidden">
+      <div class="comments">
+        <div class="title">
+          <span>Comments</span>
+          <span class="counter"><span class="remark42__counter" :data-url="route.path" /></span>
+        </div>
+        <div id="remark42" />
+      </div>
+
+      <div class="mt-4">
+        <span font-mono op50>> </span>
+        <RouterLink
+          :to="route.path.split('/').slice(0, -1).join('/') || '/'"
+          class="font-mono op50 hover:op75"
+        >
+          cd ..
+        </RouterLink>
+      </div>
+    </div>
+
+    <!-- Just navigation for non-blog pages -->
+    <div v-else-if="route.path !== '/'" class="prose m-auto mt-8 mb-8 slide-enter animate-delay-500 print:hidden">
+      <span font-mono op50>> </span>
+      <RouterLink
+        :to="route.path.split('/').slice(0, -1).join('/') || '/'"
+        class="font-mono op50 hover:op75"
+      >
+        cd ..
+      </RouterLink>
+    </div>
+  </div>
+</template>
+
+<style>
+.comments {
+  margin-top: 2rem;
+}
+
+.comments .title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.comments .counter {
+  font-size: 0.875rem;
+  opacity: 0.5;
+}
+</style>
