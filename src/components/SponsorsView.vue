@@ -5,8 +5,6 @@
 <template>
   <div class="sponsors-container" mt-10 w-full max-w-200 mx-auto>
     <div flex="~ gap-2 items-center justify-center" z-100 mt-5 op50>
-      <span>Sponsor Circles</span>
-      <span op25>|</span>
       <span>Sponsor Tiers</span>
     </div>
 

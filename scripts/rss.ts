@@ -30,7 +30,7 @@ async function buildBlogRSS() {
     description: 'pseudoyu\'s Blog',
     id: 'https://www.pseudoyu.com/',
     link: 'https://www.pseudoyu.com/',
-    copyright: 'CC BY-NC-SA 4.0 2021 © pseudoyu',
+    copyright: 'CC BY-NC-SA 4.0 2020 © pseudoyu',
     feedLinks: {
       json: 'https://www.pseudoyu.com/feed.json',
       atom: 'https://www.pseudoyu.com/feed.atom',

@@ -130,7 +130,7 @@ export default defineConfig({
           linksMap: {
             'RSS3': 'https://rss3.io',
             'NaturalSelectionLabs': 'https://github.com/NaturalSelectionLabs',
-            'RSS3Network': 'https://github.com/RSS3-Network',
+            'RSS3-Network': 'https://github.com/RSS3-Network',
             'RSSNext': 'https://github.com/RSSNext',
             'WebisOpen': 'https://github.com/WebisOpen',
             'Web3Insights': 'https://github.com/Web3Insights/Web3Insights',

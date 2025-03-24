@@ -24,11 +24,7 @@
 
 @keyframes grow {
   0% {
-    opacity: 0;
     transform: scale(0.9);
-  }
-  10% {
-    opacity: 1;
   }
   40% {
     transform: scale(1);
