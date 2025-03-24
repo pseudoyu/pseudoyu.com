@@ -55,6 +55,47 @@ const shouldShowComments = computed(() => {
   return false
 })
 
+// Ensure URL has trailing slash for Remark42
+const normalizedUrl = computed(() => {
+  const urlPath = route.path
+  return urlPath.endsWith('/') ? urlPath : `${urlPath}/`
+})
+
+// Function to initialize Remark42
+const initRemark42 = () => {
+  if (!shouldShowComments.value || typeof window === 'undefined')
+    return
+
+  const remark_config = {
+    host: 'https://comments.pseudoyu.com',
+    site_id: 'pseudoyu.com',
+    components: ['embed', 'counter'],
+    max_shown_comments: 20,
+    simple_view: true,
+    theme: 'light',
+    url: normalizedUrl.value, // Use normalized URL with trailing slash
+  }
+
+  window.remark_config = remark_config
+
+  // Reset Remark42 if already loaded
+  const remark42 = window.REMARK42
+  if (remark42) {
+    remark42.destroy()
+    remark42.createInstance(remark_config)
+  } else {
+    // Load each component as a module
+    for (const component of remark_config.components) {
+      const script = document.createElement('script')
+      script.src = `${remark_config.host}/web/${component}.mjs`
+      script.type = 'module'
+      script.defer = true
+      script.setAttribute('data-no-instant', '')
+      document.head.appendChild(script)
+    }
+  }
+}
+
 onMounted(() => {
   const navigate = () => {
     if (location.hash) {
@@ -112,42 +153,13 @@ onMounted(() => {
       setTimeout(navigate, 1000)
   }, 1)
 
-  // Only initialize Remark42 if we should show comments
-  if (shouldShowComments.value) {
-    // Initialize Remark42
-    const remark_config = {
-      host: 'https://comments.pseudoyu.com',
-      site_id: 'pseudoyu.com',
-      components: ['embed', 'counter'],
-      max_shown_comments: 20,
-      simple_view: true,
-      theme: 'light',
-      url: route.path,
-    }
+  // Initialize Remark42 with a slight delay to ensure DOM is ready
+  setTimeout(initRemark42, 100)
+})
 
-    window.remark_config = remark_config
-
-    // Load Remark42 scripts
-    if (!document.getElementById('remark42-script')) {
-      for (const component of remark_config.components) {
-        const script = document.createElement('script')
-        script.src = `${remark_config.host}/web/${component}.mjs`
-        script.type = 'module'
-        script.defer = true
-        script.id = `remark42-${component}-script`
-        script.setAttribute('data-no-instant', '')
-        document.head.appendChild(script)
-      }
-    }
-    else {
-      // Reset Remark42 if already loaded
-      const remark42 = window.REMARK42
-      if (remark42) {
-        remark42.destroy()
-        remark42.createInstance(remark_config)
-      }
-    }
-  }
+// Re-initialize Remark42 when route changes
+watch(() => route.path, () => {
+  setTimeout(initRemark42, 100)
 })
 
 const ArtComponent = computed(() => {
@@ -214,7 +226,7 @@ const ArtComponent = computed(() => {
       <div class="comments">
         <div class="title">
           <span>Comments</span>
-          <span class="counter"><span class="remark42__counter" :data-url="route.path" /></span>
+          <span class="counter"><span class="remark42__counter" :data-url="normalizedUrl" /></span>
         </div>
         <div id="remark42" />
       </div>
