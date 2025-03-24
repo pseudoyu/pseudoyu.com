@@ -55,14 +55,59 @@ const shouldShowComments = computed(() => {
   return false
 })
 
-// Ensure URL has trailing slash for Remark42
+// Ensure consistent URL format for Remark42 - remove trailing slash
 const normalizedUrl = computed(() => {
-  const urlPath = route.path
-  return urlPath.endsWith('/') ? urlPath : `${urlPath}/`
+  if (typeof window === 'undefined')
+    return ''
+
+  // Get full URL (origin + pathname)
+  let url = window.location.origin + route.path
+
+  // Add trailing slash if not present for consistent comment storage
+  if (!url.endsWith('/'))
+    url = `${url}/`
+
+  return url
 })
 
+// Detect current theme
+const currentTheme = computed(() => {
+  if (typeof window === 'undefined')
+    return 'light'
+
+  // Check if dark mode is enabled
+  return document.documentElement.classList.contains('dark') ? 'dark' : 'light'
+})
+
+// Watch for manual theme changes in document
+function setupThemeObserver() {
+  if (typeof window === 'undefined')
+    return
+
+  // Create a MutationObserver to directly watch for class changes on document element
+  const observer = new MutationObserver((mutations) => {
+    for (const mutation of mutations) {
+      if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+        // Force Remark42 to reinitialize with the new theme
+        const remark42 = window.REMARK42
+        if (remark42 && shouldShowComments.value) {
+          const newTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
+          window.remark_config.theme = newTheme
+          remark42.destroy()
+          remark42.createInstance(window.remark_config)
+        }
+      }
+    }
+  })
+
+  // Start observing document element for class attribute changes
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
+
+  return observer
+}
+
 // Function to initialize Remark42
-const initRemark42 = () => {
+function initRemark42() {
   if (!shouldShowComments.value || typeof window === 'undefined')
     return
 
@@ -72,7 +117,7 @@ const initRemark42 = () => {
     components: ['embed', 'counter'],
     max_shown_comments: 20,
     simple_view: true,
-    theme: 'light',
+    theme: currentTheme.value,
     url: normalizedUrl.value, // Use normalized URL with trailing slash
   }
 
@@ -83,7 +128,8 @@ const initRemark42 = () => {
   if (remark42) {
     remark42.destroy()
     remark42.createInstance(remark_config)
-  } else {
+  }
+  else {
     // Load each component as a module
     for (const component of remark_config.components) {
       const script = document.createElement('script')
@@ -155,11 +201,24 @@ onMounted(() => {
 
   // Initialize Remark42 with a slight delay to ensure DOM is ready
   setTimeout(initRemark42, 100)
+
+  // Setup theme observer
+  const observer = setupThemeObserver()
+
+  // Clean up observer when component is unmounted
+  onUnmounted(() => {
+    observer?.disconnect()
+  })
 })
 
 // Re-initialize Remark42 when route changes
 watch(() => route.path, () => {
   setTimeout(initRemark42, 100)
+})
+
+// Add a watcher to reinitialize Remark42 when theme changes
+watch(currentTheme, () => {
+  initRemark42() // Immediately apply theme change
 })
 
 const ArtComponent = computed(() => {
