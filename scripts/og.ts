@@ -12,6 +12,10 @@ interface OGImageOptions {
 export async function generateOGImage(options: OGImageOptions, outputPath: string) {
   const { title, author = 'pseudoyu' } = options
 
+  // Load Inter font files from assets
+  const interRegular = fs.readFileSync('./public/assets/fonts/Inter-Regular.woff')
+  const interBold = fs.readFileSync('./public/assets/fonts/Inter-Bold.woff')
+
   // Create SVG using Satori
   const svg = await satori(
     {
@@ -105,7 +109,7 @@ export async function generateOGImage(options: OGImageOptions, outputPath: strin
                         type: 'div',
                         props: {
                           style: {
-                            fontFamily: 'sans-serif',
+                            fontFamily: 'Inter',
                             fontSize: '36px',
                             color: '#aaaaaa',
                             marginBottom: '5px',
@@ -117,7 +121,7 @@ export async function generateOGImage(options: OGImageOptions, outputPath: strin
                         type: 'div',
                         props: {
                           style: {
-                            fontFamily: 'sans-serif',
+                            fontFamily: 'Inter',
                             fontSize: '56px',
                             fontWeight: 'bold',
                             color: '#ffffff',
@@ -147,7 +151,7 @@ export async function generateOGImage(options: OGImageOptions, outputPath: strin
                 borderRadius: '40px',
                 backdropFilter: 'blur(10px)',
                 border: '1px solid rgba(255, 255, 255, 0.1)',
-                fontFamily: 'sans-serif',
+                fontFamily: 'Inter',
                 fontSize: '24px',
                 color: '#ffffff',
                 letterSpacing: '0.5px',
@@ -161,6 +165,20 @@ export async function generateOGImage(options: OGImageOptions, outputPath: strin
     {
       width: 1200,
       height: 630,
+      fonts: [
+        {
+          name: 'Inter',
+          data: interRegular,
+          weight: 400,
+          style: 'normal',
+        },
+        {
+          name: 'Inter',
+          data: interBold,
+          weight: 700,
+          style: 'normal',
+        },
+      ],
     },
   )
 

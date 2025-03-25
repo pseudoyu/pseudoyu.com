@@ -45,18 +45,15 @@ const { y: scroll } = useWindowScroll()
         <RouterLink to="/friends" class="lt-md:hidden" title="Friends">
           Friends
         </RouterLink>
-        <!-- <RouterLink to="/podcasts" class="lt-md:hidden" title="Podcasts">
+        <RouterLink to="/podcasts" class="lt-md:hidden" title="Podcasts">
           <div i-ri-mic-line />
-        </RouterLink> -->
+        </RouterLink>
         <RouterLink to="/photos" title="Photos">
           <div i-ri-camera-3-line />
         </RouterLink>
-        <!-- <RouterLink to="/demos" title="Demos">
-          <div i-ri-screenshot-line />
-        </RouterLink> -->
-        <!-- <RouterLink to="/chat" title="Let's Chat">
+        <RouterLink to="/chat" title="Let's Chat">
           <div i-ri-chat-1-line />
-        </RouterLink> -->
+        </RouterLink>
         <a href="https://github.com/pseudoyu" target="_blank" title="GitHub" class="lt-md:hidden">
           <div i-uil-github-alt />
         </a>
