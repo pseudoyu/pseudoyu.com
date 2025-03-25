@@ -263,6 +263,7 @@ const parentRoute = computed(() => {
         class="opacity-50 !-mt-6 slide-enter-50"
       >
         {{ formatDate(frontmatter.date, false) }} <span v-if="frontmatter.duration">· {{ frontmatter.duration }}</span>
+        <span v-if="shouldShowComments"> · <span class="remark42__counter" :data-url="normalizedUrl" /> comments</span>
       </p>
       <p v-if="frontmatter.place" class="mt--4!">
         <span op50>at </span>
