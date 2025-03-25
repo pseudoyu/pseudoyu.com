@@ -1,12 +1,19 @@
 /zh https://www.pseudoyu.com/posts 301!
 /zh/ https://www.pseudoyu.com/posts 301!
+/zh/search https://www.pseudoyu.com/posts 301!
+/zh/search/ https://www.pseudoyu.com/posts 301!
+/zh/about https://www.pseudoyu.com/about 301!
+/zh/about/ https://www.pseudoyu.com/about 301!
 /zh/links https://www.pseudoyu.com/friends 301!
 /zh/links/ https://www.pseudoyu.com/friends 301!
 /zh/category/* https://www.pseudoyu.com/posts 301!
 /zh/tags/* https://www.pseudoyu.com/posts 301!
 
-/en https://www.pseudoyu.com/posts 301!
-/en/* https://www.pseudoyu.com/zh/:splat 301!
+/en https://www.pseudoyu.com/posts 301
+/en/* https://www.pseudoyu.com/zh/:splat 301
+
+/de https://www.pseudoyu.com/posts 301
+/de/* https://www.pseudoyu.com/zh/:splat 301
 
 /github https://github.com/pseudoyu 301
 /gh https://github.com/pseudoyu 301

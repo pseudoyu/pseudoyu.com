@@ -5,7 +5,7 @@ image: https://www.pseudoyu.com/og.png
 art: random
 ---
 
-Hey, I am pseudoyu, a web3 enthusiast, blockchain developer & indie developer.
+Hey, I am pseudoyu, a web3 enthusiast, blockchain developer & indie hacker.
 
 Working at {RSS3} {NaturalSelectionLabs} <br>
 Core team of {RSS3-Network} {WebisOpen} {RSSNext}<br>
