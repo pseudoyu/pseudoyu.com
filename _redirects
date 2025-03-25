@@ -1,9 +1,12 @@
-/zh/index.xml https://www.pseudoyu.com/feed.xml 301
-/en/index.xml https://www.pseudoyu.com/feed.xml 301
-/zh/links https://www.pseudoyu.com/friends 301
-/en/links https://www.pseudoyu.com/friends 301
-/zh https://www.pseudoyu.com/posts 301
-/en https://www.pseudoyu.com/posts 301
+/zh https://www.pseudoyu.com/posts 301!
+/zh/ https://www.pseudoyu.com/posts 301!
+/zh/links https://www.pseudoyu.com/friends 301!
+/zh/links/ https://www.pseudoyu.com/friends 301!
+/zh/category/ideas https://www.pseudoyu.com/posts 301!
+/zh/category/ideas/ https://www.pseudoyu.com/posts 301!
+
+/en https://www.pseudoyu.com/posts 301!
+/en/* https://www.pseudoyu.com/zh/:splat 301!
 
 /github https://github.com/pseudoyu 301
 /gh https://github.com/pseudoyu 301
