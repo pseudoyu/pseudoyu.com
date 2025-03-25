@@ -23,13 +23,13 @@ export const talks: Talk[] = [
         location: 'Online',
         conference: 'Solidity 基础与实战、Foundry 框架入门',
         lang: 'zh',
-        conferenceUrl: 'https://openbuild.xyz/learn/challenges/91',
+        conferenceUrl: 'https://openbuild.xyz/learn/challenges/',
       },
     ],
   },
   {
     title: 'Web3 前端训练营',
-    description: 'Help ✦ Developers ✦ get on the Success Way to Web3',
+    description: '2024 成为 Web3 开发',
     presentations: [
       {
         date: '2024-06-04',

@@ -38,21 +38,26 @@ const { y: scroll } = useWindowScroll()
           <span class="lt-md:hidden">Projects</span>
           <div i-ri-lightbulb-line class="md:hidden" />
         </RouterLink>
+        <RouterLink to="/talks" class="lt-md:hidden" title="Talks">
+          <span class="lt-md:hidden">Talks</span>
+          <div i-ri-mic-line class="md:hidden" />
+        </RouterLink>
         <RouterLink to="/sponsors-list" title="Sponsors">
           <span class="lt-md:hidden">Sponsors</span>
           <div i-ri-heart-line class="md:hidden" />
         </RouterLink>
-        <RouterLink to="/friends" class="lt-md:hidden" title="Friends">
-          Friends
+        <RouterLink to="/chat" title="Let's Chat">
+          <span class="lt-md:hidden">Let's Chat</span>
+          <div i-ri-chat-1-line class="md:hidden" />
+        </RouterLink>
+        <RouterLink to="/friends" title="Friends">
+          <div i-ri-user-heart-line />
         </RouterLink>
         <RouterLink to="/podcasts" class="lt-md:hidden" title="Podcasts">
           <div i-ri-mic-line />
         </RouterLink>
         <RouterLink to="/photos" title="Photos">
           <div i-ri-camera-3-line />
-        </RouterLink>
-        <RouterLink to="/chat" title="Let's Chat">
-          <div i-ri-chat-1-line />
         </RouterLink>
         <a href="https://github.com/pseudoyu" target="_blank" title="GitHub" class="lt-md:hidden">
           <div i-uil-github-alt />
