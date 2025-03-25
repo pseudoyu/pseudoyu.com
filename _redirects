@@ -2,8 +2,8 @@
 /zh/ https://www.pseudoyu.com/posts 301!
 /zh/links https://www.pseudoyu.com/friends 301!
 /zh/links/ https://www.pseudoyu.com/friends 301!
-/zh/category/ideas https://www.pseudoyu.com/posts 301!
-/zh/category/ideas/ https://www.pseudoyu.com/posts 301!
+/zh/category/* https://www.pseudoyu.com/posts 301!
+/zh/tags/* https://www.pseudoyu.com/posts 301!
 
 /en https://www.pseudoyu.com/posts 301!
 /en/* https://www.pseudoyu.com/zh/:splat 301!

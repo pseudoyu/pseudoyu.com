@@ -142,6 +142,24 @@ function initRemark42() {
   }
 }
 
+// Function to specifically refresh the comment counter
+function refreshCommentCounter() {
+  if (!shouldShowComments.value || typeof window === 'undefined')
+    return
+
+  // Remove existing counter scripts to avoid duplicates
+  const existingCounterScripts = document.querySelectorAll('script[src*="counter.mjs"]')
+  existingCounterScripts.forEach(script => script.remove())
+
+  // Create a new counter instance with unique timestamp to force reload
+  const counterScript = document.createElement('script')
+  counterScript.src = `${window.remark_config.host}/web/counter.mjs?_=${Date.now()}`
+  counterScript.type = 'module'
+  counterScript.defer = true
+  counterScript.setAttribute('data-no-instant', '')
+  document.head.appendChild(counterScript)
+}
+
 onMounted(() => {
   const navigate = () => {
     if (location.hash) {
@@ -199,8 +217,12 @@ onMounted(() => {
       setTimeout(navigate, 1000)
   }, 1)
 
-  // Initialize Remark42 with a slight delay to ensure DOM is ready
-  setTimeout(initRemark42, 100)
+  // Initialize Remark42 happens via the immediate: true route watcher
+  // But we'll add a mounted hook specifically for the first load
+  nextTick(() => {
+    // Refresh counter after initial render to ensure counters are loaded correctly
+    setTimeout(refreshCommentCounter, 500)
+  })
 
   // Setup theme observer
   const observer = setupThemeObserver()
@@ -213,12 +235,18 @@ onMounted(() => {
 
 // Re-initialize Remark42 when route changes
 watch(() => route.path, () => {
-  setTimeout(initRemark42, 100)
-})
+  nextTick(() => {
+    initRemark42()
+    // Add a delay before refreshing counters to ensure DOM elements are ready
+    setTimeout(refreshCommentCounter, 300)
+  })
+}, { immediate: true })
 
 // Add a watcher to reinitialize Remark42 when theme changes
 watch(currentTheme, () => {
   initRemark42() // Immediately apply theme change
+  // Also refresh counter after theme change with enough delay
+  setTimeout(refreshCommentCounter, 300)
 })
 
 const ArtComponent = computed(() => {
