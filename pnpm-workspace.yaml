@@ -1,4 +1,8 @@
 packages: []
+catalog:
+  '@vercel/og': ^0.6.5
+  satori: ^0.12.1
+  ts-node: ^10.9.2
 catalogs:
   build:
     '@shikijs/markdown-it': ^3.2.1
@@ -85,7 +89,3 @@ onlyBuiltDependencies:
   - esbuild
   - sharp
   - simple-git-hooks
-catalog:
-  '@vercel/og': ^0.6.5
-  satori: ^0.12.1
-  ts-node: ^10.9.2
