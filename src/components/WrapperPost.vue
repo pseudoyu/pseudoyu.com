@@ -293,7 +293,7 @@ const ArtComponent = computed(() => {
       <div class="mt-4">
         <span font-mono op50>> </span>
         <RouterLink
-          :to="route.path.split('/').slice(0, -1).join('/') || '/'"
+          :to="route.path.startsWith('/zh/') ? '/posts' : (route.path.split('/').slice(0, -1).join('/') || '/')"
           class="font-mono op50 hover:op75"
         >
           cd ..
@@ -305,7 +305,7 @@ const ArtComponent = computed(() => {
     <div v-else-if="route.path !== '/'" class="prose m-auto mt-8 mb-8 slide-enter animate-delay-500 print:hidden">
       <span font-mono op50>> </span>
       <RouterLink
-        :to="route.path.split('/').slice(0, -1).join('/') || '/'"
+        :to="route.path.startsWith('/zh/') ? '/posts' : (route.path.split('/').slice(0, -1).join('/') || '/')"
         class="font-mono op50 hover:op75"
       >
         cd ..
