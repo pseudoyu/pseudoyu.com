@@ -15,6 +15,9 @@ projects:
     - name: 'Folo'
       link: 'https://github.com/RSSNext/Folo'
       desc: '🧡 Follow everything in one place'
+    - name: 'RSS3 Node'
+      link: 'https://github.com/RSS3-Network/Node'
+      desc: 'The RSS3 Node, an RSS3 Data Sublayer (DSL) component'
   Design / Art:
     - name: 'In the Mood for Love'
       link: 'https://www.yuloveboyi.com'
