@@ -88,3 +88,4 @@ onlyBuiltDependencies:
 catalog:
   '@vercel/og': ^0.6.5
   satori: ^0.12.1
+  ts-node: ^10.9.2

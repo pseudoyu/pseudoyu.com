@@ -1,7 +1,7 @@
 ---
 title: pseudoyu
 description: pseudoyu's Portfolio
-image: https://www.pseudoyu.com/avatar.webp
+image: https://www.pseudoyu.com/og.png
 art: random
 ---
 

@@ -3,9 +3,6 @@ import fs from 'fs-extra'
 import satori from 'satori'
 import sharp from 'sharp'
 
-// Load fonts
-const NOTO_SANS = fs.readFileSync('./public/assets/fonts/NotoSansSC-Regular.otf')
-
 interface OGImageOptions {
   title: string
   author?: string
@@ -13,7 +10,7 @@ interface OGImageOptions {
 }
 
 export async function generateOGImage(options: OGImageOptions, outputPath: string) {
-  const { title, author = 'pseudoyu', website = 'www.pseudoyu.com' } = options
+  const { title, author = 'pseudoyu' } = options
 
   // Create SVG using Satori
   const svg = await satori(
@@ -108,7 +105,7 @@ export async function generateOGImage(options: OGImageOptions, outputPath: strin
                         type: 'div',
                         props: {
                           style: {
-                            fontFamily: 'Noto Sans SC',
+                            fontFamily: 'sans-serif',
                             fontSize: '36px',
                             color: '#aaaaaa',
                             marginBottom: '5px',
@@ -120,7 +117,7 @@ export async function generateOGImage(options: OGImageOptions, outputPath: strin
                         type: 'div',
                         props: {
                           style: {
-                            fontFamily: 'Noto Sans SC',
+                            fontFamily: 'sans-serif',
                             fontSize: '56px',
                             fontWeight: 'bold',
                             color: '#ffffff',
@@ -150,7 +147,7 @@ export async function generateOGImage(options: OGImageOptions, outputPath: strin
                 borderRadius: '40px',
                 backdropFilter: 'blur(10px)',
                 border: '1px solid rgba(255, 255, 255, 0.1)',
-                fontFamily: 'Noto Sans SC',
+                fontFamily: 'sans-serif',
                 fontSize: '24px',
                 color: '#ffffff',
                 letterSpacing: '0.5px',
@@ -164,14 +161,6 @@ export async function generateOGImage(options: OGImageOptions, outputPath: strin
     {
       width: 1200,
       height: 630,
-      fonts: [
-        {
-          name: 'Noto Sans SC',
-          data: NOTO_SANS,
-          weight: 400,
-          style: 'normal',
-        },
-      ],
     },
   )
 
