@@ -94,7 +94,7 @@
           textShadow: '0 3px 15px rgba(0, 0, 0, 0.3)',
         }}
       >
-        a web3 enthusiast, blockchain developer & indie developer.
+        a web3 enthusiast, blockchain developer & indie hacker.
       </div>
     </div>
   </div>

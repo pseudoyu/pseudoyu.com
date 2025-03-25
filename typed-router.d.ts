@@ -20,6 +20,7 @@ declare module 'vue-router/auto-routes' {
   export interface RouteNamedMap {
     '/': RouteRecordInfo<'/', '/', Record<never, never>, Record<never, never>>,
     '/[...404]': RouteRecordInfo<'/[...404]', '/:404(.*)', { 404: ParamValue<true> }, { 404: ParamValue<false> }>,
+    '/about': RouteRecordInfo<'/about', '/about', Record<never, never>, Record<never, never>>,
     '/chat': RouteRecordInfo<'/chat', '/chat', Record<never, never>, Record<never, never>>,
     '/friends': RouteRecordInfo<'/friends', '/friends', Record<never, never>, Record<never, never>>,
     '/notes': RouteRecordInfo<'/notes', '/notes', Record<never, never>, Record<never, never>>,
@@ -212,6 +213,5 @@ declare module 'vue-router/auto-routes' {
     '/zh/2025/02/03/weekly_review_86': RouteRecordInfo<'/zh/2025/02/03/weekly_review_86', '/zh/2025/02/03/weekly_review_86', Record<never, never>, Record<never, never>>,
     '/zh/2025/03/18/weekly_review_87': RouteRecordInfo<'/zh/2025/03/18/weekly_review_87', '/zh/2025/03/18/weekly_review_87', Record<never, never>, Record<never, never>>,
     '/zh/2025/03/24/weekly_review_88': RouteRecordInfo<'/zh/2025/03/24/weekly_review_88', '/zh/2025/03/24/weekly_review_88', Record<never, never>, Record<never, never>>,
-    '/zh/about': RouteRecordInfo<'/zh/about', '/zh/about', Record<never, never>, Record<never, never>>,
   }
 }

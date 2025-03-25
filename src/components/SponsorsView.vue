@@ -45,7 +45,18 @@
             >
           </a>
         </div>
-        <!-- Placeholder for other basic sponsors -->
+        <div class="sponsor-item" flex="~ col" items-center>
+          <a
+            href="https://github.com/hyoban" target="_blank" rel="noopener noreferrer"
+            flex="~ col" items-center hover:op100 op80 transition p-2
+          >
+            <img
+              src="https://avatars.githubusercontent.com/u/38493346?v=4"
+              alt="Hyoban"
+              w-16 h-16 rounded-full mb-2
+            >
+          </a>
+        </div>
       </div>
     </div>
   </div>
