@@ -39,8 +39,8 @@ const shouldShowComments = computed(() => {
   if (path === '/')
     return false
 
-  // Show on /notes
-  if (path === '/notes' || path.startsWith('/notes/'))
+  // Show on individual note pages but not on the notes list page
+  if (path.startsWith('/notes/') && path !== '/notes')
     return true
 
   // Show on blog posts with date pattern like /zh/YYYY/MM/DD/title

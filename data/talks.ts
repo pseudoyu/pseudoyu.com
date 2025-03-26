@@ -24,7 +24,7 @@ export const talks: Talk[] = [
         location: 'Online',
         conference: 'Solidity 基础与实战、Foundry 框架入门',
         lang: 'zh',
-        conferenceUrl: 'https://openbuild.xyz/learn/challenges/',
+        conferenceUrl: 'https://openbuild.xyz/learn/challenges/91',
         pdf: '/public/attachments/talks/2023-11-18/solidity_bootcamp.pdf',
       },
     ],
