@@ -12,9 +12,36 @@ interface OGImageOptions {
 export async function generateOGImage(options: OGImageOptions, outputPath: string) {
   const { title, author = 'pseudoyu' } = options
 
-  // Load Inter font files from assets
-  const interRegular = fs.readFileSync('./public/assets/fonts/Inter-Regular.woff')
-  const interBold = fs.readFileSync('./public/assets/fonts/Inter-Bold.woff')
+  // Using a direct approach with known URLs for Noto Sans SC
+  const notoSansRegularUrl = 'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400&display=swap'
+  const notoSansBoldUrl = 'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@700&display=swap'
+
+  // Fetch font data directly from Google Fonts
+  const fetchFontData = async (fontUrl: string): Promise<Buffer> => {
+    // First get the CSS
+    const cssResponse = await fetch(fontUrl)
+    const css = await cssResponse.text()
+
+    // Extract the actual font file URL from the CSS
+    const fontFileUrl = css.match(/src: url\((.+?)\)/)?.[1]
+
+    if (!fontFileUrl) {
+      throw new Error(`Could not extract font URL from CSS: ${css}`)
+    }
+
+    // Fetch the font file
+    const fontResponse = await fetch(fontFileUrl)
+    const fontArrayBuffer = await fontResponse.arrayBuffer()
+
+    // Convert to Buffer for Node.js compatibility
+    return Buffer.from(fontArrayBuffer)
+  }
+
+  // Fetch both font weights
+  const [notoSansRegular, notoSansBold] = await Promise.all([
+    fetchFontData(notoSansRegularUrl),
+    fetchFontData(notoSansBoldUrl),
+  ])
 
   // Create SVG using Satori
   const svg = await satori(
@@ -109,7 +136,7 @@ export async function generateOGImage(options: OGImageOptions, outputPath: strin
                         type: 'div',
                         props: {
                           style: {
-                            fontFamily: 'Inter',
+                            fontFamily: 'Noto Sans SC',
                             fontSize: '36px',
                             color: '#aaaaaa',
                             marginBottom: '5px',
@@ -121,9 +148,8 @@ export async function generateOGImage(options: OGImageOptions, outputPath: strin
                         type: 'div',
                         props: {
                           style: {
-                            fontFamily: 'Inter',
+                            fontFamily: 'Noto Sans SC',
                             fontSize: '56px',
-                            fontWeight: 'bold',
                             color: '#ffffff',
                             lineHeight: 1.2,
                             maxWidth: '900px',
@@ -151,7 +177,7 @@ export async function generateOGImage(options: OGImageOptions, outputPath: strin
                 borderRadius: '40px',
                 backdropFilter: 'blur(10px)',
                 border: '1px solid rgba(255, 255, 255, 0.1)',
-                fontFamily: 'Inter',
+                fontFamily: 'Noto Sans SC',
                 fontSize: '24px',
                 color: '#ffffff',
                 letterSpacing: '0.5px',
@@ -167,14 +193,14 @@ export async function generateOGImage(options: OGImageOptions, outputPath: strin
       height: 630,
       fonts: [
         {
-          name: 'Inter',
-          data: interRegular,
+          name: 'Noto Sans SC',
+          data: notoSansRegular,
           weight: 400,
           style: 'normal',
         },
         {
-          name: 'Inter',
-          data: interBold,
+          name: 'Noto Sans SC',
+          data: notoSansBold,
           weight: 700,
           style: 'normal',
         },
