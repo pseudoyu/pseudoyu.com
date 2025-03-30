@@ -44,10 +44,6 @@ async function buildBlogRSS() {
           const raw = await fs.readFile(i, 'utf-8')
           const { data, content } = matter(raw)
 
-          const isZhPath = i.startsWith('pages/zh/')
-          if (!isZhPath && data.lang !== 'en')
-            return
-
           // Skip notes - check if type is explicitly "note" or if it's from notes directory
           if (data.type === 'note')
             return
@@ -58,7 +54,7 @@ async function buildBlogRSS() {
 
           // Validate date is valid before using it
           const dateObj = new Date(data.date)
-          if (isNaN(dateObj.getTime()))
+          if (Number.isNaN(dateObj.getTime()))
             return
 
           const html = markdown.render(content)
