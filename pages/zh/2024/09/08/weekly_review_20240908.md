@@ -5,8 +5,6 @@ lang: zh
 duration: 6min
 ---
 
-
-
 ## 前言
 
 ![weekly_review_20240908](https://image.pseudoyu.com/images/weekly_review_20240908.png)
@@ -103,6 +101,6 @@ duration: 6min
 
 ### 参与方式
 
-在本篇文章下评论你关于阅读、信息流、RSS 使用或关于周报的相关想法，我会在北京时间 9.9 日 22:00 挑选 10 位发放邀请码，我会在评论区和 「[Yu's Life](https://t.me/pseudoyulife)」 Telegram 频道公布名单，选中的用户可以联系 [pseudoyu@connect.hku.hk](mailto:pseudoyu@connect.hku.hk) 或任意我的社交平台私信。
+在本篇文章下评论你关于阅读、信息流、RSS 使用或关于周报的相关想法，我会在北京时间 9.9 日 22:00 挑选 10 位发放邀请码，我会在评论区和 「[Yu's Life](https://t.me/pseudoyulife)」 Telegram 频道公布名单，选中的用户可以联系 <span font-mono>pseudoyu<span i-carbon-at/>connect.hku.hk</span> 或任意我的社交平台私信。
 
 活动后也可继续留言，如果我后续能拿到更多名额（~~或者我努力签到赚 Token~~），也会继续在评论区发放，欢迎参与。

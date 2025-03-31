@@ -41,7 +41,7 @@ art: random
 
 这是我的轻咨询尝试，也希望这是一个互相学习的过程，这个费用只是用于补偿一些时间成本。根据情况，未来的咨询可能会有所上调。
 
-> 注：如果你不方便使用以上平台，可以通过邮箱 [pseudoyu@connect.hku.hk](mailto:pseudoyu@connect.hku.hk) 与我联系。
+> 注：如果你不方便使用以上平台，可以通过邮箱 <span font-mono>pseudoyu<span i-carbon-at/>connect.hku.hk</span> 与我联系。
 
 ## Credits
 

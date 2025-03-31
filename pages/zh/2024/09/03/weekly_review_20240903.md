@@ -5,8 +5,6 @@ lang: zh
 duration: 6min
 ---
 
-
-
 ## 前言
 
 ![weekly_review_20240903](https://image.pseudoyu.com/images/weekly_review_20240903.png)
@@ -69,7 +67,7 @@ Randy 的程序员周边品牌店上线了，见证了从他提到这个想法�
 
 > Create the things you wish existed.
 
-当然也欢迎通过 [pseudoyu@connect.hku.hk](mailto:pseudoyu@connect.hku.hk) 自荐~
+当然也欢迎通过 <span font-mono>pseudoyu<span i-carbon-at/>connect.hku.hk</span> 自荐~
 
 ## 有趣的事与物
 

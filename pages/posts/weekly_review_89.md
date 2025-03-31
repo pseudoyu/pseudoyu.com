@@ -17,11 +17,11 @@ duration: 10min
 
 我是一个博客折腾爱好者，前前后后写过十几篇关于如何搭建 Hugo 博客及一些周边服务的文章（详见[「周报 #68 - 关于写博客这件事与我生活的色彩」](https://www.pseudoyu.com/zh/2024/08/18/weekly_review_20240818)），也有不少朋友是通过这些教程才了解到我的博客的。
 
-但随着博客内容的增加以及想要呈现和分享的形态越来越丰富，虽然网站主题是我之前很喜欢的那种古早台湾风，但早在四五年前就已经不再维护，期间我有提过几个 pr 新增了一些模块，但终究还是受 Hugo 框架的制约，没办法很好地满足我的定制化需求。
+网站主题是我之前很喜欢的那种古早台湾风，但早在四五年前就已经不再维护（期间我有提过几个 pr 新增了一些模块，但终究还是受 Hugo 框架的制约），随着博客内容的增加以及想要呈现和分享的形态越来越丰富，逐渐没办法很好地满足我的定制化需求。
 
 但因为早期我的博客 slug 是 `/zh/yy/mm/dd/:slug` 这样的路由形式，以及 Remark42 是根据完整的 url 匹配的，所以如果要迁移到新主题/框架要做很多额外的处理和重定向，所以一直搁置着没有折腾。
 
-但最近因为偶尔会把一些博文转到朋友圈，有不少朋友反馈说打开很慢甚至完全加载不出来，除了因为部署在海外的原因外，博客本身的一些素材/性能问题也逐渐显现出来了，但也很难排查和解决，于是又动了迁移的心思，看了看其他的一些框架，大同小异，也都不算满意，但自己也不想太折腾用 Astro 之类的重新写一个。
+但最近因为偶尔会把一些博文转到朋友圈，有不少朋友反馈说打开很慢甚至完全加载不出来，除了因为部署在海外，博客本身的一些素材/性能问题也逐渐显现出来了，但也很难排查和解决，于是又动了迁移的心思，看了看其他的一些框架，大同小异，也都不算满意，但自己也不想太折腾用 Astro 之类的重新写一个。
 
 ![antfu_blog_os](https://image.pseudoyu.com/images/antfu_blog_os.png)
 
@@ -56,17 +56,17 @@ duration: 10min
 
 Blog 主要会是周报及一些更完整的技术文章/教程等，并提供 RSS 输出，可以在 {Folo} 等 RSS 阅读器中订阅；而后者 Notes 模块则可能是一些零散的不足以成文但却有一定价值的笔记，也可以供查看但并不会包含在 RSS 中以免造成一些干扰。
 
-#### Projects, Talks 与 Poscasts
+#### Projects, Talks 与 Podcasts
 
 ![pseudoyu_projects](https://image.pseudoyu.com/images/pseudoyu_projects.png)
 
-**[Projects](https://www.pseudoyu.com/projects)** 展示了自己工作、开源以及一些折腾的 Side Projects，其实把这些年零散做的一些大小项目汇集到一起很有成就感
+**[Projects](https://www.pseudoyu.com/projects)** 展示了自己工作、开源以及一些折腾的 Side Projects，其实把这些年零散做的一些大小项目汇集到一起还挺有成就感的。
 
 不过这部分我去掉了 Antfu 的 TOC 目录，每看一次他的项目页面就多一次震撼，~~我项目什么时候能多到需要目录导航呀。~~
 
 ![pseudoyu_talks](https://image.pseudoyu.com/images/pseudoyu_talks.png)
 
-**[Talks](https://www.pseudoyu.com/talks)** 是我的一些课程/演讲。这两年其实还比较热衷于作为分享者参加一些线下的分享、课程和 Workshop 等，大多数其实都是和 [OpenBuild](https://openbuild.xyz/) 合作的，梳理了一下一些录屏、课件等，发现不知不觉已经沉淀了不少。
+**[Talks](https://www.pseudoyu.com/talks)** 是我的一些课程/演讲。这两年还比较热衷于作为分享者参加一些线上/线下的分享、课程和 Workshop 等，大多数其实都是和 [OpenBuild](https://openbuild.xyz/) 合作的，梳理了一下一些录屏、课件等，发现不知不觉已经沉淀了不少。
 
 还跟学姐开玩笑说可能我今年分享怎么写 Solidity 的时长已经超过我真正写 Solidity 的时间了，常常会有一些隐隐的惭愧、焦虑和冒名顶替综合征。
 
@@ -74,7 +74,7 @@ Blog 主要会是周报及一些更完整的技术文章/教程等，并提供 R
 
 ![pseudoyu_podcasts](https://image.pseudoyu.com/images/pseudoyu_podcasts.png)
 
-**[Podcasts](https://www.pseudoyu.com/podcasts)** 部分目前还很单薄，其实我只有几年前在技术播客节参加的一期，当时思路和分享深度也很有限，但却也还是享受播客这种形式的，今年会多参与甚至自己尝试做一些。
+**[Podcasts](https://www.pseudoyu.com/podcasts)** 部分目前还很单薄，其实只有我几年前在技术播客节参加的一期，当时思路和分享深度也很有限，但却也还是享受播客这种形式的，今年会多参与甚至自己尝试做一些。
 
 #### Photos
 
