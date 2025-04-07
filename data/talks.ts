@@ -180,6 +180,14 @@ export const talks: Talk[] = [
         pdf: '/public/attachments/talks/2025-04-01/monad101_lesson3.pdf',
         spa: 'https://gamma.app/docs/Foundry-A-Smart-Contract-Development-Framework-224qgwm60su31f6',
       },
+      {
+        date: '2025-04-07',
+        location: 'Online',
+        conference: 'Monad 原理解读 & Bootcamp AMA',
+        lang: 'zh',
+        conferenceUrl: 'https://openbuild.xyz/learn/challenges/2060691796',
+        recording: 'https://x.com/i/spaces/1BRKjmljgRNxw',
+      },
     ],
   },
 ]
