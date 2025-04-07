@@ -158,6 +158,7 @@ export const talks: Talk[] = [
         conference: 'Monad 101 第一讲：走进 Web3 世界',
         lang: 'zh',
         conferenceUrl: 'https://openbuild.xyz/learn/challenges/2060691796',
+        recording: 'https://www.youtube.com/watch?v=YLGuxdiX64A',
         pdf: '/public/attachments/talks/2025-03-18/monad101_lesson1.pdf',
       },
       {
@@ -166,6 +167,7 @@ export const talks: Talk[] = [
         conference: 'Monad 101 第二讲：Solidity 快速入门',
         lang: 'zh',
         conferenceUrl: 'https://openbuild.xyz/learn/challenges/2060691796',
+        recording: 'https://www.youtube.com/watch?v=y6k61hN4IPU',
         pdf: '/public/attachments/talks/2025-03-25/monad101_lesson2.pdf',
       },
       {
@@ -174,6 +176,7 @@ export const talks: Talk[] = [
         conference: 'Monad 101 第三讲：Solidity 开发到部署',
         lang: 'zh',
         conferenceUrl: 'https://openbuild.xyz/learn/challenges/2060691796',
+        recording: 'https://www.youtube.com/watch?v=2LAgnZY28uw',
         pdf: '/public/attachments/talks/2025-04-01/monad101_lesson3.pdf',
         spa: 'https://gamma.app/docs/Foundry-A-Smart-Contract-Development-Framework-224qgwm60su31f6',
       },
