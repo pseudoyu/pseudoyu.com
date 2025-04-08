@@ -88,4 +88,4 @@ catalogs:
 onlyBuiltDependencies:
   - esbuild
   - sharp
-  - simple-git-hooks
+  - simple-git-hooks\
