@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import raw from '../../../photos/data'
 
 const props = defineProps<{
@@ -17,7 +18,7 @@ const photos = computed(() => {
     <div v-for="photo, idx in photos" :key="idx">
       <img
         :src="photo.url"
-        :alt="photo.text"
+        :alt="photo.text || photo.name"
         :data-photo-index="idx"
         loading="lazy"
         w-full aspect-square object-cover

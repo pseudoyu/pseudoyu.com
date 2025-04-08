@@ -281,6 +281,7 @@ const parentRoute = computed(() => {
     <div
       v-if="frontmatter.display ?? frontmatter.title"
       class="prose m-auto mb-8"
+      :lang="frontmatter.lang"
       :class="[frontmatter.wrapperClass]"
     >
       <h1 class="mb-0 slide-enter-50">
@@ -315,7 +316,11 @@ const parentRoute = computed(() => {
         This is a draft post, the content may be incomplete. Please check back later.
       </p>
     </div>
-    <article ref="content" :class="[frontmatter.tocAlwaysOn ? 'toc-always-on' : '', frontmatter.class]">
+    <article
+      ref="content"
+      :lang="frontmatter.lang"
+      :class="[frontmatter.tocAlwaysOn ? 'toc-always-on' : '', frontmatter.class]"
+    >
       <slot />
     </article>
 

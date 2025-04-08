@@ -29,7 +29,7 @@ const routes: Post[] = router.getRoutes()
 const posts = computed(() =>
   [...(props.posts || routes), ...props.extra || []]
     .sort((a, b) => +new Date(b.date) - +new Date(a.date))
-    .filter(i => !englishOnly.value || i.lang !== 'zh'),
+    .filter(i => !englishOnly.value || !i.lang || i.lang === 'en'),
 )
 
 const getYear = (a: Date | string | number) => new Date(a).getFullYear()
