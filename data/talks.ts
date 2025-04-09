@@ -182,7 +182,7 @@ export const talks: Talk[] = [
       },
       {
         date: '2025-04-07',
-        location: 'Online',
+        location: 'Twitter Space',
         conference: 'Monad 原理解读 & Bootcamp AMA',
         lang: 'zh',
         conferenceUrl: 'https://openbuild.xyz/learn/challenges/2060691796',
