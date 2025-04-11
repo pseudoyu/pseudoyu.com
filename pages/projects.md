@@ -53,7 +53,7 @@ projects:
       link: 'https://htp.pseudoyu.com/'
       desc: '基于 Gemini 2.0 Pro 的绘画投射测验平台'
     - name: '小仙帮忙'
-      link: 'https://xiaoxian.isfool.app/'
+      link: 'https://xiaoxianai.net/'
       desc: '基于 Deepseek R1 的八字算命助手'
   Websites:
     - name: 'FAOA'
