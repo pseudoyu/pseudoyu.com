@@ -5,8 +5,6 @@ lang: zh
 duration: 6min
 ---
 
-
-
 ## 前言
 
 ![yearly_review_27](https://image.pseudoyu.com/images/yearly_review_27_new.png)
