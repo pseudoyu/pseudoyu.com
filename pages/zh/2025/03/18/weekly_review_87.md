@@ -5,8 +5,6 @@ lang: zh
 duration: 12min
 ---
 
-
-
 ## 前言
 
 ![weekly_review_87](https://image.pseudoyu.com/images/weekly_review_87.png)
@@ -89,7 +87,7 @@ duration: 12min
 
 婚礼结束已经几周了，带来的能量仍有余温。想到之前总是在纠结与质疑做这件事的意义，现在想想或许也只是借口，让美好的事情发生本就是生命最重要的意义。
 
-> 我们婚礼和展览请了一位摄像全程记录，会是纪录片风格的，等后续剪辑完成会上传到各个平台，敬请期待。
+> 我们婚礼和展览请了一位摄像全程记录，视频已上线「[清单人生 | 我们主持了自己的宝可梦婚礼，还为它办了一个展](https://www.bilibili.com/video/BV1xdL8zHEXo)」，P1 是一个短片，P2 是全程记录，欢迎大家一起走进我的回忆。
 
 ## 有趣的事与物
 
@@ -168,7 +166,7 @@ duration: 12min
 
 #### 音乐
 
-- [**今天只做一件事** *by Eason Chan*](https://open.spotify.com/track/4rhsDi7lvJ7hfYkKRnfbbM)
-- [**Ed Sheeran-Perfect Chill hop Version** *by Voyage*](https://open.spotify.com/track/6LCLQ2Gv6hXHGAXp86sDnV)
-- [**Boston** *by Augustana*](https://open.spotify.com/track/2WZyfujzMweFLnozyUJBkW)
-- [**回留** *by Khalil Fong*](https://open.spotify.com/track/5iFT7yzuvfK8WOqiN22QqX)
+- [**今天只做一件事** _by Eason Chan_](https://open.spotify.com/track/4rhsDi7lvJ7hfYkKRnfbbM)
+- [**Ed Sheeran-Perfect Chill hop Version** _by Voyage_](https://open.spotify.com/track/6LCLQ2Gv6hXHGAXp86sDnV)
+- [**Boston** _by Augustana_](https://open.spotify.com/track/2WZyfujzMweFLnozyUJBkW)
+- [**回留** _by Khalil Fong_](https://open.spotify.com/track/5iFT7yzuvfK8WOqiN22QqX)
