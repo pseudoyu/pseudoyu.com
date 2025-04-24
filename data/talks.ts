@@ -188,6 +188,14 @@ export const talks: Talk[] = [
         conferenceUrl: 'https://openbuild.xyz/learn/challenges/2060691796',
         recording: 'https://x.com/i/spaces/1BRKjmljgRNxw',
       },
+      {
+        date: '2025-04-23',
+        location: 'Twitter Space',
+        conference: 'Monad Bootcamp AMA: 开发者如何入行Web3',
+        lang: 'zh',
+        conferenceUrl: 'https://openbuild.xyz/learn/challenges/2060691796',
+        recording: 'https://x.com/i/spaces/1rmxPyRmznqKN',
+      },
     ],
   },
 ]
