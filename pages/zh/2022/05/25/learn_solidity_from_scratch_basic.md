@@ -5,15 +5,13 @@ lang: zh
 duration: 17min
 ---
 
-
-
 ## 前言
 
 去年读研的时候上的 HKU 的 `<COMP7408 Distributed Ledger and Blockchain Technology>`，课程中学习了以太坊智能合约的开发，做了一个简单的图书管理 ÐApp，然后毕业设计也选择了基于 Ethereum 做了一个音乐版权应用，详见 [Uright - 区块链音乐版权管理ÐApp](https://github.com/pseudoyu/uright)，对 Solidity 开发有一些基础了解。
 
 后来工作后主要做联盟链和业务开发这一块，很久没有碰过合约，对于语法和底层一些概念都已经一知半解，正好最近做的项目是基于 EVM 的一条链，涉及了一些基本的存证、回检和迁移相关合约的开发，调试起来有些吃力，于是打算系统学习一下，梳理一下笔记成文章，敦促自己好好思考总结。
 
-这系列文章也会收录在我的个人知识库项目 《[区块链入门指南](https://www.pseudoyu.com/blockchain-guide/)》中，希望在学习过程中不断完善。有兴趣的朋友也可以访问[项目仓库](https://github.com/pseudoyu/blockchain-guide)参与贡献或提出建议。
+这系列文章也会收录在我的个人知识库项目 《[区块链入门指南](https://guide.pseudoyu.com/)》中，希望在学习过程中不断完善。有兴趣的朋友也可以访问[项目仓库](https://github.com/pseudoyu/blockchain-guide)参与贡献或提出建议。
 
 本文为系列第一篇，主要涉及 Solidity 基础知识。
 
@@ -36,7 +34,7 @@ Solidity 是一门面向合约的、为实现智能合约而创建的高级编�
 除了开发框架外，更好地进行 Solidity 还需要熟悉一些工具：
 
 1. [Remix IDE](https://remix.ethereum.org)。通过 Ethereum 官方提供的基于浏览器的 Remix 开发工具进行调试，Remix 会提供完整的 IDE、编译工具、部署调试的测试节点环境、账户等，可以很方便地进行测试，这是我学习使用时用的最多的工具。Remix 还可以通过 MetaMask 插件与测试网、主网进行直接交互，部分生产环境也会使用它进行编译部署。
-3. Remix IDE 对于语法提示等并不完善，因此，可以使用 [Visual Studio Code](https://code.visualstudio.com) 配合 [Solidity](https://marketplace.visualstudio.com/items?itemName=juanblanco.solidity) 进行编写，有更好的体验。
+2. Remix IDE 对于语法提示等并不完善，因此，可以使用 [Visual Studio Code](https://code.visualstudio.com) 配合 [Solidity](https://marketplace.visualstudio.com/items?itemName=juanblanco.solidity) 进行编写，有更好的体验。
 3. [MetaMask](https://metamask.io)。一个常用的钱包应用，开发过程中可以通过浏览器插件与测试网、主网进行交互，方便开发者进行调试。
 4. [Ganache](https://trufflesuite.com/ganache/)。Ganache 是一个开源的虚拟本地节点，提供了一个虚拟链网络，可以通过各类 Web3.js、Remix 或一些框架工具与之交互，适合有一定规模的项目进行本地调试与测试。
 5. [Infura](https://infura.io)。Infura 是一个 IaaS（Infrastructure as a Service）产品，我们可以申请自己的 Ethereum 节点，通过 Infura 提供的 API 进行交互，可以很方便地进行调试，也更接近生产环境。
@@ -151,21 +149,21 @@ delete nestedMap[id][key];
 ```solidity
 contract Struct {
     struct Data {
-    	string id;
-    	string hash;
+        string id;
+        string hash;
     }
 
     Data public data;
 
     // 添加数据
     function create(string calldata _id) public {
-    	data = Data{id: _id, hash: "111222"};
+        data = Data{id: _id, hash: "111222"};
     }
 
     // 更新数据
     function update(string _id) public {
-    	// 查询数据
-    	string id = data.id;
+        // 查询数据
+        string id = data.id;
 
         // 更新
         data.hash = "222333"
@@ -179,8 +177,8 @@ contract Struct {
 // 'StructDeclaration.sol'
 
 struct Data {
-	string id;
-	string hash;
+    string id;
+    string hash;
 }
 ```
 
@@ -190,7 +188,7 @@ struct Data {
 import "./StructDeclaration.sol"
 
 contract Struct {
-	Data public data;
+    Data public data;
 }
 ```
 
@@ -236,20 +234,20 @@ contract Struct {
 
 ```solidity
 modifier onlyOwner() {
-	require(msg.sender == owner, "Not owner");
+    require(msg.sender == owner, "Not owner");
     _;
 }
 
 modifier validAddress(address _addr) {
-	require(_addr != address(0), "Not valid address");
-	_;
+    require(_addr != address(0), "Not valid address");
+    _;
 }
 
 modifier noReentrancy() {
-	require(!locked, "No reentrancy");
-	locked = true;
-	_;
-	locked = false;
+    require(!locked, "No reentrancy");
+    locked = true;
+    _;
+    locked = false;
 }
 ```
 
@@ -257,15 +255,15 @@ modifier noReentrancy() {
 
 ```solidity
 function changeOwner(address _newOwner) public onlyOwner validAddress(_newOwner) {
-	owner = _newOwner;
+    owner = _newOwner;
 }
 
 function decrement(uint i) public noReentrancy {
-	x -= i;
+    x -= i;
 
-	if (i > 1) {
-		decrement(i - 1);
-	}
+    if (i > 1) {
+        decrement(i - 1);
+    }
 }
 ```
 
@@ -281,9 +279,9 @@ addr.call(abi.encodeWithSignature("transfer(address,uint256)", 0xSomeAddress, 12
 
 ```solidity
 contract FunctionSelector {
-	function getSelector(string calldata _func) external pure returns (bytes4) {
-		return bytes4(keccak256(bytes(_func)));
-	}
+    function getSelector(string calldata _func) external pure returns (bytes4) {
+        return bytes4(keccak256(bytes(_func)));
+    }
 }
 ```
 
@@ -295,11 +293,11 @@ Solidity 使用 `if`、`else if`、`else` 关键字来实现条件逻辑：
 
 ```solidity
 if (x < 10) {
-	return 0;
+    return 0;
 } else if (x < 20) {
-	return 1;
+    return 1;
 } else {
-	return 2;
+    return 2;
 }
 ```
 
@@ -315,14 +313,14 @@ Solidity 使用 `for`、`while`、`do while` 关键字来实现循环逻辑，�
 
 ```solidity
 for (uint i = 0; i < 10; i++) {
-	// 业务逻辑
+    // 业务逻辑
 }
 ```
 
 ```solidity
 uint j;
 while (j < 10) {
-	j++;
+    j++;
 }
 ```
 
@@ -334,7 +332,7 @@ Solidity 的 `constructor` 可以在创建合约的时候执行，主要用来�
 
 ```solidity
 constructor(string memory _name) {
-	name = _name;
+    name = _name;
 }
 ```
 
@@ -354,16 +352,16 @@ constructor(string memory _name) {
 
 ```solidity
 contract Counter {
-	uint public count;
+    uint public count;
 
-	function increment() external {
-		count += 1;
-	}
+    function increment() external {
+        count += 1;
+    }
 }
 
 interface ICounter {
-	function count() external view returns (uint);
-	function increment() external;
+    function count() external view returns (uint);
+    function increment() external;
 }
 ```
 
@@ -371,13 +369,13 @@ interface ICounter {
 
 ```solidity
 contract MyContract {
-	function incrementCounter(address _counter) external {
-		ICounter(_counter).increment();
-	}
+    function incrementCounter(address _counter) external {
+        ICounter(_counter).increment();
+    }
 
-	function getCount(address _counter) external view returns (uint) {
-		return ICounter(_counter).count();
-	}
+    function getCount(address _counter) external view returns (uint) {
+        return ICounter(_counter).count();
+    }
 }
 ```
 
@@ -390,23 +388,23 @@ Solidity 合约支持继承，且可以同时继承多个，使用 `is` 关键�
 ```solidity
 // 定义父合约 A
 contract A {
-	function foo() public pure virtual returns (string memory) {
-		return "A";
-	}
+    function foo() public pure virtual returns (string memory) {
+        return "A";
+    }
 }
 
 // B 合约继承 A 合约并重写函数
 contract B is A {
-	function foo() public pure virtual override returns (string memory) {
-		return "B";
-	}
+    function foo() public pure virtual override returns (string memory) {
+        return "B";
+    }
 }
 
 // D 合约继承 B、C 合约并重写函数
 contract D is B, C {
-	function foo() public pure override(B, C) returns (string memory) {
-		return super.foo();
-	}
+    function foo() public pure override(B, C) returns (string memory) {
+        return super.foo();
+    }
 }
 ```
 
@@ -416,15 +414,15 @@ contract D is B, C {
 
 ```solidity
 contract B is A {
-	function foo() public virtual override {
+    function foo() public virtual override {
         // 直接调用
-		A.foo();
-	}
+        A.foo();
+    }
 
-	function bar() public virtual override {
-    	// 通过 super 关键字调用
-		super.bar();
-	}
+    function bar() public virtual override {
+        // 通过 super 关键字调用
+        super.bar();
+    }
 }
 ```
 
@@ -434,8 +432,8 @@ Solidity 中可以从另一个合约中使用 `new` 关键字来创建另一个�
 
 ```solidity
 function create(address _owner, string memory _model) public {
-	Car car = new Car(_owner, _model);
-	cars.push(car);
+    Car car = new Car(_owner, _model);
+    cars.push(car);
 }
 ```
 
@@ -443,8 +441,8 @@ function create(address _owner, string memory _model) public {
 
 ```solidity
 function create2(address _owner, string memory _model, bytes32 _salt) public {
-	Car car = (new Car){salt: _salt}(_owner, _model);
-	cars.push(car);
+    Car car = (new Car){salt: _salt}(_owner, _model);
+    cars.push(car);
 }
 ```
 
@@ -456,17 +454,17 @@ function create2(address _owner, string memory _model, bytes32 _salt) public {
 
 ```solidity
 library SafeMath {
-	function add(uint x, uint y) internal pure returns (uint) {
-		uint z = x + y;
-		require(z >= x, "uint overflow");
-		return z;
-	}
+    function add(uint x, uint y) internal pure returns (uint) {
+        uint z = x + y;
+        require(z >= x, "uint overflow");
+        return z;
+    }
 }
 ```
 
 ```solidity
 contract TestSafeMath {
-	using SafeMath for uint;
+    using SafeMath for uint;
 }
 ```
 
@@ -495,7 +493,7 @@ emit AnotherLog();
 
 ```solidity
 function testRequire(uint _i) public pure {
-	require(_i > 10, "Input must be greater than 10");
+    require(_i > 10, "Input must be greater than 10");
 }
 ```
 
@@ -503,9 +501,9 @@ function testRequire(uint _i) public pure {
 
 ```solidity
 function testRevert(uint _i) public pure {
-	if (_i <= 10) {
-		revert("Input must be greater than 10");
-	}
+    if (_i <= 10) {
+        revert("Input must be greater than 10");
+    }
 }
 ```
 
@@ -513,7 +511,7 @@ function testRevert(uint _i) public pure {
 
 ```solidity
 function testAssert() public view {
-	assert(num == 0);
+    assert(num == 0);
 }
 ```
 
@@ -526,13 +524,13 @@ event Log(string message);
 event LogBytes(bytes data);
 
 function tryCatchNewContract(address _owner) public {
-	try new Foo(_owner) returns (Foo foo) {
-		emit Log("Foo created");
-	} catch Error(string memory reason) {
-		emit Log(reason);
-	} catch (bytes memory reason) {
-		emit LogBytes(reason);
-	}
+    try new Foo(_owner) returns (Foo foo) {
+        emit Log("Foo created");
+    } catch Error(string memory reason) {
+        emit Log(reason);
+    } catch (bytes memory reason) {
+        emit LogBytes(reason);
+    }
 }
 ```
 
@@ -545,7 +543,7 @@ function tryCatchNewContract(address _owner) public {
 address payable public owner;
 
 constructor() payable {
-	owner = payable(msg.sender);
+    owner = payable(msg.sender);
 }
 
 // 方法声明 payable 来接收 Ether
@@ -563,8 +561,8 @@ function deposit() public payable {}
 ```solidity
 contract SendEther {
   function sendViaCall(address payable _to) public payable {
-  	(bool sent, bytes memory data) = _to.call{value: msg.value}("");
-  	require(sent, "Failed to send Ether");
+    (bool sent, bytes memory data) = _to.call{value: msg.value}("");
+    require(sent, "Failed to send Ether");
   }
 }
 ```
@@ -573,27 +571,27 @@ contract SendEther {
 
 ```solidity
 contract B {
-	uint public num;
-	address public sender;
-	uint public value;
+    uint public num;
+    address public sender;
+    uint public value;
 
-	function setVars(uint _num) public payable {
-		num = _num;
-		sender = msg.sender;
-		value = msg.value;
-	}
+    function setVars(uint _num) public payable {
+        num = _num;
+        sender = msg.sender;
+        value = msg.value;
+    }
 }
 
 contract A {
-	uint public num;
-	address public sender;
-	uint public value;
+    uint public num;
+    address public sender;
+    uint public value;
 
-	function setVars(address _contract, uint _num) public payable {
-		(bool success, bytes memory data) = _contract.delegatecall(
-			abi.encodeWithSignature("setVars(uint256)", _num)
-		);
-	}
+    function setVars(address _contract, uint _num) public payable {
+        (bool success, bytes memory data) = _contract.delegatecall(
+            abi.encodeWithSignature("setVars(uint256)", _num)
+        );
+    }
 }
 ```
 
@@ -605,16 +603,15 @@ contract A {
 
 ```solidity
 contract ReceiveEther {
-
-	// 当 msg.data 为空时
-	receive() external payable {}
+    // 当 msg.data 为空时
+    receive() external payable {}
 
     // 当 msg.data 非空时
-	fallback() external payable {}
+    fallback() external payable {}
 
-	function getBalance() public view returns (uint) {
-		return address(this).balance;
-	}
+    function getBalance() public view returns (uint) {
+        return address(this).balance;
+    }
 }
 ```
 
@@ -633,17 +630,17 @@ contract ReceiveEther {
 
 ```solidity
 function sumIfEvenAndLessThan99(uint[] calldata nums) external {
-	uint _total = total;
-	uint len = nums.length;
+    uint _total = total;
+    uint len = nums.length;
 
-	for (uint i = 0; i < len; ++i) {
-		uint num = nums[i];
-		if (num % 2 == 0 && num < 99) {
-			_total += num;
-		}
-	}
+    for (uint i = 0; i < len; ++i) {
+        uint num = nums[i];
+        if (num % 2 == 0 && num < 99) {
+            _total += num;
+        }
+    }
 
-	total = _total;
+    total = _total;
 }
 ```
 
@@ -655,5 +652,5 @@ function sumIfEvenAndLessThan99(uint[] calldata nums) external {
 
 > 1. [Solidity by Example](https://solidity-by-example.org)
 > 2. [Ethereum 區塊鏈！智能合約(Smart Contract)與分散式網頁應用(dApp)入門](http://gasolin.idv.tw/learndapp/)
-> 3. [区块链入门指南](https://www.pseudoyu.com/blockchain-guide/)
+> 3. [区块链入门指南](https://guide.pseudoyu.com/)
 > 4. [Uright - 区块链音乐版权管理ÐApp](https://github.com/pseudoyu/uright)
