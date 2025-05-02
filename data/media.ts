@@ -147,6 +147,11 @@ export const book: MediaRecord[] = [
 
 export const movie: MediaRecord[] = [
   {
+    name: '还有明天',
+    creator: '宝拉·柯特莱西',
+    date: '2023',
+  },
+  {
     name: '爱情神话',
     creator: '邵艺辉',
     date: '2021',
