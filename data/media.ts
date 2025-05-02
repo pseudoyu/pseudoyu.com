@@ -1,4 +1,4 @@
-export type MediaType = 'anime' | 'book' | 'movie' | 'drama' | 'game'
+export type MediaType = 'anime' | 'book' | 'movie' | 'series' | 'game'
 export type MediaState = 'done' | 'doing' | 'todo'
 
 export interface MediaRecord {
@@ -493,7 +493,7 @@ export const movie: MediaRecord[] = [
   },
 ]
 
-export const drama: MediaRecord[] = [
+export const series: MediaRecord[] = [
   {
     name: '企鹅群里有特务',
     date: '2013',
@@ -651,7 +651,7 @@ export const game: MediaRecord[] = [
 export const media: Record<MediaType, MediaRecord[]> = {
   book,
   movie,
-  drama,
+  series,
   anime,
   game,
 }

@@ -16,7 +16,7 @@ With a passion for building wonderful web3 products. I have a knack for various 
 
 I write [blog posts](/posts) about life, love, cat, open source, coding, tutorials, etc.
 
-When not online, I love hanging out with my camera and do video-editing. Some of my photos can be found on [this page](/photos). I also love animate, movies and dramas, my media consumption can be found [here](/media). I live in Hangzhou now, if you are around, please reach me out let's have some coffee or work together.
+When not online, I love hanging out with my camera and do video-editing. Some of my photos can be found on [this page](/photos). I also love animate, movies and series, my media consumption can be found [here](/media). I live in Hangzhou now, if you are around, please reach me out let's have some coffee or work together.
 
 <div flex-auto />
 
