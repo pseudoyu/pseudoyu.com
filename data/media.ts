@@ -495,6 +495,14 @@ export const movie: MediaRecord[] = [
 
 export const series: MediaRecord[] = [
   {
+    name: '苦尽柑来遇见你',
+    date: '2025',
+  },
+  {
+    name: '雷普利',
+    date: '2024',
+  },
+  {
     name: '企鹅群里有特务',
     date: '2013',
   },
@@ -645,6 +653,11 @@ export const game: MediaRecord[] = [
     name: 'Undertale',
     creator: 'Toby Fox',
     date: '2015',
+  },
+  {
+    name: 'Just Dance 2025',
+    creator: 'Ubisoft',
+    date: '2024',
   },
 ]
 

@@ -196,6 +196,15 @@ export const talks: Talk[] = [
         conferenceUrl: 'https://openbuild.xyz/learn/challenges/2060691796',
         recording: 'https://x.com/i/spaces/1rmxPyRmznqKN',
       },
+      {
+        date: '2025-05-09',
+        location: 'Online',
+        conference: 'Monad 101 第七讲：Monad 项目实战',
+        lang: 'zh',
+        conferenceUrl: 'https://openbuild.xyz/learn/challenges/2060691796',
+        recording: 'https://www.youtube.com/watch?v=qOD8TFkNHDE',
+        spa: 'https://docs.monad.xyz/guides/blinks-guide',
+      },
     ],
   },
 ]
