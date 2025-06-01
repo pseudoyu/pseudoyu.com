@@ -7,21 +7,54 @@ export interface Photo extends PhotoMate {
   url: string
 }
 
-// Remote photo URLs
-const remotePhotos = [
-  { name: 'yu_1', url: 'https://image.pseudoyu.com/images/yu_1.jpg' },
-  { name: 'yu_2', url: 'https://image.pseudoyu.com/images/yu_2.jpg' },
-  { name: 'yu_3', url: 'https://image.pseudoyu.com/images/yu_3.jpg' },
-  { name: 'yu_4', url: 'https://image.pseudoyu.com/images/yu_4.jpg' },
-  { name: 'yu_6', url: 'https://image.pseudoyu.com/images/yu_6.png' },
-  { name: 'yu_7', url: 'https://image.pseudoyu.com/images/yu_7.png' },
-  { name: 'yu_8', url: 'https://image.pseudoyu.com/images/yu_8.png' },
-  { name: 'yu_9', url: 'https://image.pseudoyu.com/images/yu_9.jpg' },
-  { name: 'yu_10', url: 'https://image.pseudoyu.com/images/yu_10.jpg' },
-  { name: 'yu_11', url: 'https://image.pseudoyu.com/images/yu_11.JPG' },
-  { name: 'yu_12', url: 'https://image.pseudoyu.com/images/yu_12.jpg' },
-  { name: 'yu_13', url: 'https://image.pseudoyu.com/images/yu_13.jpg' },
+// Remote photo filenames
+const remotePhotoFiles = [
+  'yu_1.jpg',
+  'yu_2.jpg',
+  'yu_3.jpg',
+  'yu_4.jpg',
+  'yu_6.png',
+  'yu_7.png',
+  'yu_8.png',
+  'yu_9.jpg',
+  'yu_10.jpg',
+  'yu_11.JPG',
+  'yu_12.jpg',
+  'yu_13.jpg',
+  'DSCF0748.JPG',
+  'DSCF0761.JPG',
+  'DSCF0766.JPG',
+  'DSCF0769.JPG',
+  'DSCF0783.JPG',
+  'DSCF0784.JPG',
+  'DSCF0786.JPG',
+  'DSCF0793.JPG',
+  'DSCF0795.JPG',
+  'DSCF0802.JPG',
+  'DSCF0811.JPG',
+  'DSCF0819.JPG',
+  'DSCF0831.JPG',
+  'DSCF0837.JPG',
+  'DSCF0843.JPG',
+  'DSCF0848.JPG',
+  'DSCF0849.JPG',
+  'DSCF0855.JPG',
+  'DSCF0857.JPG',
+  'DSCF0858.JPG',
+  'DSCF0859.JPG',
+  'DSCF0869.JPG',
+  'DSCF0900.JPG',
+  'DSCF0907.JPG',
+  'DSCF0918.JPG',
 ]
+
+const baseUrl = 'https://image.pseudoyu.com/images/'
+
+// Convert filenames to photo objects
+const remotePhotos = remotePhotoFiles.map(filename => ({
+  name: filename.replace(/\.\w+$/, ''),
+  url: baseUrl + filename,
+}))
 
 // Optional: If you still need to load metadata from local JSON files
 const metaInfo = Object.entries(
@@ -43,6 +76,6 @@ const photos = remotePhotos.map((photo): Photo => {
     name: photo.name,
     url: photo.url,
   }
-}).sort((a, b) => b.name.localeCompare(a.name))
+}).reverse()
 
 export default photos
