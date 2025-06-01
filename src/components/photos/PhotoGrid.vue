@@ -21,7 +21,7 @@ const photos = computed(() => {
         :alt="photo.text || photo.name"
         :data-photo-index="idx"
         loading="lazy"
-        w-full aspect-square object-cover
+        w-full object-cover
       >
     </div>
   </div>
