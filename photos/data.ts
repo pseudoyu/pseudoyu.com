@@ -46,6 +46,8 @@ const remotePhotoFiles = [
   'DSCF0900.JPG',
   'DSCF0907.JPG',
   'DSCF0918.JPG',
+  'DSCF0945.JPG',
+  'DSCF1012.JPG',
 ]
 
 const baseUrl = 'https://image.pseudoyu.com/images/'
