@@ -43,6 +43,7 @@ const remotePhotoFiles = [
   'DSCF1104.JPG',
   'DSCF1135.JPG',
   'DSCF1219.JPG',
+  'DSCF1269.JPG',
   'DSCF1406.png',
   'DSCF1444.JPG',
   'DSCF1468.JPG',
