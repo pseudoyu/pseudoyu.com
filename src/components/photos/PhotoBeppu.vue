@@ -3,10 +3,6 @@ import type { Photo } from '../../../photos/data'
 
 const photos: Photo[] = [
   {
-    name: 'DSCF1269',
-    url: 'https://image.pseudoyu.com/images/DSCF1269.JPG',
-  },
-  {
     name: 'DSCF1406',
     url: 'https://image.pseudoyu.com/images/DSCF1406.png',
   },

@@ -38,10 +38,6 @@ const photos: Photo[] = [
     name: 'DSCF1550',
     url: 'https://image.pseudoyu.com/images/DSCF1550.png',
   },
-  {
-    name: 'DSCF1547',
-    url: 'https://image.pseudoyu.com/images/DSCF1547.png',
-  },
 ]
 </script>
 

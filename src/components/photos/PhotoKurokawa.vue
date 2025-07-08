@@ -31,10 +31,6 @@ const photos: Photo[] = [
     url: 'https://image.pseudoyu.com/images/DSCF0793.JPG',
   },
   {
-    name: 'DSCF0795',
-    url: 'https://image.pseudoyu.com/images/DSCF0795.JPG',
-  },
-  {
     name: 'DSCF0811',
     url: 'https://image.pseudoyu.com/images/DSCF0811.JPG',
   },
