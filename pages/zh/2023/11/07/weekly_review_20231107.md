@@ -5,8 +5,6 @@ lang: zh
 duration: 24min
 ---
 
-
-
 ## 前言
 
 本篇是对 `2023-09-17` 到 `2023-11-07` 这几周生活的记录与思考。
@@ -59,7 +57,7 @@ duration: 24min
 
 ## 清迈游民
 
-很早之前就确认了要去 muChiangmai，一个 Web3 数字游民共居的活动当 mentor，活动相关可以看我的网上邻居 ivy 的这篇 「[Coder 徙居古城墙：muChiangmai 回忆 - ivyheretochill](https://ivyheretochill.xlog.app/muchiangmai-memories)」，很细致讲了体验了一个多月的各类感受，而我只待了短短一周，且很多时间都在酒店处理工作，所以更多分享的是生活本身，这次尝试了在 Telegram 频道 「[Yu's Life](https://t.me/pseudoyulife)」 持续更新了小作文，免得忘记，特此合订一下。
+很早之前就确认了要去 muChiangmai，一个 Web3 数字游民共居的活动当 mentor，活动相关可以看我的网上邻居 ivy 的这篇 「[Coder 徙居古城墙：muChiangmai 回忆 - ivyheretochill](https://ivyheretochill.xlog.app/muchiangmai-memories)」，很细致讲了体验了一个多月的各类感受，而我只待了短短一周，且很多时间都在酒店处理工作，所以更多分享的是生活本身，这次尝试了在 Telegram 频道 「[Yu's Life](https://t.me/s/pseudoyulife)」 持续更新了小作文，免得忘记，特此合订一下。
 
 ### 来到清迈 - 20231008
 
@@ -197,7 +195,7 @@ workshop 在一个小小的会议室里，人不算多但是坐得满满的，�
 
 ### 输入
 
-虽然大部分有意思的输入会在 「[Yu's Life](https://t.me/pseudoyulife)」 Telegram 频道里自动同步，不过还是挑选一部分在这里列举一下，感觉更像一个 newsletter 了。
+虽然大部分有意思的输入会在 「[Yu's Life](https://t.me/s/pseudoyulife)」 Telegram 频道里自动同步，不过还是挑选一部分在这里列举一下，感觉更像一个 newsletter 了。
 
 #### 书籍
 

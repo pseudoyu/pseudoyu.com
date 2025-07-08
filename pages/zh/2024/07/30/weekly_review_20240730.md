@@ -5,8 +5,6 @@ lang: zh
 duration: 6min
 ---
 
-
-
 ## 前言
 
 ![weekly_review_20240730](https://image.pseudoyu.com/images/weekly_review_20240730.png)
@@ -67,7 +65,7 @@ Randy 最近上线了一个「[Ask Hackers](https://askhackers.com/)」项目，
 
 ### 输入
 
-虽然大部分有意思的输入会在 「[Yu's Life](https://t.me/pseudoyulife)」 Telegram 频道里自动同步，不过还是挑选一部分在这里列举一下，感觉更像一个 newsletter 了。
+虽然大部分有意思的输入会在 「[Yu's Life](https://t.me/s/pseudoyulife)」 Telegram 频道里自动同步，不过还是挑选一部分在这里列举一下，感觉更像一个 newsletter 了。
 
 #### 收藏
 
@@ -94,4 +92,3 @@ Randy 最近上线了一个「[Ask Hackers](https://askhackers.com/)」项目，
 #### 剧集
 
 - [**去有风的地方**](http://movie.douban.com/subject/35662223/)，吃饭的时候看。
-

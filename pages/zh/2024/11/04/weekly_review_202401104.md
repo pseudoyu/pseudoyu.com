@@ -5,8 +5,6 @@ lang: zh
 duration: 9min
 ---
 
-
-
 ## 前言
 
 ![weekly_review_20241104](https://image.pseudoyu.com/images/weekly_review_20241104.png)
@@ -35,7 +33,7 @@ duration: 9min
 
 两年多前在重温 Teahour 的这期「[#95 - 用 Chromebook 做开发是什么样的体验？](https://teahour.fm/95)」时对瘦客户端开发模式很是着迷，自己还写了一篇「[基于 frp 内网穿透的瘦客户端开发工作流](https://www.pseudoyu.com/zh/2022/07/05/access_your_local_devices_using_reverse_proxy_tool_frp/)」来实践，顺便也种草了 Chromebook 这一国内并不流行的设备，入了一台 2019 款的 Google Pixbook Go（产品线很快就被 Google 砍掉了，所以倒是有点纪念意义的最后一代）。
 
-但其实因为后来远程办公以及依赖了很多 macOS 专属的软件，这台设备的利用率一直很低，最近在清迈看另一个 mentor 把自己的 Chromebook 刷了 [Pop!_OS](https://pop.system76.com/)，很酷，于是想着回来折腾一下。
+但其实因为后来远程办公以及依赖了很多 macOS 专属的软件，这台设备的利用率一直很低，最近在清迈看另一个 mentor 把自己的 Chromebook 刷了 [Pop!\_OS](https://pop.system76.com/)，很酷，于是想着回来折腾一下。
 
 ![btw_i_use_arch](https://image.pseudoyu.com/images/btw_i_use_arch.png)
 
@@ -73,7 +71,7 @@ Zeabur 的模板也比较强大，我现在在维护 [RSSHub 的 Zeabur 模板](
 
 ### 输入
 
-虽然大部分有意思的输入会在 「[Yu's Life](https://t.me/pseudoyulife)」 Telegram 频道里自动同步，不过还是挑选一部分在这里列举一下，感觉更像一个 newsletter 了。并且把 Telegram Channel 消息作为内容源搭建了一个微博客 —— 「[daily.pseudoyu.com](https://daily.pseudoyu.com/)」，可以更方便浏览了。
+虽然大部分有意思的输入会在 「[Yu's Life](https://t.me/s/pseudoyulife)」 Telegram 频道里自动同步，不过还是挑选一部分在这里列举一下，感觉更像一个 newsletter 了。并且把 Telegram Channel 消息作为内容源搭建了一个微博客 —— 「[daily.pseudoyu.com](https://daily.pseudoyu.com/)」，可以更方便浏览了。
 
 #### 书籍
 

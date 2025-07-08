@@ -59,7 +59,7 @@ duration: 7min
 
 ![gocn_trans_book](https://image.pseudoyu.com/images/gocn_trans_book.png)
 
-不知不觉自己的 Telegram 频道『[Yu's Life](https://t.me/pseudoyulife)』刚满了 200 订阅了，其实挺神奇的，只是一个自动化同步自己各个平台输入输出的一个小频道，慢慢积累了一些关注，也常常收到各个平台来的读者们的私信或是加好友申请，说频道有为他们带来一些不一样的视角和思考，还挺荣幸当时的一个小小的想法能够产生这样有趣的结果的，前几周忙碌于工作也少了很多输入输出，也希望继续坚持下去了。
+不知不觉自己的 Telegram 频道『[Yu's Life](https://t.me/s/pseudoyulife)』刚满了 200 订阅了，其实挺神奇的，只是一个自动化同步自己各个平台输入输出的一个小频道，慢慢积累了一些关注，也常常收到各个平台来的读者们的私信或是加好友申请，说频道有为他们带来一些不一样的视角和思考，还挺荣幸当时的一个小小的想法能够产生这样有趣的结果的，前几周忙碌于工作也少了很多输入输出，也希望继续坚持下去了。
 
 ![yu_life_tg_subs_100](https://image.pseudoyu.com/images/yu_life_tg_subs_100.png)
 

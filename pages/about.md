@@ -7,7 +7,7 @@ art: random
 
 ## ✋ Hi，我是 [pseudoyu](https://www.pseudoyu.com)
 
-区块链开发工程师，喜欢探索新技术。在 [GitHub](https://github.com/pseudoyu) 关注我，在我的 [Telegram 频道](https://t.me/pseudoyulife)了解更多。
+区块链开发工程师，喜欢探索新技术。在 [GitHub](https://github.com/pseudoyu) 关注我，在我的 [Telegram 频道](https://t.me/s/pseudoyulife)了解更多。
 
 希望不断学习，不断成长。现阶段的目标是能够在忙碌的闲隙里不断思考，多阅读写作。
 

@@ -5,15 +5,13 @@ lang: zh
 duration: 9min
 ---
 
-
-
 ## 前言
 
 本篇是对 `2023-06-22` 到 `2023-07-10` 这几周生活的记录与思考。
 
 过去的几周漫长却也短暂，发生了很多事，有很多想说的话，屡屡想要下笔，似乎却总有一些心底的声音在阻止着自己，似乎一切都还没准备好，想要好好讲一个故事，却有些无从开口。
 
-直到今天的深夜在 Spotify 的 Discover Weekly 推荐中听到了 HIGH4&IU 的一首《[Not Spring, Love, or Cherry Blossoms（除了春天、爱情和樱花）](https://www.youtube.com/watch?v=-4ylBOzDEnU)》，心绪就像是之前听到五月天的《温柔》中的那句“*走在风中 今天阳光 突然好温柔*”一样，被轻轻触碰到了。
+直到今天的深夜在 Spotify 的 Discover Weekly 推荐中听到了 HIGH4&IU 的一首《[Not Spring, Love, or Cherry Blossoms（除了春天、爱情和樱花）](https://www.youtube.com/watch?v=-4ylBOzDEnU)》，心绪就像是之前听到五月天的《温柔》中的那句“_走在风中 今天阳光 突然好温柔_”一样，被轻轻触碰到了。
 
 季节不算应景，歌词也难说有太贴切的部分，只是总有这样的几首歌能够在某个时刻与自己的心绪紧紧地相连，即使只是前奏也让我的心情随之律动。于是匆匆打开早已建好却空白着的博客文档，写下了这个标题，想在这个承载了我太多太多经历和情感的地方，悄悄地写下：
 
@@ -81,7 +79,7 @@ duration: 9min
 
 ### 输入
 
-虽然大部分有意思的输入会在 「[Yu's Life](https://t.me/pseudoyulife)」 Telegram 频道里自动同步，不过还是挑选一部分在这里列举一下，感觉更像一个 newsletter 了。
+虽然大部分有意思的输入会在 「[Yu's Life](https://t.me/s/pseudoyulife)」 Telegram 频道里自动同步，不过还是挑选一部分在这里列举一下，感觉更像一个 newsletter 了。
 
 #### 书籍
 

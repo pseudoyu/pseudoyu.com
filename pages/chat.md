@@ -6,7 +6,7 @@ image: https://pseudoyu.com/og/chat.png
 art: random
 ---
 
-2022 年，我开始在 <a href="https://x.com/pseudo_yu" target="_blank"><span op75 i-ri-twitter-x-fill /> Twitter</a> 上更新动态、创建了一个记录自己信息流输入输出的 <a href="https://t.me/pseudoyulife" target="_blank"><span op75 i-simple-icons-telegram /> Yu's Life</a> 频道并持续地写博客。从技术教程、效率工具、博客搭建到生活周报，不知不觉已经三年了；在这期间也非常幸运能够参与到 {RSSHub}、{Folo} 等开源社区中，做出一些微小的贡献。
+2022 年，我开始在 <a href="https://x.com/pseudo_yu" target="_blank"><span op75 i-ri-twitter-x-fill /> Twitter</a> 上更新动态、创建了一个记录自己信息流输入输出的 <a href="https://t.me/s/pseudoyulife" target="_blank"><span op75 i-simple-icons-telegram /> Yu's Life</a> 频道并持续地写博客。从技术教程、效率工具、博客搭建到生活周报，不知不觉已经三年了；在这期间也非常幸运能够参与到 {RSSHub}、{Folo} 等开源社区中，做出一些微小的贡献。
 
 我喜欢分享，也享受于能够做出对他人有益的内容或是工具，和大家一起学习和成长，期间被许多人看见，也直接或是间接地帮助到了一些素昧谋面的朋友。
 

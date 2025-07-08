@@ -5,8 +5,6 @@ lang: zh
 duration: 5min
 ---
 
-
-
 ## 前言
 
 ![weekly_review_20240410](https://image.pseudoyu.com/images/weekly_review_20240410.png)
@@ -49,13 +47,13 @@ duration: 5min
 
 ![bali_snapshot](https://image.pseudoyu.com/images/bali_snapshot.png)
 
-其余便是些常规的旅行记录，巴厘岛风景确实不错，但美食实在是一般，基本上在酒店吃的自助餐；在 Nusa Dua 休整了两天后去了库塔，[初次体验了冲浪](https://t.me/pseudoyulife/2849)，虽然只是浅海滩，在海浪里栽了好多次，也喝了很多海水，但在一个多小时的练习后已经能够冲上几个小浪了；在 klook 上雇了当地导游，带我们去了瀑布、圣泉寺，还在猴林里被猴子打了眼镜。除了冲浪外算是中规中矩的一次游玩，拍了些视频，或许 vlog 第二弹有些素材了。
+其余便是些常规的旅行记录，巴厘岛风景确实不错，但美食实在是一般，基本上在酒店吃的自助餐；在 Nusa Dua 休整了两天后去了库塔，[初次体验了冲浪](https://t.me/s/pseudoyulife/2849)，虽然只是浅海滩，在海浪里栽了好多次，也喝了很多海水，但在一个多小时的练习后已经能够冲上几个小浪了；在 klook 上雇了当地导游，带我们去了瀑布、圣泉寺，还在猴林里被猴子打了眼镜。除了冲浪外算是中规中矩的一次游玩，拍了些视频，或许 vlog 第二弹有些素材了。
 
 ## 有趣的事与物
 
 ### 输入
 
-虽然大部分有意思的输入会在 「[Yu's Life](https://t.me/pseudoyulife)」 Telegram 频道里自动同步，不过还是挑选一部分在这里列举一下，感觉更像一个 newsletter 了。
+虽然大部分有意思的输入会在 「[Yu's Life](https://t.me/s/pseudoyulife)」 Telegram 频道里自动同步，不过还是挑选一部分在这里列举一下，感觉更像一个 newsletter 了。
 
 #### 书籍
 

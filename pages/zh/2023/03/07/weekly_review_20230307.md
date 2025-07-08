@@ -5,8 +5,6 @@ lang: zh
 duration: 9min
 ---
 
-
-
 ## 前言
 
 本篇是对 `2023-02-27` 到 `2023-03-07` 这周生活的记录与思考。
@@ -47,7 +45,7 @@ duration: 9min
 
 ### 输入
 
-虽然大部分有意思的输入会在 『[Yu's Life](https://t.me/pseudoyulife)』Telegram 频道里自动同步，不过还是挑选一部分在这里列举一下，感觉更像一个 newsletter 了。
+虽然大部分有意思的输入会在 『[Yu's Life](https://t.me/s/pseudoyulife)』Telegram 频道里自动同步，不过还是挑选一部分在这里列举一下，感觉更像一个 newsletter 了。
 
 #### 文章
 
@@ -90,7 +88,7 @@ duration: 9min
 
 ![meal_with_homura](https://image.pseudoyu.com/images/meal_with_homura.png)
 
-> 和 [@RealAkemiHomura](https://twitter.com/RealAkemiHomura) 面基吃饭 * 2，压马路聊了很多。虽然一直觉得自己很不 social，但真正快要离开北京前才发现还是有些想见的人的。
+> 和 [@RealAkemiHomura](https://twitter.com/RealAkemiHomura) 面基吃饭 \* 2，压马路聊了很多。虽然一直觉得自己很不 social，但真正快要离开北京前才发现还是有些想见的人的。
 
 ![tiao_hai_exhibition](https://image.pseudoyu.com/images/tiao_hai_exhibition.jpg)
 

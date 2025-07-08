@@ -5,8 +5,6 @@ lang: zh
 duration: 11min
 ---
 
-
-
 ## 前言
 
 ![weekly_review_20240805](https://image.pseudoyu.com/images/weekly_review_20240805.png)
@@ -27,7 +25,7 @@ duration: 11min
 
 信息源方面，我退订了所有公众号和 newsletter，并将 RSS 订阅源缩减到 50 个左右，剩下的大部分输入都来自于 Twitter、他人的 Telegram 频道等，在把输入控制在一定量级的同时一定程度上避免信息茧房。
 
-并且由于使用 n8n + telegram channel 构建了一个输入、输出源的自动同步系统，会把我所有筛选过的信息源自动同步到我的 Telegram 频道「[Yu's Life](https://t.me/pseudoyulife)」中，方便自己查看和回顾，顺便也作为一个个人分享渠道了，而因为有了公开的压力，也反向推动我更认真地筛选信息源。
+并且由于使用 n8n + telegram channel 构建了一个输入、输出源的自动同步系统，会把我所有筛选过的信息源自动同步到我的 Telegram 频道「[Yu's Life](https://t.me/s/pseudoyulife)」中，方便自己查看和回顾，顺便也作为一个个人分享渠道了，而因为有了公开的压力，也反向推动我更认真地筛选信息源。
 
 但这个方案依然存在两个问题：
 
@@ -120,7 +118,7 @@ follow 最大的特点自然还是传承于 RSSHub 的「万物皆可 RSS」理�
 
 ### 输入
 
-虽然大部分有意思的输入会在 「[Yu's Life](https://t.me/pseudoyulife)」 Telegram 频道里自动同步，不过还是挑选一部分在这里列举一下，感觉更像一个 newsletter 了。并且把 Telegram Channel 消息作为内容源搭建了一个微博客 —— 「[daily.pseudoyu.com](https://daily.pseudoyu.com/)」，可以更方便浏览了。
+虽然大部分有意思的输入会在 「[Yu's Life](https://t.me/s/pseudoyulife)」 Telegram 频道里自动同步，不过还是挑选一部分在这里列举一下，感觉更像一个 newsletter 了。并且把 Telegram Channel 消息作为内容源搭建了一个微博客 —— 「[daily.pseudoyu.com](https://daily.pseudoyu.com/)」，可以更方便浏览了。
 
 #### 收藏
 

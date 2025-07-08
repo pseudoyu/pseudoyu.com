@@ -5,8 +5,6 @@ lang: zh
 duration: 14min
 ---
 
-
-
 ## 前言
 
 本篇是对 `2023-04-03` 到 `2023-04-18` 这两周生活的记录与思考。
@@ -163,7 +161,7 @@ duration: 14min
 
 ### 输入
 
-虽然大部分有意思的输入会在 「[Yu's Life](https://t.me/pseudoyulife)」 Telegram 频道里自动同步，不过还是挑选一部分在这里列举一下，感觉更像一个 newsletter 了。
+虽然大部分有意思的输入会在 「[Yu's Life](https://t.me/s/pseudoyulife)」 Telegram 频道里自动同步，不过还是挑选一部分在这里列举一下，感觉更像一个 newsletter 了。
 
 #### 文章
 

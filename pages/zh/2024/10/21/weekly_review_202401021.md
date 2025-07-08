@@ -5,8 +5,6 @@ lang: zh
 duration: 8min
 ---
 
-
-
 ## 前言
 
 ![weekly_review_20241021](https://image.pseudoyu.com/images/weekly_review_20241021.png)
@@ -15,7 +13,7 @@ duration: 8min
 
 这两周去了清迈参加 invisible Garden 的活动，去当 Solidity 课程的讲师；学姐也请了一些假，凑上了一次为时半月的旅途。这些年在清迈呆过了大概加起来也有一个多月，心情却总是有所不同。
 
-这次整个期间一直没更新周报，但在自己的 [Telegram Channel](https://t.me/pseudoyulife) 中还是保留了比较完整的记录，所以这篇也算是总集篇了，这篇偏记事，感受和思考可能后续会再谈一下，包括旅行中的相处。发生和体验了很多有意思的事。
+这次整个期间一直没更新周报，但在自己的 [Telegram Channel](https://t.me/s/pseudoyulife) 中还是保留了比较完整的记录，所以这篇也算是总集篇了，这篇偏记事，感受和思考可能后续会再谈一下，包括旅行中的相处。发生和体验了很多有意思的事。
 
 ## 清迈生活
 
@@ -114,7 +112,7 @@ duration: 8min
 
 ### 输入
 
-虽然大部分有意思的输入会在 「[Yu's Life](https://t.me/pseudoyulife)」 Telegram 频道里自动同步，不过还是挑选一部分在这里列举一下，感觉更像一个 newsletter 了。并且把 Telegram Channel 消息作为内容源搭建了一个微博客 —— 「[daily.pseudoyu.com](https://daily.pseudoyu.com/)」，可以更方便浏览了。
+虽然大部分有意思的输入会在 「[Yu's Life](https://t.me/s/pseudoyulife)」 Telegram 频道里自动同步，不过还是挑选一部分在这里列举一下，感觉更像一个 newsletter 了。并且把 Telegram Channel 消息作为内容源搭建了一个微博客 —— 「[daily.pseudoyu.com](https://daily.pseudoyu.com/)」，可以更方便浏览了。
 
 #### 文章
 

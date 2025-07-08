@@ -27,7 +27,7 @@ Find me on
 <p flex="~ gap-2 wrap" class="mt--2!">
   <a href="https://github.com/pseudoyu" target="_blank"><span op75 i-simple-icons-github /> GitHub</a>
   <a href="https://x.com/pseudo_yu" target="_blank"><span op75 i-ri-twitter-x-fill /> Twitter</a>
-  <a href="https://t.me/pseudoyulife" target="_blank"><span op75 i-simple-icons-telegram /> Telegram</a>
+  <a href="https://t.me/s/pseudoyulife" target="_blank"><span op75 i-simple-icons-telegram /> Telegram</a>
   <a href="https://space.bilibili.com/5374948" target="_blank"><span op75 i-simple-icons-bilibili /> 哔哩哔哩</a>
   <a href="https://www.youtube.com/@pseudoyulife" target="_blank"><span op75 i-simple-icons-youtube /> YouTube</a>
   <a href="https://mas.to/@pseudoyu" target="_blank"><span op75 i-simple-icons-mastodon/> Mastodon</a>

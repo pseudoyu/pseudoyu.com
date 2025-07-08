@@ -5,8 +5,6 @@ lang: zh
 duration: 9min
 ---
 
-
-
 ## 前言
 
 本篇是对 `2022-09-13` 到 `2022-09-18` 这周生活的记录与思考。
@@ -35,7 +33,7 @@ duration: 9min
 
 ## 我的信息流
 
-通过这一篇『[使用自动化工作流聚合信息摄入和输出](https://reorx.com/blog/sharing-my-footprints-automation/)』和后续的『[使用 Railway 和 Supabase 零成本搭建 n8n 自动化平台](https://reorx.com/blog/0-cost-self-hosted-n8n-with-railway-and-supabase/)』迭代升级，我也通过 n8n 和 Telegram 搭建了自己的自动化信息流平台 —— 『[Yu's Life](https://t.me/pseudoyulife)』，
+通过这一篇『[使用自动化工作流聚合信息摄入和输出](https://reorx.com/blog/sharing-my-footprints-automation/)』和后续的『[使用 Railway 和 Supabase 零成本搭建 n8n 自动化平台](https://reorx.com/blog/0-cost-self-hosted-n8n-with-railway-and-supabase/)』迭代升级，我也通过 n8n 和 Telegram 搭建了自己的自动化信息流平台 —— 『[Yu's Life](https://t.me/s/pseudoyulife)』，
 
 参照着 Reorx 的列表，我也整理了自己的输入输出源：
 

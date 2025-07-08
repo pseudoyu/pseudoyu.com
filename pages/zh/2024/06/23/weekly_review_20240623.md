@@ -5,8 +5,6 @@ lang: zh
 duration: 8min
 ---
 
-
-
 ## 前言
 
 ![weekly_review_20240623](https://image.pseudoyu.com/images/weekly_review_20240623.png)
@@ -59,7 +57,7 @@ Robin Sharma 有一本书叫《5am Club》，提出了一个早上五点起床�
 
 ![channel_1000_subscribers](https://image.pseudoyu.com/images/channel_1000_subscribers.jpg)
 
-[频道](https://t.me/pseudoyulife) 1000 subscribers 达成！感觉越来越少在推或者其他平台上表达，更喜欢在频道里碎碎念了。
+[频道](https://t.me/s/pseudoyulife) 1000 subscribers 达成！感觉越来越少在推或者其他平台上表达，更喜欢在频道里碎碎念了。
 
 其实分享欲这个东西一直存在，有时候是与自己对话，有时候是和身边的人秉烛夜谈，又有更多的时候想分享给更多人得到一些反馈，只是关闭朋友圈的我似乎已经不太习惯将这些分享到我的周围，所以有很长一段时间 twitter 成为了这个出口，而这一年，博客的读者和频道的关注者才慢慢成为分享的对象，感觉其实现在的节奏下似乎好好听人说话、思考并回应似乎成为了一件弥足珍贵的事，我也时常告诫不要忘记这一点。
 
@@ -89,7 +87,7 @@ Robin Sharma 有一本书叫《5am Club》，提出了一个早上五点起床�
 
 ### 输入
 
-虽然大部分有意思的输入会在 「[Yu's Life](https://t.me/pseudoyulife)」 Telegram 频道里自动同步，不过还是挑选一部分在这里列举一下，感觉更像一个 newsletter 了。
+虽然大部分有意思的输入会在 「[Yu's Life](https://t.me/s/pseudoyulife)」 Telegram 频道里自动同步，不过还是挑选一部分在这里列举一下，感觉更像一个 newsletter 了。
 
 #### 书籍
 
