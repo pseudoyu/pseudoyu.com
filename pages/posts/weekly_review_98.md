@@ -11,6 +11,8 @@ duration: 6min
 
 本篇是对 `2025-06-09` 到 `2025-07-08` 这月生活的记录与思考。
 
+收到了一本关于我生活的“书”；聊聊对 Claude Code 和各类 Agentic Coding 工具的想法和使用方式；还有很多有意思的事。
+
 ## 生活之书
 
 ![yulife_cover](https://image.pseudoyu.com/images/yulife_cover.jpg)
