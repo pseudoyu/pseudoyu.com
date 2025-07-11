@@ -1,5 +1,4 @@
-import { Buffer } from 'node:buffer'
-import { basename, dirname, resolve } from 'node:path'
+import { basename, resolve } from 'node:path'
 import MarkdownItShiki from '@shikijs/markdown-it'
 import { transformerNotationDiff, transformerNotationHighlight, transformerNotationWordHighlight } from '@shikijs/transformers'
 import { rendererRich, transformerTwoslash } from '@shikijs/twoslash'
@@ -13,7 +12,6 @@ import LinkAttributes from 'markdown-it-link-attributes'
 import MarkdownItMagicLink from 'markdown-it-magic-link'
 // @ts-expect-error missing types
 import TOC from 'markdown-it-table-of-contents'
-import sharp from 'sharp'
 import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import IconsResolver from 'unplugin-icons/resolver'
@@ -129,6 +127,7 @@ export default defineConfig({
         md.use(MarkdownItMagicLink, {
           linksMap: {
             'RSS3': 'https://rss3.io',
+            'Open Network': 'https://open.network',
             'NaturalSelectionLabs': 'https://github.com/NaturalSelectionLabs',
             'RSS3-Network': 'https://github.com/RSS3-Network',
             'RSSNext': 'https://github.com/RSSNext',

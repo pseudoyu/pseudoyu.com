@@ -7,10 +7,9 @@ art: random
 
 Hey, I am pseudoyu, a web3 enthusiast, blockchain developer & indie hacker.
 
-Working at {RSS3} {NaturalSelectionLabs} <br>
-Core team of {RSS3-Network} {WebisOpen} {RSSNext}<br>
-Creator of {Web3Insights}<br>
-Maintaining {RSSHub} {Folo} {Node}
+Founder of {Web3Insights}<br>
+Pre at {RSS3} {Open Network} {RSSNext}<br>
+Maintaining {RSSHub}
 
 With a passion for building wonderful web3 products. I have a knack for various technical stacks about blockchain, from designing and building ÐApp to solving real-life problems with smart contracts. You can find my [full projects list here](/projects).
 
