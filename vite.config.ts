@@ -132,7 +132,7 @@ export default defineConfig({
             'RSS3-Network': 'https://github.com/RSS3-Network',
             'RSSNext': 'https://github.com/RSSNext',
             'WebisOpen': 'https://github.com/WebisOpen',
-            'Web3Insights': 'https://github.com/Web3Insights/Web3Insights',
+            'Web3Insight': 'https://github.com/web3insight-ai/web3insight',
             'RSSHub': 'https://github.com/DIYgod/RSSHub',
             'Folo': 'https://github.com/RSSNext/Folo',
             'Node': 'https://github.com/RSS3-Network/Node',

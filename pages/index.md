@@ -7,7 +7,7 @@ art: random
 
 Hey, I am pseudoyu, a web3 enthusiast, blockchain developer & indie hacker.
 
-Founder of {Web3Insights}<br>
+Founder of {Web3Insight}<br>
 Pre at {RSS3} {Open Network} {RSSNext}<br>
 Maintaining {RSSHub}
 

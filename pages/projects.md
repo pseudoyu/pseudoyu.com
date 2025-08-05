@@ -6,8 +6,8 @@ wrapperClass: 'text-center'
 art: dots
 projects:
   Current Focus:
-    - name: 'Web3Insights'
-      link: 'https://github.com/Web3Insights/Web3Insights'
+    - name: 'Web3Insight'
+      link: 'https://github.com/web3insight-ai/web3insight'
       desc: 'A comprehensive metric system for Web3'
     - name: 'OpenAgent'
       link: 'https://github.com/webisopen/OpenAgent'
