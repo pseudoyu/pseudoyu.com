@@ -56,6 +56,9 @@ projects:
       link: 'https://xiaoxianai.net/'
       desc: '基于 Deepseek R1 的八字算命助手'
   Websites:
+    - name: 'YISH EDU'
+      link: 'https://yishedu.com/'
+      desc: 'the official website of YISH EDU'
     - name: 'FAOA'
       link: 'https://faoaglobal.org/'
       desc: 'The official website of FAOA Global'
