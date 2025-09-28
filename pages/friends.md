@@ -17,7 +17,6 @@ art: random
 - [仕麟](https://edward40.com) - Great men are not born great, they grow great.
 - [Tony Ding](https://blog.tonyding.net) - Tony Ding's Blog
 - [浮云翩迁之间](https://blognas.hwb0307.com) - 百代繁华一朝都，谁非过客；千秋明月吹角寒，花是主人。
-- [Zhou Blog](https://www.zhouzhoukl.com) - ⚒️在做有趣的产品 | 👾乐子人
 - [梦墨不会做梦💤](https://dreamo.ink) - May you do good and not evil.
 - [锤子博客](https://liujiding.com) - 发现科技与人文之美
 - [啊呜喵](https://blog.awumiao.cn/) - 念念不忘，必有回响
