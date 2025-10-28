@@ -95,6 +95,12 @@ v0 生成 UI 的质感整体还是审美很在线的，比一般 LLMs 生成的�
 
 可以通过大纲一键生成不同风格主题的 Slides 文稿，并且提供了 Agent 模式，有类 Cursor 的 PPT 制作体验，可以不用自己手动调整模板等。
 
+### Toki
+
+![toki_sample](https://image.pseudoyu.com/images/toki_sample.png)
+
+另一个日常使用到的是 AI 应用是一个 TG Bot，原来叫 Dola，最近改名为 [Toki](https://yestoki.com/) 了，关联了 Google Calendar 后，可以很方便可以通过对话来管理日程，虽说很多 LLMs 应用或是 MCP 都能做到，但用了两年左右感觉 Toki 的易用性和稳定性都很强，配合 Notion Calendar，基本上不会错过什么日程了，算是一个小众但实用的工具了。
+
 ## 我的 LLMs 开发工作流实践
 
 ![llm_coding_workflow](https://image.pseudoyu.com/images/llm_coding_workflow.png)
