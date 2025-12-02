@@ -83,7 +83,7 @@ c.registration = registration
 
 ```go
 func (c *Client) RegisterChaincodeEvent(ccID, eventFilter string) (fab.Registration, <-chan *fab.CCEvent, error) {
-	return c.eventService.RegisterChaincodeEvent(ccID, eventFilter)
+  return c.eventService.RegisterChaincodeEvent(ccID, eventFilter)
 }
 ```
 
@@ -136,9 +136,9 @@ if err != nil {
 
 ```go
 func (c *Client) Start() error {
-	logger.Info("Fabric consumer started")
-	go c.polling()
-	return c.consumer.Start()
+  logger.Info("Fabric consumer started")
+  go c.polling()
+  return c.consumer.Start()
 }
 ```
 
@@ -149,9 +149,9 @@ func (c *Client) Start() error {
 ```go
 // 关闭插件
 func (c *Client) Stop() error {
-	c.ticker.Stop()
-	c.done <- true
-	return c.consumer.Shutdown()
+  c.ticker.Stop()
+  c.done <- true
+  return c.consumer.Shutdown()
 }
 ```
 
@@ -159,8 +159,8 @@ func (c *Client) Stop() error {
 
 ```go
 func (c *Consumer) Shutdown() error {
-	c.eventClient.Unregister(c.registration)
-	return nil
+  c.eventClient.Unregister(c.registration)
+  return nil
 }
 ```
 
@@ -168,7 +168,7 @@ func (c *Consumer) Shutdown() error {
 
 ```go
 func (c *Client) Unregister(reg fab.Registration) {
-	c.eventService.Unregister(reg)
+  c.eventService.Unregister(reg)
 }
 ```
 
@@ -182,44 +182,44 @@ func (c *Client) Unregister(reg fab.Registration) {
 
 ```go
 func (c *Client) getProof(response channel.Response) ([]byte, error) {
-	var proof []byte
-	var handle = func(response channel.Response) ([]byte, error) {
-		// query proof from fabric
-		l, err := ledger.New(c.consumer.channelProvider)
-		if err != nil {
-			return nil, err
-		}
+  var proof []byte
+  var handle = func(response channel.Response) ([]byte, error) {
+    // query proof from fabric
+    l, err := ledger.New(c.consumer.channelProvider)
+    if err != nil {
+      return nil, err
+    }
 
-		t, err := l.QueryTransaction(response.TransactionID)
-		if err != nil {
-			return nil, err
-		}
-		pd := &common.Payload{}
-		if err := proto.Unmarshal(t.TransactionEnvelope.Payload, pd); err != nil {
-			return nil, err
-		}
+    t, err := l.QueryTransaction(response.TransactionID)
+    if err != nil {
+      return nil, err
+    }
+    pd := &common.Payload{}
+    if err := proto.Unmarshal(t.TransactionEnvelope.Payload, pd); err != nil {
+      return nil, err
+    }
 
-		pt := &peer.Transaction{}
-		if err := proto.Unmarshal(pd.Data, pt); err != nil {
-			return nil, err
-		}
+    pt := &peer.Transaction{}
+    if err := proto.Unmarshal(pd.Data, pt); err != nil {
+      return nil, err
+    }
 
-		return pt.Actions[0].Payload, nil
-	}
+    return pt.Actions[0].Payload, nil
+  }
 
-	if err := retry.Retry(func(attempt uint) error {
-		var err error
-		proof, err = handle(response)
-		if err != nil {
-			logger.Error("Can't get proof", "error", err.Error())
-			return err
-		}
-		return nil
-	}, strategy.Wait(2*time.Second)); err != nil {
-		logger.Error("Can't get proof", "error", err.Error())
-	}
+  if err := retry.Retry(func(attempt uint) error {
+    var err error
+    proof, err = handle(response)
+    if err != nil {
+      logger.Error("Can't get proof", "error", err.Error())
+      return err
+    }
+    return nil
+  }, strategy.Wait(2*time.Second)); err != nil {
+    logger.Error("Can't get proof", "error", err.Error())
+  }
 
-	return proof, nil
+  return proof, nil
 }
 ```
 
@@ -229,20 +229,20 @@ func (c *Client) getProof(response channel.Response) ([]byte, error) {
 
 ```go
 func (c *Client) GetChainID() (string, string) {
-	request := channel.Request{
-		ChaincodeID: c.meta.CCID,
-		Fcn:         GetChainId,
-	}
+  request := channel.Request{
+    ChaincodeID: c.meta.CCID,
+    Fcn:         GetChainId,
+  }
 
-	response, err := c.consumer.ChannelClient.Execute(request)
-	if err != nil || response.Payload == nil {
-		return "", ""
-	}
-	chainIds := strings.Split(string(response.Payload), "-")
-	if len(chainIds) != 2 {
-		return "", ""
-	}
-	return chainIds[0], chainIds[1]
+  response, err := c.consumer.ChannelClient.Execute(request)
+  if err != nil || response.Payload == nil {
+    return "", ""
+  }
+  chainIds := strings.Split(string(response.Payload), "-")
+  if len(chainIds) != 2 {
+    return "", ""
+  }
+  return chainIds[0], chainIds[1]
 }
 ```
 
@@ -264,9 +264,9 @@ func (c *Client) GetChainID() (string, string) {
 
 ```go
 func (broker *Broker) Invoke(stub shim.ChaincodeStubInterface) pb.Response {
-	function, args := stub.GetFunctionAndParameters()
+  function, args := stub.GetFunctionAndParameters()
     // ...
-    	switch function {
+      switch function {
             // ...
             case "getChainId":
                 return broker.getChainId(stub)
@@ -279,7 +279,7 @@ func (broker *Broker) Invoke(stub shim.ChaincodeStubInterface) pb.Response {
                 return broker.EmitInterchainEvent(stub, args)
             default:
                 return shim.Error("invalid function: " + function + ", args: " + strings.Join(args, ","))
-	}
+  }
 }
 ```
 
@@ -289,80 +289,80 @@ func (broker *Broker) Invoke(stub shim.ChaincodeStubInterface) pb.Response {
 func (broker *Broker) EmitInterchainEvent(stub shim.ChaincodeStubInterface, args []string) pb.Response {
     // 判断传入参数数量是否正确
     // 跨链合约需要传入很多参数，如调用失败在链上容易产生安全问题
-	if len(args) != 5 {
-		return shim.Error("incorrect number of arguments, expecting 7")
-	}
+  if len(args) != 5 {
+    return shim.Error("incorrect number of arguments, expecting 7")
+  }
 
-	// 读取参数并存入相应变量
+  // 读取参数并存入相应变量
 
-	// 目标链 ID
-	dstServiceID := args[0]
+  // 目标链 ID
+  dstServiceID := args[0]
 
-	// 自己的链码 ID
-	cid, err := getChaincodeID(stub)
-	if err != nil {
-		return shim.Error(err.Error())
-	}
+  // 自己的链码 ID
+  cid, err := getChaincodeID(stub)
+  if err != nil {
+    return shim.Error(err.Error())
+  }
 
-	// 获取 bxhID 和 appchainID
-	curFullID, err := broker.genFullServiceID(stub, cid)
-	if err != nil {
-		return shim.Error(err.Error())
-	}
+  // 获取 bxhID 和 appchainID
+  curFullID, err := broker.genFullServiceID(stub, cid)
+  if err != nil {
+    return shim.Error(err.Error())
+  }
 
-	// 将当前链 ID 和目标链 ID 组合成输出跨链服务组
-	outServicePair := genServicePair(curFullID, dstServiceID)
+  // 将当前链 ID 和目标链 ID 组合成输出跨链服务组
+  outServicePair := genServicePair(curFullID, dstServiceID)
 
-	// 获取输出值的键值对
-	outMeta, err := broker.getMap(stub, outterMeta)
-	if err != nil {
-		return shim.Error(err.Error())
-	}
+  // 获取输出值的键值对
+  outMeta, err := broker.getMap(stub, outterMeta)
+  if err != nil {
+    return shim.Error(err.Error())
+  }
 
-	// 查询输出跨链服务组是否在键值对中，否则设为 0
-	if _, ok := outMeta[outServicePair]; !ok {
-		outMeta[outServicePair] = 0
-	}
+  // 查询输出跨链服务组是否在键值对中，否则设为 0
+  if _, ok := outMeta[outServicePair]; !ok {
+    outMeta[outServicePair] = 0
+  }
 
-	// 封装交易信息
-	tx := &Event{
-		Index:     outMeta[outServicePair] + 1,
-		DstFullID: dstServiceID,
-		SrcFullID: curFullID,
-		Func:      args[1],
-		Args:      args[2],
-		Argscb:    args[3],
-		Argsrb:    args[4],
-	}
+  // 封装交易信息
+  tx := &Event{
+    Index:     outMeta[outServicePair] + 1,
+    DstFullID: dstServiceID,
+    SrcFullID: curFullID,
+    Func:      args[1],
+    Args:      args[2],
+    Argscb:    args[3],
+    Argsrb:    args[4],
+  }
 
-	// 输出服务自增
-	outMeta[outServicePair]++
+  // 输出服务自增
+  outMeta[outServicePair]++
 
-	// 将交易信息转为 json 格式
-	txValue, err := json.Marshal(tx)
-	if err != nil {
-		return shim.Error(err.Error())
-	}
+  // 将交易信息转为 json 格式
+  txValue, err := json.Marshal(tx)
+  if err != nil {
+    return shim.Error(err.Error())
+  }
 
-	// 将输出事件消息格式化
-	key := broker.outMsgKey(outServicePair, strconv.FormatUint(tx.Index, 10))
+  // 将输出事件消息格式化
+  key := broker.outMsgKey(outServicePair, strconv.FormatUint(tx.Index, 10))
 
-	// 将消息与交易信息写入账本（持久化）
-	if err := stub.PutState(key, txValue); err != nil {
-		return shim.Error(fmt.Errorf("persist event: %w", err).Error())
-	}
+  // 将消息与交易信息写入账本（持久化）
+  if err := stub.PutState(key, txValue); err != nil {
+    return shim.Error(fmt.Errorf("persist event: %w", err).Error())
+  }
 
-	// 设定相应跨链交易事件名称，并将交易信息存入 payload 中
-	if err := stub.SetEvent(interchainEventName, txValue); err != nil {
-		return shim.Error(fmt.Errorf("set event: %w", err).Error())
-	}
+  // 设定相应跨链交易事件名称，并将交易信息存入 payload 中
+  if err := stub.SetEvent(interchainEventName, txValue); err != nil {
+    return shim.Error(fmt.Errorf("set event: %w", err).Error())
+  }
 
-	// 将元数据状态写入账本
-	if err := broker.putMap(stub, outterMeta, outMeta); err != nil {
-		return shim.Error(err.Error())
-	}
+  // 将元数据状态写入账本
+  if err := broker.putMap(stub, outterMeta, outMeta); err != nil {
+    return shim.Error(err.Error())
+  }
 
-	return shim.Success(nil)
+  return shim.Success(nil)
 }
 ```
 
@@ -380,28 +380,28 @@ SetEvent(name string, payload []byte) error
 
 ```go
 func (s *DataSwapper) get(stub shim.ChaincodeStubInterface, args []string) pb.Response {
-	switch len(args) {
-	case 1:
-		// args[0]: key
-		value, err := stub.GetState(args[0])
-		if err != nil {
-			return shim.Error(err.Error())
-		}
+  switch len(args) {
+  case 1:
+    // args[0]: key
+    value, err := stub.GetState(args[0])
+    if err != nil {
+      return shim.Error(err.Error())
+    }
 
-		return shim.Success(value)
-	case 2:
-		// args[0]: destination service id
-		// args[1]: key
-		b := util.ToChaincodeArgs(emitInterchainEventFunc, args[0], "interchainGet,interchainSet,", args[1], args[1], "")
-		response := stub.InvokeChaincode(brokerContractName, b, channelID)
-		if response.Status != shim.OK {
-			return shim.Error(fmt.Errorf("invoke broker chaincode %s error: %s", brokerContractName, response.Message).Error())
-		}
+    return shim.Success(value)
+  case 2:
+    // args[0]: destination service id
+    // args[1]: key
+    b := util.ToChaincodeArgs(emitInterchainEventFunc, args[0], "interchainGet,interchainSet,", args[1], args[1], "")
+    response := stub.InvokeChaincode(brokerContractName, b, channelID)
+    if response.Status != shim.OK {
+      return shim.Error(fmt.Errorf("invoke broker chaincode %s error: %s", brokerContractName, response.Message).Error())
+    }
 
-		return shim.Success(nil)
-	default:
-		return shim.Error("incorrect number of arguments")
-	}
+    return shim.Success(nil)
+  default:
+    return shim.Error("incorrect number of arguments")
+  }
 }
 ```
 
@@ -409,11 +409,11 @@ func (s *DataSwapper) get(stub shim.ChaincodeStubInterface, args []string) pb.Re
 
 ```go
 func ToChaincodeArgs(args ...string) [][]byte {
-	bargs := make([][]byte, len(args))
-	for i, arg := range args {
-		bargs[i] = []byte(arg)
-	}
-	return bargs
+  bargs := make([][]byte, len(args))
+  for i, arg := range args {
+    bargs[i] = []byte(arg)
+  }
+  return bargs
 }
 ```
 

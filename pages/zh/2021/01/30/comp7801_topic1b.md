@@ -90,7 +90,7 @@ duration: 11min
 - Disk-based tree structure
   - every node of the tree is a block and has an address (block-id) on the disk
 - Multiway tree
-  - each node has multiple children (between n/2 and n, where n/2 is the order or degree of the tree)
+  - each node has multiple children (between n/2 and n, where n/2 is the order or degree of the tree)
   - Therefore, at least 50% of the space in a node is guaranteed to be occupied (this rule may not apply to tree root)
 - Balanced tree
   - all paths from the root to a leaf have the same length
@@ -141,7 +141,7 @@ duration: 11min
 - In processing a query, a path is traversed in the tree from the root to some leaf node
 - If there are K search-key values in the file, the path is not longer than log(n/2)(K). (The degree of a node is no less than n/2)
 - A node has generally the same size of a disk block, typically 4 kilobytes, and n is typically around 100 (40 bytes per index entry)
-- With 1 million search key values and n/2 = 50, at most log50(1,000,000) = 4 nodes are accessed in a lookup
+- With 1 million search key values and n/2 = 50, at most log50(1,000,000) = 4 nodes are accessed in a lookup
 - Contrast this with a balanced binary tree with 1 million search key values — around 20 nodes are accessed in a lookup
   - (log2(1,000,000) ~= 20)
   - above difference is significant since every node access may need a disk I/O, costing around 10 milliseconds!
@@ -157,7 +157,7 @@ duration: 11min
     - Otherwise k >= Kn–1, where there are n pointers in the node
       - Then follow Pn to the child node.
   - If the node reached by following the pointer above is not a leaf node, repeat the above procedure on the node, and follow the corresponding pointer
-  - Eventually reach a leaf node. If for some i, k <= Ki <= m follow pointer Pi to the desired record. Continue with next entry Ki+1, while Ki+1 <= m. If at end of leaf node follow pointer to next node, until Ki >m or end of index
+  - Eventually reach a leaf node. If for some i, k <= Ki <= m follow pointer Pi to the desired record. Continue with next entry Ki+1, while Ki+1 <= m. If at end of leaf node follow pointer to next node, until Ki >m or end of index
 
 ![B_Plus_Tree_Range_Query](https://image.pseudoyu.com/images/B_Plus_Tree_Range_Query.png)
 

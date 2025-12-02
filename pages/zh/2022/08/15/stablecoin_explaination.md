@@ -5,8 +5,6 @@ lang: zh
 duration: 13min
 ---
 
-
-
 ## 前言
 
 ![stablecoin_page_photo](https://image.pseudoyu.com/images/stablecoin_page_photo.jpg)

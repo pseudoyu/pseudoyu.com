@@ -5,8 +5,6 @@ lang: zh
 duration: 13min
 ---
 
-
-
 ## 前言
 
 经过了前几篇对智能合约基础、Web3.py、ethers.js 的学习，我们已经掌握了通过程序与区块链网络直接交互的基础知识，不熟悉的同学可以回顾一下：
@@ -58,14 +56,14 @@ yarn add --dev hardhat
 
 ```json
 {
-    //...
+  // ...
 
-    "[solidity]": {
-        "editor.defaultFormatter": "NomicFoundation.hardhat-solidity"
-    },
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-    }
+  "[solidity]": {
+    "editor.defaultFormatter": "NomicFoundation.hardhat-solidity"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
 ```
 
@@ -85,10 +83,10 @@ yarn add --dev prettier prettier-plugin-solidity
 
 ```json
 {
-    "tabWidth": 4,
-    "useTabs": false,
-    "semi": false,
-    "singleQuote": false
+  "tabWidth": 4,
+  "useTabs": false,
+  "semi": false,
+  "singleQuote": false
 }
 ```
 
@@ -139,13 +137,13 @@ COINMARKETCAP_API_KEY=key
 我们就可以在 `hardhat.config.js` 中读取环境变量了：
 
 ```javascript
-require("dotenv").config()
+require('dotenv').config()
 
-const RINKEBY_RPC_URL =
-    process.env.RINKEBY_RPC_URL || "https://eth-rinkeby/example"
-const RINKEBY_PRIVATE_KEY = process.env.RINKEBY_PRIVATE_KEY || "0xkey"
-const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || "key"
-const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY || "key"
+const RINKEBY_RPC_URL
+    = process.env.RINKEBY_RPC_URL || 'https://eth-rinkeby/example'
+const RINKEBY_PRIVATE_KEY = process.env.RINKEBY_PRIVATE_KEY || '0xkey'
+const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || 'key'
+const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY || 'key'
 ```
 
 ### 配置网络环境
@@ -167,25 +165,25 @@ const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY || "key"
 完成网络环境准备后，我们可以在项目配置 `hardhat.config.js` 中定义网络：
 
 ```javascript
-const RINKEBY_RPC_URL =
-    process.env.RINKEBY_RPC_URL || "https://eth-rinkeby/example"
-const RINKEBY_PRIVATE_KEY = process.env.RINKEBY_PRIVATE_KEY || "0xkey"
+const RINKEBY_RPC_URL
+    = process.env.RINKEBY_RPC_URL || 'https://eth-rinkeby/example'
+const RINKEBY_PRIVATE_KEY = process.env.RINKEBY_PRIVATE_KEY || '0xkey'
 
 module.exports = {
-    defaultNetwork: "hardhat",
-    networks: {
-        locakhost: {
-            url: "http://localhost:8545",
-            chainId: 31337,
-        },
-        rinkeby: {
-            url: RINKEBY_RPC_URL,
-            accounts: [RINKEBY_PRIVATE_KEY],
-            chainId: 4,
-
-        },
+  defaultNetwork: 'hardhat',
+  networks: {
+    locakhost: {
+      url: 'http://localhost:8545',
+      chainId: 31337,
     },
-    // ...,
+    rinkeby: {
+      url: RINKEBY_RPC_URL,
+      accounts: [RINKEBY_PRIVATE_KEY],
+      chainId: 4,
+
+    },
+  },
+  // ...,
 }
 ```
 
@@ -200,32 +198,32 @@ module.exports = {
 首先，我们需要从 `hardhat` 中导入必要包：
 
 ```javascript
-const { ethers, run, network } = require("hardhat")
+const { ethers, run, network } = require('hardhat')
 ```
 
 接着则编写 `main` 方法，包含我们的部署核心逻辑：
 
 ```javascript
 async function main() {
-    const SimpleStorageFactory = await ethers.getContractFactory(
-        "SimpleStorage"
-    )
-    console.log("Deploying SimpleStorage Contract...")
-    const simpleStorage = await SimpleStorageFactory.deploy()
-    await simpleStorage.deployed()
-    console.log("SimpleStorage Contract deployed at:", simpleStorage.address)
+  const SimpleStorageFactory = await ethers.getContractFactory(
+    'SimpleStorage'
+  )
+  console.log('Deploying SimpleStorage Contract...')
+  const simpleStorage = await SimpleStorageFactory.deploy()
+  await simpleStorage.deployed()
+  console.log('SimpleStorage Contract deployed at:', simpleStorage.address)
 
-    // 获取当前值
-    const currentValue = await simpleStorage.retrieve()
-    console.log("Current value:", currentValue)
+  // 获取当前值
+  const currentValue = await simpleStorage.retrieve()
+  console.log('Current value:', currentValue)
 
-    // 设置值
-    const transactionResponse = await simpleStorage.store(7)
-    await transactionResponse.wait(1)
+  // 设置值
+  const transactionResponse = await simpleStorage.store(7)
+  await transactionResponse.wait(1)
 
-    // 获取更新后的值
-    const updatedValue = await await simpleStorage.retrieve()
-    console.log("Updated value:", updatedValue)
+  // 获取更新后的值
+  const updatedValue = await await simpleStorage.retrieve()
+  console.log('Updated value:', updatedValue)
 }
 ```
 
@@ -233,11 +231,11 @@ async function main() {
 
 ```javascript
 main()
-    .then(() => process.exit(0))
-    .catch((error) => {
-        console.error(error)
-        process.exit(1)
-    })
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error)
+    process.exit(1)
+  })
 ```
 
 #### 运行脚本
@@ -267,14 +265,14 @@ yarn hardhat run scripts/deploy.js --network rinkeby
 完成安装后，我们需要在 `hardhat.config.js` 中进行配置：
 
 ```javascript
-require("@nomiclabs/hardhat-etherscan")
+require('@nomiclabs/hardhat-etherscan')
 
 module.exports = {
-    // ...,
-    etherscan: {
-        apiKey: ETHERSCAN_API_KEY,
-    },
-    // ...,
+  // ...,
+  etherscan: {
+    apiKey: ETHERSCAN_API_KEY,
+  },
+  // ...,
 }
 ```
 
@@ -283,22 +281,24 @@ module.exports = {
 接下来我们需要在部署脚本 `deploy.js` 中添加 `verify` 方法。
 
 ```javascript
-const { ethers, run, network } = require("hardhat")
+const { ethers, run, network } = require('hardhat')
 
 async function verify(contractAddress, args) {
-    console.log("Verifying SimpleStorage Contract...")
-    try {
-        await run("verify:verify", {
-            address: contractAddress,
-            constructorArguements: args,
-        })
-    } catch (e) {
-        if (e.message.toLowerCase().includes("already verified!")) {
-            console.log("Already Verified!")
-        } else {
-            console.log(e)
-        }
+  console.log('Verifying SimpleStorage Contract...')
+  try {
+    await run('verify:verify', {
+      address: contractAddress,
+      constructorArguements: args,
+    })
+  }
+  catch (e) {
+    if (e.message.toLowerCase().includes('already verified!')) {
+      console.log('Already Verified!')
     }
+    else {
+      console.log(e)
+    }
+  }
 }
 ```
 
@@ -310,14 +310,14 @@ async function verify(contractAddress, args) {
 
 ```javascript
 async function main() {
-    //...
+  // ...
 
-    if (network.config.chainId === 4 && process.env.ETHERSCAN_API_KEY) {
-        await simpleStorage.deployTransaction.wait(6)
-        await verify(simpleStorage.address, [])
-    }
+  if (network.config.chainId === 4 && process.env.ETHERSCAN_API_KEY) {
+    await simpleStorage.deployTransaction.wait(6)
+    await verify(simpleStorage.address, [])
+  }
 
-    // ...
+  // ...
 }
 ```
 
@@ -348,38 +348,39 @@ Hardhat 提供了完备的测试调试工具，可以在 `tests` 目录中编写
 为我们的部署脚本编写 `test-deploy.js` 测试程序，首先需要导入必要包：
 
 ```javascript
-const { assert } = require("chai")
-const { ethers } = require("hardhat")
+const { assert } = require('chai')
+const { ethers } = require('hardhat')
 ```
 
 然后编写测试逻辑：
 
 ```javascript
-describe("SimpleStorage", () => {
-    let simpleStorageFactory, simpleStorage
-    beforeEach(async () => {
-        simpleStorageFactory = await ethers.getContractFactory("SimpleStorage")
-        simpleStorage = await simpleStorageFactory.deploy()
-    })
+describe('SimpleStorage', () => {
+  let simpleStorageFactory, simpleStorage
+  beforeEach(async () => {
+    simpleStorageFactory = await ethers.getContractFactory('SimpleStorage')
+    simpleStorage = await simpleStorageFactory.deploy()
+  })
 
-    it("Should start with a favorite number of 0", async () => {
-        const currentValue = await simpleStorage.retrieve()
-        const expectedValue = "0"
+  it('Should start with a favorite number of 0', async () => {
+    const currentValue = await simpleStorage.retrieve()
+    const expectedValue = '0'
 
-        assert.equal(currentValue.toString(), expectedValue)
-        // expect(currentValue.toString()).to.equal(expectedValue)
-    })
+    assert.equal(currentValue.toString(), expectedValue)
+    // expect(currentValue.toString()).to.equal(expectedValue)
+  })
 
-    it("Should update when we call store", async () => {
-        const expectedValue = "7"
-        const transactionRespense = await simpleStorage.store(expectedValue)
-        await transactionRespense.wait(1)
+  it('Should update when we call store', async () => {
+    const expectedValue = '7'
+    const transactionRespense = await simpleStorage.store(expectedValue)
+    await transactionRespense.wait(1)
 
-        const currentValue = await simpleStorage.retrieve()
+    const currentValue = await simpleStorage.retrieve()
 
-        assert.equal(currentValue.toString(), expectedValue)
-        // expect(currentValue.toString()).to.equal(expectedValue)
-    })
+    assert.equal(currentValue.toString(), expectedValue)
+    // expect(currentValue.toString()).to.equal(expectedValue)
+  })
+})
 ```
 
 在 Hardhat 的测试脚本中，我们使用 `describe` 包裹测试类，并且使用 `it` 包裹测试方法。我们需要保证测试前合约已经部署，因此，我们通过 `beforeEach` 方法在每个测试方法执行前都会调用 `simpleStorageFactory.deploy()`，并且将返回的 `simpleStorage` 对象赋值给 `simpleStorage` 变量。
@@ -409,20 +410,20 @@ describe("SimpleStorage", () => {
 我们通过在 `hardhat.config.js` 中添加 `gasReporter: true` 及额外配置项来启用插件：
 
 ```javascript
-require("hardhat-gas-reporter")
+require('hardhat-gas-reporter')
 
-const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY || "key"
+const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY || 'key'
 
 module.exports = {
-    // ...,
-    gasReporter: {
-        enabled: true,
-        outputFile: "gas-reporter.txt",
-        noColors: true,
-        currency: "USD",
-        coinmarketcap: COINMARKETCAP_API_KEY,
-        token: "MATIC",
-    },
+  // ...,
+  gasReporter: {
+    enabled: true,
+    outputFile: 'gas-reporter.txt',
+    noColors: true,
+    currency: 'USD',
+    coinmarketcap: COINMARKETCAP_API_KEY,
+    token: 'MATIC',
+  },
 }
 ```
 
@@ -447,7 +448,7 @@ module.exports = {
 我们仅需在 `hardhat.config.js` 中导入包即可添加覆盖率测试支持：
 
 ```javascript
-require("solidity-coverage")
+require('solidity-coverage')
 ```
 
 #### 运行覆盖率测试
@@ -465,13 +466,13 @@ require("solidity-coverage")
 Hardhat 中，我们将任务定义在 `tasks` 目录下，我们将编写一个 `block-number.js` 的 Task 来获取区块高度：
 
 ```javascript
-const { task } = require("hardhat/config")
+const { task } = require('hardhat/config')
 
-task("block-number", "Prints the current block number").setAction(
-    async (taskArgs, hre) => {
-        const blockNumber = await hre.ethers.provider.getBlockNumber()
-        console.log(`Current Block Number: ${blockNumber}`)
-    }
+task('block-number', 'Prints the current block number').setAction(
+  async (taskArgs, hre) => {
+    const blockNumber = await hre.ethers.provider.getBlockNumber()
+    console.log(`Current Block Number: ${blockNumber}`)
+  }
 )
 ```
 

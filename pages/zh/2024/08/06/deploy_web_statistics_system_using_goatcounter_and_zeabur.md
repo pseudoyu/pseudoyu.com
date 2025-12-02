@@ -107,8 +107,8 @@ id = "goatcounter-data"
 dir = "/data"
 
 [env]
-PORT = { default = "8080" , expose = true }
-GOATCOUNTER_DB = { default = "sqlite3://data/goatcounter.sqlite3" , expose = true }
+PORT = { default = "8080", expose = true }
+GOATCOUNTER_DB = { default = "sqlite3://data/goatcounter.sqlite3", expose = true }
 ```
 
 ![zeabur_prebuilt_goatcounter_toml](https://image.pseudoyu.com/images/zeabur_prebuilt_goatcounter_toml.png)
@@ -208,8 +208,11 @@ services:
 跟着上文我们完成了 GoatCounter 服务的部署和基础配置，现在则需要在我们的博文中加入统计组件，以我使用的 Hugo 博客为例。
 
 ```html
-<script data-goatcounter="https://goatcounter.pseudoyu.com/count"
-        async src="//goatcounter.pseudoyu.com/count.js"></script>
+<script
+  data-goatcounter="https://goatcounter.pseudoyu.com/count"
+  async
+  src="//goatcounter.pseudoyu.com/count.js"
+></script>
 ```
 
 ![add_goatcounter_script_in_hugo](https://image.pseudoyu.com/images/add_goatcounter_script_in_hugo.png)

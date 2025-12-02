@@ -190,7 +190,7 @@ _Mesh of interconnected routers_
 ![packet_switch](https://image.pseudoyu.com/images/packet_switch.png)
 
 ```sh
-	Packet transmission delay = L (bits) / R (bits/sec)
+  Packet transmission delay = L (bits) / R (bits/sec)
 ```
 
 - End-end delay
@@ -198,8 +198,8 @@ _Mesh of interconnected routers_
 ![store_and_forward](https://image.pseudoyu.com/images/store_and_forward.png)
 
 ```sh
-	End-end delay = 2L (bits) / R (bits/sec)
-	(Assuming zero propagation delay)
+  End-end delay = 2L (bits) / R (bits/sec)
+  (Assuming zero propagation delay)
 ```
 
 - Store and forward: entire packet must arrive at router before it can be transmitted on next link
@@ -272,20 +272,20 @@ _Mesh of interconnected routers_
 ![packet_delay](https://image.pseudoyu.com/images/packet_delay.png)
 
 ```sh
-	d(nodal) = d(proc) + d(queue) + d(trans) + d(prop)
+  d(nodal) = d(proc) + d(queue) + d(trans) + d(prop)
 ```
 
 **Example**
 
 ```sh
-	Number of hops = M
-	Per-hop processing delay = d(proc)
-	Link propagation delay = d(prop)
-	Packet transmission delay = d(trans)
-	Message size = N packets
+  Number of hops = M
+  Per-hop processing delay = d(proc)
+  Link propagation delay = d(prop)
+  Packet transmission delay = d(trans)
+  Message size = N packets
 
-	End-to-end Delay (ignoring queueing delay)
-	= M * d(prop) + N * d(trans) + (M-1) * d(trans) + (M-1) * d(proc)
+  End-to-end Delay (ignoring queueing delay)
+  = M * d(prop) + N * d(trans) + (M-1) * d(trans) + (M-1) * d(proc)
 ```
 
 ![timing_diagram](https://image.pseudoyu.com/images/timing_diagram.png)

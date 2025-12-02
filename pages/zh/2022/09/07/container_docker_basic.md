@@ -5,8 +5,6 @@ lang: zh
 duration: 12min
 ---
 
-
-
 ## 前言
 
 这是工作实践系列容器部分的第一篇，主要介绍 Docker 的基础知识与实践。
@@ -294,25 +292,25 @@ Docker Compose 的配置文件是一个 `yaml` 文件，其基本格式如下：
 ```yaml
 version: '3'
 services:
-	contrainer-1:
-    	image: <image-name>
-        ports:
-        	- <host>:<container>
-        volumes:
-        	- <host-file-path>:<container-file-path>
-        environment:
-        	<ENV-KEY>=<ENV-VALUE>
-    contrainer-2:
-    	image: <image-name>
-        ports:
-        	- <host>:<container>
-        volumes:
-        	- <volume-name-1>:<container-file-path>
-        environment:
-        	<ENV-KEY>=<ENV-VALUE>
+  contrainer-1:
+    image: <image-name>
+    ports:
+      - <host>:<container>
+    volumes:
+      - <host-file-path>:<container-file-path>
+    environment:
+      <ENV-KEY>=<ENV-VALUE>
+  contrainer-2:
+    image: <image-name>
+    ports:
+      - <host>:<container>
+    volumes:
+      - <volume-name-1>:<container-file-path>
+    environment:
+      <ENV-KEY>=<ENV-VALUE>
 volumes:
-	volume-name-1:
-    	driver: local
+  volume-name-1:
+    driver: local
 ```
 
 其大部分配置都很直观，如服务名称、镜像名称、端口映射、文件挂载、环境变量等。

@@ -5,8 +5,6 @@ lang: zh
 duration: 13min
 ---
 
-
-
 ## 前言
 
 从 2017 年暑假攒钱买了第一台 MacBook Pro 开始，我使用 macOS 已经五年了。随着工作学习需要，也逐渐开始使用多屏工作流。因为随时都需要开很多窗口，如 IDE、文本编辑工具、终端、IM 软件、邮件客户端等，稍没注意就很乱，得不停地切换来找到需要的窗口，很不方便，于是我开始了自己的窗口管理方案探索之路。
@@ -62,7 +60,7 @@ BetterTouchTool 则是依赖于鼠标移动到窗口各个触发角，优势是�
 
 #### 安装与基础配置
 
-yabai 的安装很容易，按照其[官方 wiki](https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)) 说明安装即可。
+yabai 的安装很容易，按照其[官方 wiki](<https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)>) 说明安装即可。
 
 个人推荐通过 [brew](https://brew.sh) 进行安装，如果没有安装过 `brew` 可以先通过官方一键脚本进行安装。
 

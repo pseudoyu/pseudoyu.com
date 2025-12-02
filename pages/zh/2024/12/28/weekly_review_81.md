@@ -73,7 +73,7 @@ duration: 7min
 
 #### 书籍
 
-- [**自学大全**](https://book.douban.com/subject/36048997/)，从内容到表述都没什么亮点的一本指南，浪费了人生宝贵的几个小时 😶‍🌫️
+- [**自学大全**](https://book.douban.com/subject/36048997/)，从内容到表述都没什么亮点的一本指南，浪费了人生宝贵的几个小时 😶🌫️
 - [**控糖革命**](https://book.douban.com/subject/36707112/)，在看。
 
 #### 收藏

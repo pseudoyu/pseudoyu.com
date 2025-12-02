@@ -154,7 +154,7 @@ func f() error {
 func f() error {
     err := A()
     if errors.Is(err, io.EOF){
-    	return nil
+      return nil
     }
 
     // 其他逻辑
@@ -170,7 +170,7 @@ func f() error {
 
     var errA errorA
     if errors.As(err, &errA){
-    	// ...
+      // ...
     }
 
     // 其他逻辑

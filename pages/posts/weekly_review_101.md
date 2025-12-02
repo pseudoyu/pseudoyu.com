@@ -75,11 +75,11 @@ duration: 8min
 
 ![boyi_ganjiang](https://image.pseudoyu.com/images/boyi_ganjiang.jpg)
 
-陪学姐去横渡赣江 🏊‍♀（~~我划水观赛~~
+陪学姐去横渡赣江 🏊♀（~~我划水观赛~~
 
 ![boyi_qiantangjiang](https://image.pseudoyu.com/images/boyi_qiantangjiang.jpg)
 
-陪学姐去横渡钱塘江 🏊‍♀（~~我冒充工作人员到场内当摄影师~~
+陪学姐去横渡钱塘江 🏊♀（~~我冒充工作人员到场内当摄影师~~
 
 ![mayday_2025_01](https://image.pseudoyu.com/images/mayday_2025_01.jpg)
 

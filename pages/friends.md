@@ -28,7 +28,7 @@ art: random
 - [chensoul](https://blog.chensoul.com) - Java 开发工程师
 - [Kowyo](https://kowyo.com/) - 当下将至的旅程
 - [码砖猿](https://codebrickape.lhzzs.top/) - Stay hungry. Stay foolish.
-- [1xdali's SPACE²⁰²⁴](https://turkeys-rest-n5a.craft.me/blog) - 🧑‍🎨 生活艺术家
+- [1xdali's SPACE²⁰²⁴](https://turkeys-rest-n5a.craft.me/blog) - 🧑🎨 生活艺术家
 - [Rene Wang 的个人网站](https://rene.wang) - 知识产出和一些随笔
 - [第三夏尔](https://thirdshire.com) - 认真生活，积极摸鱼
 - [cosの博客](https://ysx.cosine.ren/) - WA 的一声就哭了

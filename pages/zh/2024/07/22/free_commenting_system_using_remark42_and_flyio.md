@@ -106,30 +106,30 @@ app = 'yu-remark42-01'
 primary_region = 'hkg'
 
 [build]
-  image = 'umputun/remark42:latest'
+image = 'umputun/remark42:latest'
 
 [[mounts]]
-  source = 'remark42_data_01'
-  destination = '/srv/var'
+source = 'remark42_data_01'
+destination = '/srv/var'
 
 [http_service]
-  internal_port = 8080
-  force_https = true
-  auto_stop_machines = false
-  auto_start_machines = true
-  min_machines_running = 1
-  processes = ['app']
+internal_port = 8080
+force_https = true
+auto_stop_machines = false
+auto_start_machines = true
+min_machines_running = 1
+processes = [ 'app' ]
 
 [env]
-  REMARK_URL = 'https://yu-remark42-01.fly.dev/'
-  SECRET = 'remark42-secret'
-  SITE= 'remark42-demo'
-  ADMIN_SHARED_ID= ''
+REMARK_URL = 'https://yu-remark42-01.fly.dev/'
+SECRET = 'remark42-secret'
+SITE = 'remark42-demo'
+ADMIN_SHARED_ID = ''
 
 [[vm]]
-  cpu_kind = 'shared'
-  cpus = 1
-  memory_mb = 256
+cpu_kind = 'shared'
+cpus = 1
+memory_mb = 256
 ```
 
 这是详细的配置说明：
@@ -285,8 +285,7 @@ fly deploy
     <span>Comments</span>
     <span class="counter"><span class="remark42__counter" data-url="{{ .Permalink }}"></span></span>
   </div>
-  <div id="remark42">
-  </div>
+  <div id="remark42"></div>
 </div>
 
 <script>
@@ -301,24 +300,25 @@ fly deploy
 </script>
 
 <script>
-    (function () {
-      // init or reset remark42
-      const remark42 = window.REMARK42
-      if (remark42) {
-        remark42.destroy()
-        remark42.createInstance(remark_config)
-      } else {
-        for (const component of remark_config.components) {
-          var d = document, s = d.createElement('script');
-          s.src = `${remark_config.host}/web/${component}.mjs`;
-          s.type = 'module';
-          s.defer = true;
-          // prevent the <script> from loading mutiple times by InstantClick
-          s.setAttribute('data-no-instant', '')
-          d.head.appendChild(s);
-        }
+  ;(function () {
+    // init or reset remark42
+    const remark42 = window.REMARK42
+    if (remark42) {
+      remark42.destroy()
+      remark42.createInstance(remark_config)
+    } else {
+      for (const component of remark_config.components) {
+        var d = document,
+          s = d.createElement('script')
+        s.src = `${remark_config.host}/web/${component}.mjs`
+        s.type = 'module'
+        s.defer = true
+        // prevent the <script> from loading mutiple times by InstantClick
+        s.setAttribute('data-no-instant', '')
+        d.head.appendChild(s)
       }
-    })();
+    }
+  })()
 </script>
 ```
 

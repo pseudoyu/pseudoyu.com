@@ -5,8 +5,6 @@ lang: zh
 duration: 6min
 ---
 
-
-
 ## 前言
 
 在之前的《[Solidity 智能合约开发 - 基础](https://www.pseudoyu.com/zh/2022/05/25/learn_solidity_from_scratch_basic/)》中，我们学习了 Solidity 的基本语法，并且了解了可以通过 [Brownie](https://github.com/eth-brownie/brownie) 与 [HardHat](https://github.com/NomicFoundation/hardhat) 等框架进行调试。而另一篇《[Solidity 智能合约开发 - 玩转 Web3.py](https://www.pseudoyu.com/zh/2022/05/30/learn_solidity_from_scratch_web3py/)》中我们也通过 Web3.py 直接与我们本地的 Ganache 节点进行交互了。
@@ -36,7 +34,7 @@ yarn add ethers
 使用 `require` 导入库即可使用
 
 ```javascript
-const ethers = require('ethers');
+const ethers = require('ethers')
 ```
 
 ## Solidity 合约编译
@@ -100,8 +98,10 @@ yarn solcjs --bin --abi --include-path node_modules/ --base-path . -o . SimpleSt
 因为编译合约是一个高频操作，我们可以在 `package.json` 中配置 `compile` 脚本命令，如下：
 
 ```json
-"scripts": {
+{
+  "scripts": {
     "compile": "yarn solcjs --bin --abi --include-path node_modules/ --base-path . -o . SimpleStorage.sol"
+  }
 }
 ```
 
@@ -116,10 +116,10 @@ yarn solcjs --bin --abi --include-path node_modules/ --base-path . -o . SimpleSt
 Solidity 合约的部署与交互需要 bytecode 与 abi 两个部分，我们可以通过通过以下代码将其写入对应变量供后续操作使用。
 
 ```javascript
-const fs = require('fs-extra');
+const fs = require('fs-extra')
 
-const abi = fs.readFileSync("./SimpleStorage_sol_SimpleStorage.abi", "utf-8");
-const binary = fs.readFileSync("./SimpleStorage_sol_SimpleStorage.bin", "utf-8");
+const abi = fs.readFileSync('./SimpleStorage_sol_SimpleStorage.abi', 'utf-8')
+const binary = fs.readFileSync('./SimpleStorage_sol_SimpleStorage.bin', 'utf-8')
 ```
 
 ## 创建 Rinkeby 测试网络环境（Alchemy）
@@ -162,21 +162,22 @@ const binary = fs.readFileSync("./SimpleStorage_sol_SimpleStorage.bin", "utf-8")
 `ethers.js` 提供了库可以方便地连接到我们的测试节点，其中 `process.env.ALCHEMY_RPC_URL` 为我们在 Alchemy 平台创建 App 的 HTTP URL：
 
 ```javascript
-const ethers = require('ethers');
+const ethers = require('ethers')
 
-const provider = new ethers.providers.JsonRpcProvider(process.env.ALCHEMY_RPC_URL);
+const provider = new ethers.providers.JsonRpcProvider(process.env.ALCHEMY_RPC_URL)
 ```
+
 ### 连接钱包
 
 `ethers.js` 也提供了方法可以连接到我们的测试钱包，其中 `process.env.RINKEBY_PRIVATE_KEY` 为我们从 MetaMask 复制的私钥。
 
 ```javascript
-const ethers = require('ethers');
+const ethers = require('ethers')
 
 const wallet = new ethers.Wallet(
-	process.env.RINKEBY_PRIVATE_KEY,
-	provider
-);
+  process.env.RINKEBY_PRIVATE_KEY,
+  provider
+)
 ```
 
 ## Solidity 合约部署
@@ -186,7 +187,7 @@ const wallet = new ethers.Wallet(
 我们可以通过 `ethers.js` 库创建合约。
 
 ```javascript
-const contractFactory = new ethers.ContractFactory(abi, binary, wallet);
+const contractFactory = new ethers.ContractFactory(abi, binary, wallet)
 ```
 
 ### 部署合约
@@ -196,14 +197,14 @@ const contractFactory = new ethers.ContractFactory(abi, binary, wallet);
 #### 创建合约
 
 ```javascript
-const contractFactory = new ethers.ContractFactory(abi, binary, wallet);
+const contractFactory = new ethers.ContractFactory(abi, binary, wallet)
 ```
 
 #### 部署合约
 
 ```javascript
-const contract = await contractFactory.deploy();
-await contract.deployTransaction.wait(1);
+const contract = await contractFactory.deploy()
+await contract.deployTransaction.wait(1)
 ```
 
 ### 与合约交互
@@ -213,14 +214,14 @@ await contract.deployTransaction.wait(1);
 #### retrieve()
 
 ```javascript
-const currentFavoriteNumber = await contract.retrieve();
+const currentFavoriteNumber = await contract.retrieve()
 ```
 
 #### store()
 
 ```javascript
-const transactionResponse = await contract.store("7")
-const transactionReceipt = await transactionResponse.wait(1);
+const transactionResponse = await contract.store('7')
+const transactionReceipt = await transactionResponse.wait(1)
 ```
 
 ### 从 raw data 构造交易
@@ -230,29 +231,29 @@ const transactionReceipt = await transactionResponse.wait(1);
 #### 构造交易
 
 ```javascript
-const nonce = await wallet.getTransactionCount();
+const nonce = await wallet.getTransactionCount()
 const tx = {
-	nonce: nonce,
-	gasPrice: 20000000000,
-	gasLimit: 1000000,
-	to: null,
-	value: 0,
-	data: "0x" + binary,
-	chainId: 1337,
-};
+  nonce,
+  gasPrice: 20000000000,
+  gasLimit: 1000000,
+  to: null,
+  value: 0,
+  data: `0x${binary}`,
+  chainId: 1337,
+}
 ```
 
 #### 签名交易
 
 ```javascript
-const signedTx = await wallet.signTransaction(tx);
+const signedTx = await wallet.signTransaction(tx)
 ```
 
 #### 发送交易
 
 ```javascript
-const sentTxResponse = await wallet.sendTransaction(tx);
-await sentTxResponse.wait(1);
+const sentTxResponse = await wallet.sendTransaction(tx)
+await sentTxResponse.wait(1)
 ```
 
 ## 总结

@@ -1,4 +1,4 @@
-import { dirname } from 'node:path'
+import { dirname, join } from 'node:path'
 import fs from 'fs-extra'
 import satori from 'satori'
 import sharp from 'sharp'
@@ -9,39 +9,136 @@ interface OGImageOptions {
   website?: string
 }
 
+const FONTS_ASSETS_DIR = join(process.cwd(), 'public/assets/fonts')
+const FONTS_CACHE_DIR = join(process.cwd(), '.cache/fonts')
+
 export async function generateOGImage(options: OGImageOptions, outputPath: string) {
   const { title, author = 'pseudoyu' } = options
+
+  // Font file paths - prioritize assets, fallback to cache
+  const notoSansRegularAsset = join(FONTS_ASSETS_DIR, 'noto-sans-sc-400.woff')
+  const notoSansBoldAsset = join(FONTS_ASSETS_DIR, 'noto-sans-sc-700.woff')
+  const notoSansRegularCache = join(FONTS_CACHE_DIR, 'noto-sans-sc-400.ttf')
+  const notoSansBoldCache = join(FONTS_CACHE_DIR, 'noto-sans-sc-700.ttf')
 
   // Using a direct approach with known URLs for Noto Sans SC
   const notoSansRegularUrl = 'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400&display=swap'
   const notoSansBoldUrl = 'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@700&display=swap'
 
-  // Fetch font data directly from Google Fonts
-  const fetchFontData = async (fontUrl: string): Promise<Buffer> => {
-    // First get the CSS
-    const cssResponse = await fetch(fontUrl)
-    const css = await cssResponse.text()
-
-    // Extract the actual font file URL from the CSS
-    const fontFileUrl = css.match(/src: url\((.+?)\)/)?.[1]
-
-    if (!fontFileUrl) {
-      throw new Error(`Could not extract font URL from CSS: ${css}`)
+  // Load font data with local-first strategy
+  const loadFontData = async (
+    assetPath: string,
+    cachePath: string,
+    fontUrl: string,
+    fontName: string,
+  ): Promise<Buffer> => {
+    // Priority 1: Check assets directory
+    if (await fs.pathExists(assetPath)) {
+      console.log(`✅ Using local font: ${assetPath}`)
+      return fs.readFile(assetPath)
     }
 
-    // Fetch the font file
-    const fontResponse = await fetch(fontFileUrl)
-    const fontArrayBuffer = await fontResponse.arrayBuffer()
+    // Priority 2: Check cache directory
+    if (await fs.pathExists(cachePath)) {
+      console.log(`📦 Using cached font: ${cachePath}`)
+      return fs.readFile(cachePath)
+    }
 
-    // Convert to Buffer for Node.js compatibility
-    return Buffer.from(fontArrayBuffer)
+    // Priority 3: Download from network (fallback)
+    console.log(`🌐 Downloading ${fontName} from network...`)
+    console.log(`💡 Tip: Run 'pnpm run download-fonts' to avoid network downloads`)
+
+    // Ensure cache directory exists
+    await fs.ensureDir(FONTS_CACHE_DIR)
+
+    try {
+      // First get the CSS
+      const cssResponse = await fetch(fontUrl, {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
+        },
+      })
+      const css = await cssResponse.text()
+
+      // Extract the actual font file URL from the CSS
+      const fontFileUrl = css.match(/src: url\((.+?)\)/)?.[1]
+
+      if (!fontFileUrl) {
+        throw new Error(`Could not extract font URL from CSS: ${css}`)
+      }
+
+      // Fetch the font file with retry mechanism
+      let fontArrayBuffer: ArrayBuffer
+      let retryCount = 0
+      const maxRetries = 3
+
+      while (retryCount < maxRetries) {
+        try {
+          const fontResponse = await fetch(fontFileUrl, {
+            headers: {
+              'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
+            },
+          })
+          fontArrayBuffer = await fontResponse.arrayBuffer()
+          break
+        }
+        catch (error) {
+          retryCount++
+          if (retryCount >= maxRetries) {
+            throw error
+          }
+          console.log(`Retry ${retryCount}/${maxRetries} for font download...`)
+          await new Promise(resolve => setTimeout(resolve, 1000 * retryCount))
+        }
+      }
+
+      // Convert to Buffer for Node.js compatibility
+      const fontBuffer = Buffer.from(fontArrayBuffer!)
+
+      // Cache the font file for future use
+      await fs.writeFile(cachePath, fontBuffer)
+      console.log(`💾 Font cached to: ${cachePath}`)
+
+      return fontBuffer
+    }
+    catch (error) {
+      console.error(`❌ Failed to load ${fontName}:`, error)
+      console.log(`🔄 Falling back to system font...`)
+
+      // 返回一个空的 Buffer 来使用系统字体
+      return Buffer.alloc(0)
+    }
   }
 
-  // Fetch both font weights
+  // Load both font weights
   const [notoSansRegular, notoSansBold] = await Promise.all([
-    fetchFontData(notoSansRegularUrl),
-    fetchFontData(notoSansBoldUrl),
+    loadFontData(notoSansRegularAsset, notoSansRegularCache, notoSansRegularUrl, 'Noto Sans SC Regular'),
+    loadFontData(notoSansBoldAsset, notoSansBoldCache, notoSansBoldUrl, 'Noto Sans SC Bold'),
   ])
+
+  // Prepare fonts array - only include fonts that were loaded successfully
+  const fonts: Array<{ name: string, data: Buffer, weight: number, style: string }> = []
+
+  if (notoSansRegular.length > 0) {
+    fonts.push({
+      name: 'Noto Sans SC',
+      data: notoSansRegular,
+      weight: 400,
+      style: 'normal',
+    })
+  }
+
+  if (notoSansBold.length > 0) {
+    fonts.push({
+      name: 'Noto Sans SC',
+      data: notoSansBold,
+      weight: 700,
+      style: 'normal',
+    })
+  }
+
+  // If no fonts loaded, use a fallback font name that Satori can handle
+  const fontFamily = fonts.length > 0 ? 'Noto Sans SC' : 'Arial, sans-serif'
 
   // Create SVG using Satori
   const svg = await satori(
@@ -136,7 +233,7 @@ export async function generateOGImage(options: OGImageOptions, outputPath: strin
                         type: 'div',
                         props: {
                           style: {
-                            fontFamily: 'Noto Sans SC',
+                            fontFamily,
                             fontSize: '36px',
                             color: '#aaaaaa',
                             marginBottom: '5px',
@@ -148,11 +245,12 @@ export async function generateOGImage(options: OGImageOptions, outputPath: strin
                         type: 'div',
                         props: {
                           style: {
-                            fontFamily: 'Noto Sans SC',
-                            fontSize: '56px',
+                            fontFamily,
+                            fontSize: '48px',
                             color: '#ffffff',
-                            lineHeight: 1.2,
-                            maxWidth: '900px',
+                            lineHeight: 1.1,
+                            maxWidth: '1000px',
+                            whiteSpace: 'nowrap',
                             textShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
                           },
                           children: title,
@@ -177,7 +275,7 @@ export async function generateOGImage(options: OGImageOptions, outputPath: strin
                 borderRadius: '40px',
                 backdropFilter: 'blur(10px)',
                 border: '1px solid rgba(255, 255, 255, 0.1)',
-                fontFamily: 'Noto Sans SC',
+                fontFamily,
                 fontSize: '24px',
                 color: '#ffffff',
                 letterSpacing: '0.5px',
@@ -191,20 +289,7 @@ export async function generateOGImage(options: OGImageOptions, outputPath: strin
     {
       width: 1200,
       height: 630,
-      fonts: [
-        {
-          name: 'Noto Sans SC',
-          data: notoSansRegular,
-          weight: 400,
-          style: 'normal',
-        },
-        {
-          name: 'Noto Sans SC',
-          data: notoSansBold,
-          weight: 700,
-          style: 'normal',
-        },
-      ],
+      fonts,
     },
   )
 

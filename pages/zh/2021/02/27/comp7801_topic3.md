@@ -12,8 +12,8 @@ duration: 9min
 
 - In many real applications accessibility of objects is restricted by a spatial network
   - Examples
-    - Driver looking for nearest gas station
-    - Mobile user looking for nearest restaurant
+    - Driver looking for nearest gas station
+    - Mobile user looking for nearest restaurant
 - **Shortest path distance** used instead of Euclidean distance
 - SP(a,b) = path between a and b with the minimum accumulated length
 
@@ -57,7 +57,7 @@ duration: 9min
 
 #### Dijkstra’s Shortest Path Search
 
-- idea: incrementally explore the graph around s, visitingnodes in distance order to suntil t is found (like NN)
+- idea: incrementally explore the graph around s, visiting nodes in distance order to s until t is found (like NN)
 
 ![Dijkstra_1](https://image.pseudoyu.com/images/Dijkstra_1.png)
 

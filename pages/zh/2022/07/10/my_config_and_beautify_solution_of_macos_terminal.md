@@ -5,8 +5,6 @@ lang: zh
 duration: 15min
 ---
 
-
-
 ## 前言
 
 作为一个开发者，不论是本地代码运行调试还是在远程服务器上进行项目的部署运维，都离不开下图所示的终端，也就是科技电影中常出现的黑窗口。
@@ -128,7 +126,7 @@ window:
 
 font:
   normal:
-    family: "MesloLGSDZ Nerd Font Mono"
+    family: MesloLGSDZ Nerd Font Mono
     style: Regular
   size: 13.0
   use_thin_strokes: true
@@ -224,7 +222,7 @@ tmux 是一个强大的窗口管理工具，然而每次都需要使用 `<Ctrl+b
 
 ```yaml
 key_bindings:
-  - { key: T, mods: Command, chars: "\x02\x63" }
+  - {key: T, mods: Command, chars: c}
 ```
 
 其他快捷键配置实现原理一致，可点击[这里](https://github.com/pseudoyu/dotfiles/tree/master/alacritty)查看我的所有快捷键配置并自行修改调整。

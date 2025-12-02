@@ -5,8 +5,6 @@ lang: zh
 duration: 9min
 ---
 
-
-
 ## 前言
 
 ![raspberry_pi](https://image.pseudoyu.com/images/raspberry_pi.jpg)

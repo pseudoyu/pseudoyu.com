@@ -4,7 +4,7 @@
   "packageManager": "pnpm@10.6.2",
   "scripts": {
     "build": "cross-env NODE_ENV=production vite-ssg build && tsx ./scripts/copy-fonts.ts && tsx ./scripts/rss.ts && cp _redirects dist/_redirects",
-    "dev": "vite --port 3333 --open",
+    "dev": "vite --port 3333",
     "preview": "vite preview",
     "lint": "eslint .",
     "compress": "tsx scripts/img-compress-staged.ts",

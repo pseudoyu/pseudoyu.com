@@ -351,17 +351,17 @@ found new NN:
 oNN = a, dist(q,oNN) = sqrt(5)
 
 4. backtrack to M1
-check m2dist(q,m2) = 3 >= sqrt(5):
+check m2 dist(q,m2) = 3 >= sqrt(5):
 No need to visit node m2
-check m3dist(q,m3) = sqrt(5) >= sqrt(5):
+check m3 dist(q,m3) = sqrt(5) >= sqrt(5):
 No need to visit node m3
 
 5. backtrack to root
-check M2dist(q,M2) = sqrt(2) < sqrt(5):
+check M2 dist(q,M2) = sqrt(2) < sqrt(5):
 must visit node M2
 
 6. visit M2
-check m4dist(q,m4) = sqrt(2) < sqrt(5):
+check m4 dist(q,m4) = sqrt(2) < sqrt(5):
 must visit node m4
 
 7. visit m4
@@ -370,13 +370,13 @@ found new NN:
 oNN = k, dist(q,oNN) = sqrt(2)
 
 8. backtrack to M2
-check m5dist(q,m5) >= sqrt(2):
+check m5 dist(q,m5) >= sqrt(2):
 No need to visit node m5
-check m6dist(q,m6) >= sqrt(2):
+check m6 dist(q,m6) >= sqrt(2):
 No need to visit node m6
 
 9. backtrack to root
-check M3dist(q,M3) >= sqrt(2):
+check M3 dist(q,M3) >= sqrt(2):
 No need to visit node M3
 
 10. backtrack from root
@@ -422,12 +422,12 @@ Q = M2(sqrt(2)), m1(sqrt(5)), M3(sqrt(5)), M3(sqrt(8)), m2(3)
 Step 3: get closest entry (top element of Q):
 M2(sqrt(2)). Visit node M2. Put all entries of
 visited node on heap Q
-Q =m4(sqrt(2)), m1(sqrt(5)), M3(sqrt(5)), M3(sqrt(8)), m2(3), 	m5(sqrt(13)), m5(sqrt(17))
+Q =m4(sqrt(2)), m1(sqrt(5)), M3(sqrt(5)), M3(sqrt(8)), m2(3),    m5(sqrt(13)), m5(sqrt(17))
 
 Step 4: get closest entry (top element of Q):
-m4(sqrt(2)). Visit node m4. m4 is a leaf node, so update NN if some object in m4 is closer than the current NN:
+m4(sqrt(2)). Visit node m4. m4 is a leaf node, so  update NN if some object in m4 is closer than  the current NN:
 oNN = k, dist(q,oNN)= sqrt(2)
-Q =m1(sqrt(5)), M3(sqrt(5)), M3(sqrt(8)), m2(3), 	m5(sqrt(13)), m5(sqrt(17))
+Q =m1(sqrt(5)), M3(sqrt(5)), M3(sqrt(8)), m2(3),    m5(sqrt(13)), m5(sqrt(17))
 
 Step 5: get closest entry (top element of Q):
 m1(sqrt(5)). Since sqrt(5) >= dist(q,oNN)= sqrt(2), search stops and oNN is returned as the NN of q
@@ -470,7 +470,7 @@ Most spatial predicates on actual objects reduce to intersection of MBRs in the 
 
 Applies on two R-trees of spatial relations R and S
 
-Node MBRs at the high level of the trees can prune object combinations to be checked
+Node MBRs at the high level of the trees can prune object combinations to be checked
 
 This pseudo-code version assumes that the trees have same height
 

@@ -122,17 +122,17 @@ A 和 B 都拥有一个比特币钱包地址（可以用 Bitcoin Client 生成�
 
 然后是 Input 相关的信息：`Input Count`表示数量，`Input Info`表示输入的内容，也就是`Unlocking Script`，主要用于核对输入来源、输入是否可用以及其他输入的细节。
 
-- `Previous output hash` - 所有输入都能追溯回一个输出，这指向包含将在该输入中花费的 UTXO，该 UTXO 的哈希值在这里以相反的顺序保存
-- `Previous output index` - 一个交易可以有多个由它们的索引号引用的`UTXO`，第一个索引是 0
-- `Unlocking Script Size` - `Unlocking Script`的字节大小
-- `Unlocking Script` - 满足`UTXO Unlocking Script`的哈希
-- `Sequence Number` - 默认为`ffffffff`
+- `Previous output hash` - 所有输入都能追溯回一个输出，这指向包含将在该输入中花费的 UTXO，该 UTXO 的哈希值在这里以相反的顺序保存
+- `Previous output index` - 一个交易可以有多个由它们的索引号引用的`UTXO`，第一个索引是 0
+- `Unlocking Script Size` - `Unlocking Script`的字节大小
+- `Unlocking Script` - 满足`UTXO Unlocking Script`的哈希
+- `Sequence Number` - 默认为`ffffffff`
 
 接着是 Output 相关的信息，`Output Count`表示数量，`Output Info`表示输出的内容，也就是`Locking Script`,主要用于记录输出了多少比特币，未来支出的条件以及输出的细节。
 
-- `Amount` - 以 Satoshis(最小的比特币单位)表示的输出比特币数量，10^8 Satoshis = 1 比特币
-- `Locking Script Size` - 这是 Locking Script 的字节大小
-- `Locking Script` - 这是 Locking Script 的哈希，它指定了使用此输出必须满足的条件
+- `Amount` - 以 Satoshis(最小的比特币单位)表示的输出比特币数量，10^8 Satoshis = 1 比特币
+- `Locking Script Size` - 这是 Locking Script 的字节大小
+- `Locking Script` - 这是 Locking Script 的哈希，它指定了使用此输出必须满足的条件
 
 最后是`Locktime`，表示一个交易可以被最早添加到区块链的时间/块，如果小于 500 million 的话直接读取块高度，而如果大于 500 million 则读取时间戳。
 
@@ -216,20 +216,20 @@ A 和 B 都拥有一个比特币钱包地址（可以用 Bitcoin Client 生成�
 
 > Mempool
 
-- getmempoolinfo: 返回内存池活动状态的详细信息
-- getrawmempool: 返回内存池中的所有交易详细信息
-- getmempoolentry: 返回给定交易的内存池数据
+- getmempoolinfo: 返回内存池活动状态的详细信息
+- getrawmempool: 返回内存池中的所有交易详细信息
+- getmempoolentry: 返回给定交易的内存池数据
 
 > Transaction
 
-- getchaintxstats: 计算关于链中交易总数和速率的统计数据
+- getchaintxstats: 计算关于链中交易总数和速率的统计数据
 - getrawtransaction: 返回原始交易数据
 - listtransactions: 返回给定帐户的交易列表
 
 > Signature
 
-- signrawtransaction: 签署原始交易的输入
-- signmessage: 使用地址的私钥对信息进行签名
+- signrawtransaction: 签署原始交易的输入
+- signmessage: 使用地址的私钥对信息进行签名
 - dumpprivkey: 获取私钥
 
 > Network
