@@ -21,7 +21,7 @@ duration: 5min
 
 ![yu_desktop](https://image.pseudoyu.com/images/yu_desktop.jpg)
 
-到了现在入职刚忙两个月了，从 11 月开始就进入了公司一个专项模块的开发，也有自己主导方案的模块，截止时间很近，讨论完方案之后也只剩一周时间来开发和自测，所以常常得加班；于此同时，下班后有时也有一些自己的项目要忙。
+截至现在入职刚满两个月了，从 11 月开始就进入了公司一个专项模块的开发，也有自己主导方案的模块，截止时间很近，讨论完方案之后也只剩一周时间来开发和自测，所以常常得加班；于此同时，下班后有时也有一些自己的项目要忙。
 
 开发上由于 LLMs 返回有等待时间，我用两台电脑两个屏幕分开了不同的任务，所以倒是可以并行，甚至效率成倍增长，只是经常脑子在不同的上下文之间切换。
 
@@ -144,7 +144,7 @@ X-CMD 我已经用了有两年了，每次换新电脑之类的都用来管理�
 #### 文章
 
 - [Multiple git configs](https://www.zivkan.com/blog/multiple-git-configs/)，把工作用的 git 和个人的分开。
-- [写在离开 Folo 之后](https://innei.in/posts/experience/after-leaving-folo)
+- [写在离开 Folo 之后](https://innei.in/posts/experience/after-leaving-folo)，同样的经历，类似的感受。
 
 #### 视频
 
