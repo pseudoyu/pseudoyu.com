@@ -46,13 +46,10 @@ projects:
   Applications:
     - name: 'Wan - The Final Sea'
       link: 'https://apps.apple.com/cn/app/thewan/id6670795669'
-      desc: '个人专属数字痕迹聚合工具，帮你低门槛、自动化聚合有价值的内容（iOS only）'
+      desc: 'A personal digital footprint aggregation tool that helps you easily and automatically collect valuable content (iOS only)'
     - name: 'EpubKit'
       link: 'https://epubkit.app/'
       desc: 'The best tool to convert web to ebook'
-    - name: 'YoJoe'
-      link: 'https://yojoe.isfool.app/'
-      desc: '游酒 - Homebar 解决方案'
     - name: 'Flashydeal'
       link: 'https://flashydeal.com/'
       desc: 'Daily Deals, Coupon and more discounts'
@@ -71,9 +68,9 @@ projects:
       link: 'https://github.com/pseudoyu/yu-tools'
       desc: 'A collection of tools for productivity'
   Books:
-    - name: '区块链入门指南'
+    - name: 'Blockchain Guide'
       link: 'https://guide.pseudoyu.com'
-      desc: '区块链/Web3 基础知识与实践'
+      desc: 'Blockchain/Web3 fundamentals'
 
 ---
 
