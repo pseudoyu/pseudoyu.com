@@ -11,7 +11,7 @@ projects:
       desc: 'A comprehensive metric system for Web3'
     - name: 'Web3Insight Dashboard'
       link: 'https://dash.web3insight.ai/'
-      desc: 'Web3Insight Official Website'
+      desc: 'Web3Insight data metrics dashboard'
     - name: 'Web3Insight Dev Card'
       link: 'https://card.web3insight.ai/'
       desc: 'Web3Insight Dev Card'
@@ -66,9 +66,6 @@ projects:
     - name: 'Tingtanmei'
       link: 'https://www.tingtanmei.com/'
       desc: 'The official website of Tingtanmei'
-    - name: 'Ting Community'
-      link: 'https://rental.tingtanmei.com/'
-      desc: 'The rental page of Ting Community'
   Productivity:
     - name: 'Yu Tools'
       link: 'https://github.com/pseudoyu/yu-tools'
