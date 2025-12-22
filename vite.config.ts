@@ -128,6 +128,7 @@ export default defineConfig({
           linksMap: {
             'RSS3': 'https://rss3.io',
             'Open Network': 'https://open.network',
+            'edgeX Exchange': 'https://www.edgex.exchange/',
             'NaturalSelectionLabs': 'https://github.com/NaturalSelectionLabs',
             'RSS3-Network': 'https://github.com/RSS3-Network',
             'RSSNext': 'https://github.com/RSSNext',

@@ -9,7 +9,7 @@ Hey, I am pseudoyu, a web3 enthusiast, blockchain developer & indie hacker.
 
 Founder of {Web3Insight}<br>
 Maintaining {RSSHub}<br>
-Pre at {RSS3} {Open Network} {RSSNext}
+Pre at {edgeX Exchange} {RSS3}
 
 With a passion for building wonderful web3 products. I have a knack for various technical stacks about blockchain, from designing and building ÐApp to solving real-life problems with smart contracts. You can find my [full projects list here](/projects).
 
