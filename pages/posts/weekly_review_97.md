@@ -21,7 +21,7 @@ duration: 7min
 
 而第二部分则是学姐和我两个人再从福冈出发飞往东京，住在锦系町附近，去秋叶原、上野、涩谷等区域闲逛，算是比较轻松闲适的行程安排了。
 
-> 本文图片较多，如在 {Folo} 等 RSS 平台阅读，可访问博客源网站或 [Yu's Photography](https://photography.pseudoyu.com/) 查看更多图片。
+> 本文图片较多，如在 {Folo} 等 RSS 平台阅读，可访问博客源网站或 [Yu's Photography](/photos) 查看更多图片。
 
 ### 福冈
 

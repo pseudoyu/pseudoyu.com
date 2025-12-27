@@ -1,0 +1,43 @@
+{
+  "buildCommand": "pnpm run build",
+  "outputDirectory": "dist",
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    { "source": "/zh", "destination": "https://www.pseudoyu.com/posts", "statusCode": 301 },
+    { "source": "/zh/", "destination": "https://www.pseudoyu.com/posts", "statusCode": 301 },
+    { "source": "/zh/search", "destination": "https://www.pseudoyu.com/posts", "statusCode": 301 },
+    { "source": "/zh/search/", "destination": "https://www.pseudoyu.com/posts", "statusCode": 301 },
+    { "source": "/zh/about", "destination": "https://www.pseudoyu.com/about", "statusCode": 301 },
+    { "source": "/zh/about/", "destination": "https://www.pseudoyu.com/about", "statusCode": 301 },
+    { "source": "/zh/links", "destination": "https://www.pseudoyu.com/friends", "statusCode": 301 },
+    { "source": "/zh/links/", "destination": "https://www.pseudoyu.com/friends", "statusCode": 301 },
+    { "source": "/zh/category/:path*", "destination": "https://www.pseudoyu.com/posts", "statusCode": 301 },
+    { "source": "/zh/tags/:path*", "destination": "https://www.pseudoyu.com/posts", "statusCode": 301 },
+    { "source": "/en", "destination": "https://www.pseudoyu.com/posts", "statusCode": 301 },
+    { "source": "/en/:path*", "destination": "https://www.pseudoyu.com/zh/:path*", "statusCode": 301 },
+    { "source": "/de", "destination": "https://www.pseudoyu.com/posts", "statusCode": 301 },
+    { "source": "/de/:path*", "destination": "https://www.pseudoyu.com/zh/:path*", "statusCode": 301 },
+    { "source": "/github", "destination": "https://github.com/pseudoyu", "statusCode": 301 },
+    { "source": "/gh", "destination": "https://github.com/pseudoyu", "statusCode": 301 },
+    { "source": "/twitter", "destination": "https://twitter.com/pseudo_yu", "statusCode": 301 },
+    { "source": "/sponsor", "destination": "https://github.com/sponsors/pseudoyu", "statusCode": 301 },
+    { "source": "/support", "destination": "https://github.com/sponsors/pseudoyu", "statusCode": 301 },
+    { "source": "/mas", "destination": "https://mas.to/@pseudoyu", "statusCode": 301 },
+    { "source": "/mastodon", "destination": "https://mas.to/@pseudoyu", "statusCode": 301 },
+    { "source": "/instagram", "destination": "https://instagram.com/pseudo.yu", "statusCode": 301 },
+    { "source": "/ig", "destination": "https://instagram.com/pseudo.yu", "statusCode": 301 }
+  ],
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}

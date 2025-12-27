@@ -60,7 +60,7 @@ const { y: scroll } = useWindowScroll()
         <RouterLink to="/podcasts" class="lt-md:hidden" title="Podcasts">
           <div i-ri-mic-line />
         </RouterLink>
-        <a href="https://photography.pseudoyu.com" target="_blank" title="Photos">
+        <a href="/photos" target="_blank" title="Photos">
           <div i-ri-camera-3-line />
         </a>
         <a href="https://github.com/pseudoyu" target="_blank" title="GitHub" class="lt-md:hidden">

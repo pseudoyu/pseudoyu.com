@@ -15,8 +15,6 @@
 /de https://www.pseudoyu.com/posts 301
 /de/* https://www.pseudoyu.com/zh/:splat 301
 
-/photos https://photography.pseudoyu.com 301!
-
 /github https://github.com/pseudoyu 301
 /gh https://github.com/pseudoyu 301
 /twitter https://twitter.com/pseudo_yu 301
