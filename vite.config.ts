@@ -161,10 +161,10 @@ export default defineConfig({
             return
 
           // Try to extract the first image from markdown content
+          // Only match images hosted on image.pseudoyu.com/images/
           const content = fs.readFileSync(id, 'utf-8')
-          const imageMatch = content.match(/!\[.*?\]\((https?:\/\/[^)]+)\)/)
+          const imageMatch = content.match(/!\[.*?\]\((https:\/\/image\.pseudoyu\.com\/images\/[^)]+)\)/)
           if (imageMatch) {
-            // Use the first image found in the article as og:image
             frontmatter.image = imageMatch[1]
             return
           }
