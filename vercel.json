@@ -1,6 +1,8 @@
 {
   "buildCommand": "pnpm run build",
   "outputDirectory": "dist",
+  "cleanUrls": true,
+  "trailingSlash": false,
   "headers": [
     {
       "source": "/assets/(.*)",
@@ -36,8 +38,5 @@
     { "source": "/mastodon", "destination": "https://mas.to/@pseudoyu", "statusCode": 301 },
     { "source": "/instagram", "destination": "https://instagram.com/pseudo.yu", "statusCode": 301 },
     { "source": "/ig", "destination": "https://instagram.com/pseudo.yu", "statusCode": 301 }
-  ],
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
