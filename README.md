@@ -1,6 +1,6 @@
 **[pseudoyu.com](https://www.pseudoyu.com)**
 
-my personal website
+personal website
 
 <br>
 
