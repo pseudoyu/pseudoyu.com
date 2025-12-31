@@ -159,6 +159,17 @@ export default defineConfig({
           const route = basename(id, '.md')
           if (route === 'index' || frontmatter.image || !frontmatter.title)
             return
+
+          // Try to extract the first image from markdown content
+          const content = fs.readFileSync(id, 'utf-8')
+          const imageMatch = content.match(/!\[.*?\]\((https?:\/\/[^)]+)\)/)
+          if (imageMatch) {
+            // Use the first image found in the article as og:image
+            frontmatter.image = imageMatch[1]
+            return
+          }
+
+          // Fallback: generate OG image if no image found in content
           const path = `og/${route}.png`
           promises.push(
             fs.existsSync(`${id.slice(0, -3)}.png`)
