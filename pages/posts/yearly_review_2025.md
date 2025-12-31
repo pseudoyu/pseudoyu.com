@@ -63,7 +63,7 @@ duration: 5min
 
 ![city_of_stars_lyric](https://image.pseudoyu.com/images/city_of_stars_lyric.png)
 
-在写这篇总结的时候在听《La La Land》的主题曲「[City of Stars](https://open.spotify.com/track/5BMwpS4iYKR30kq9U9beaT)」，曾经的自己总是梦想很大，几乎想要拥有整片夜空，而随着越来越了解生活的本质，自我越来越渺小，所愿不过是有几颗不起眼的繁星能够为自己照亮生活的阴影与前路，继续前进、活下去，仅此而已。
+在写这篇总结的时候在听《La La Land》的主题曲「[City of Stars](https://open.spotify.com/track/5BMwpS4iYKR30kq9U9beaT)」，曾经的自己总是梦想很大，几乎想要拥有整片夜空，而随着越来越了解生活的本质，自我越来越渺小，所愿不过是有几颗不起眼的星星能够为自己照亮生活的阴影与前路，继续前进、活下去，仅此而已。
 
 ## 后记
 
