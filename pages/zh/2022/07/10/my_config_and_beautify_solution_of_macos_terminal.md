@@ -222,7 +222,7 @@ tmux 是一个强大的窗口管理工具，然而每次都需要使用 `<Ctrl+b
 
 ```yaml
 key_bindings:
-  - {key: T, mods: Command, chars: c}
+  - {key: T, mods: Command, chars: \x02\x63}
 ```
 
 其他快捷键配置实现原理一致，可点击[这里](https://github.com/pseudoyu/dotfiles/tree/master/alacritty)查看我的所有快捷键配置并自行修改调整。
