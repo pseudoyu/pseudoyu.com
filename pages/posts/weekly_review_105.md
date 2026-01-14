@@ -7,9 +7,9 @@ duration: 8min
 
 ## 前言
 
-![weekly_review_105](https://image.pseudoyu.com/images/weekly_review_105.png)
+![weekly_review_105](https://image.pseudoyu.com/images/weekly_review_105_updated.png)
 
-本篇是对 `2025-12-14` 到 `2026-01-14` 这周生活的记录与思考。
+本篇是对 `2025-12-14` 到 `2026-01-14` 这月生活的记录与思考。
 
 大家都去做自己想做的事情，自由随意做事的人的社会就会逐渐逐渐地壮大，而只在意赚钱、出人头地的无聊社会就会逐渐缩小。
 
