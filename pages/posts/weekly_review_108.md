@@ -7,7 +7,7 @@ duration: 5min
 
 ## 前言
 
-![weekly_review_108](https://image.pseudoyu.com/images/weekly_review_108.png)
+![weekly_review_108_update](https://image.pseudoyu.com/images/weekly_review_108_update.png)
 
 本篇是对 `2026-04-20` 到 `2026-05-04` 这两周生活的记录与思考。
 
