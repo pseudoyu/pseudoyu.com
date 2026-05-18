@@ -37,6 +37,7 @@ declare module 'vue-router/auto-routes' {
     '/posts/weekly_review_106': RouteRecordInfo<'/posts/weekly_review_106', '/posts/weekly_review_106', Record<never, never>, Record<never, never>>,
     '/posts/weekly_review_107': RouteRecordInfo<'/posts/weekly_review_107', '/posts/weekly_review_107', Record<never, never>, Record<never, never>>,
     '/posts/weekly_review_108': RouteRecordInfo<'/posts/weekly_review_108', '/posts/weekly_review_108', Record<never, never>, Record<never, never>>,
+    '/posts/weekly_review_109': RouteRecordInfo<'/posts/weekly_review_109', '/posts/weekly_review_109', Record<never, never>, Record<never, never>>,
     '/posts/weekly_review_89': RouteRecordInfo<'/posts/weekly_review_89', '/posts/weekly_review_89', Record<never, never>, Record<never, never>>,
     '/posts/weekly_review_90': RouteRecordInfo<'/posts/weekly_review_90', '/posts/weekly_review_90', Record<never, never>, Record<never, never>>,
     '/posts/weekly_review_91': RouteRecordInfo<'/posts/weekly_review_91', '/posts/weekly_review_91', Record<never, never>, Record<never, never>>,
