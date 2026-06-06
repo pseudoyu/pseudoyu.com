@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import WinterBoard from './components/winter-board/WinterBoard.vue'
-
 const route = useRoute()
 
 const imageModel = ref<HTMLImageElement>()
@@ -76,7 +74,6 @@ onKeyStroke('Escape', (e) => {
 </script>
 
 <template>
-  <WinterBoard />
   <NavBar />
   <main class="px-7 py-10 of-x-hidden">
     <RouterView />
