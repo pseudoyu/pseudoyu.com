@@ -5,13 +5,13 @@ image: https://www.pseudoyu.com/og.png
 art: random
 ---
 
-Hey, I am pseudoyu, a web3 enthusiast, blockchain developer & indie hacker.
+Hey, I am pseudoyu, an indie developer & AI enthusiast.
 
 Founder of {Web3Insight}<br>
 Maintaining {RSSHub}<br>
 Pre at {edgeX Exchange} {RSS3}
 
-With a passion for building wonderful web3 products. I have a knack for various technical stacks about blockchain, from designing and building ÐApp to solving real-life problems with smart contracts. You can find my [full projects list here](/projects).
+With a passion for building wonderful products — from web apps and marketing sites to AI agents and SaaS platforms. I have a knack for various technical stacks, from designing sleek interfaces to shipping full-stack products that solve real-life problems. You can find my [full projects list here](/projects).
 
 I write [blog posts](/posts) about life, love, cat, open source, coding, tutorials, etc.
 
