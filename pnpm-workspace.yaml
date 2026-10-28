@@ -104,3 +104,4 @@ catalogs:
     '@types/node': ^26.3.0
     '@types/nprogress': ^0.2.3
     '@types/prompts': ^2.4.9
+    '@webgpu/types': ^0.1.74

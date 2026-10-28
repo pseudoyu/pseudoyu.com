@@ -54,6 +54,7 @@
     "@types/prompts": "catalog:types",
     "@unocss/preset-web-fonts": "catalog:build",
     "@vitejs/plugin-vue": "catalog:build",
+    "@webgpu/types": "catalog:types",
     "ansis": "catalog:dev",
     "cross-env": "catalog:dev",
     "degit": "catalog:dev",

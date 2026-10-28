@@ -12,9 +12,12 @@
     "types": [
       "node",
       "vite/client",
-      "vue-router/auto"
+      "vue-router/auto",
+      "@webgpu/types"
     ],
+    "allowImportingTsExtensions": true,
     "strict": true,
+    "noEmit": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true

@@ -24,15 +24,15 @@ import Exclude from 'vite-plugin-optimize-exclude'
 import SVG from 'vite-svg-loader'
 import { VueRouterAutoImports } from 'vue-router/unplugin'
 import VueRouter from 'vue-router/vite'
-import { generateOGImage } from './scripts/og'
-import { slugify } from './scripts/slugify'
+import { generateOGImage } from './scripts/og.ts'
+import { slugify } from './scripts/slugify.ts'
 
 const promises: Promise<any>[] = []
 
 export default defineConfig({
   resolve: {
     alias: [
-      { find: '~/', replacement: `${resolve(__dirname, 'src')}/` },
+      { find: '~/', replacement: `${resolve(import.meta.dirname, 'src')}/` },
     ],
   },
   optimizeDeps: {

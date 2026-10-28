@@ -1,3 +1,4 @@
+import type { Font } from 'satori'
 import { dirname, join } from 'node:path'
 import fs from 'fs-extra'
 import satori from 'satori'
@@ -117,7 +118,7 @@ export async function generateOGImage(options: OGImageOptions, outputPath: strin
   ])
 
   // Prepare fonts array - only include fonts that were loaded successfully
-  const fonts: Array<{ name: string, data: Buffer, weight: number, style: string }> = []
+  const fonts: Font[] = []
 
   if (notoSansRegular.length > 0) {
     fonts.push({
