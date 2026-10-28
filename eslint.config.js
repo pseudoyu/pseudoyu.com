@@ -5,6 +5,8 @@ import antfu from '@antfu/eslint-config'
 export default antfu(
   {
     formatters: true,
+    // Real Telegram markup the daily parser is tested against; keep it byte for byte
+    ignores: ['api/daily/_tests/fixtures/**'],
     pnpm: true,
   },
   {

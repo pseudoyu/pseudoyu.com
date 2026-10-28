@@ -20,6 +20,7 @@ allowBuilds:
 
 catalog:
   '@vercel/og': ^0.6.5
+  cheerio: ^1.2.0
   satori: ^0.12.1
   ts-node: ^10.9.2
 
@@ -104,3 +105,4 @@ catalogs:
     '@types/node': ^26.3.0
     '@types/nprogress': ^0.2.3
     '@types/prompts': ^2.4.9
+    domhandler: ^5.0.3

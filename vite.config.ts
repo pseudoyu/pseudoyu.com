@@ -222,6 +222,32 @@ export default defineConfig({
         await Promise.all(promises)
       },
     },
+
+    // Serve the Vercel functions in api/ during `pnpm dev`, with the /daily/feed.xml rewrite from vercel.json
+    {
+      name: 'vercel-api-dev',
+      configureServer(server) {
+        server.middlewares.use(async (req, res, next) => {
+          const url = new URL(req.url!, 'http://localhost')
+          const path = url.pathname === '/daily/feed.xml' ? '/api/daily/feed' : url.pathname
+          // Like Vercel, `_` and `.` names (shared code, tests) are not endpoints
+          const isEndpoint = path.startsWith('/api/') && !/\/[_.]/.test(path)
+          const file = [`.${path}.ts`, `.${path}/index.ts`].find(file => isEndpoint && fs.existsSync(file))
+          if (!file)
+            return next()
+          try {
+            const handler = await server.ssrLoadModule(file)
+            const response: Response = await (handler.GET ?? handler.default)(new Request(url, { headers: req.headers as HeadersInit }))
+            res.statusCode = response.status
+            response.headers.forEach((value, key) => res.setHeader(key, value))
+            res.end(Buffer.from(await response.arrayBuffer()))
+          }
+          catch (error) {
+            next(error)
+          }
+        })
+      },
+    },
   ],
 
   build: {
@@ -235,6 +261,8 @@ export default defineConfig({
 
   ssgOptions: {
     formatting: 'minify',
+    // Daily posts load in the browser, so every /daily/:id shares one prerendered shell (rewritten in vercel.json)
+    includedRoutes: paths => [...paths.filter(path => !path.includes(':') && !path.includes('*')), '/daily/0'],
   },
 })
 
