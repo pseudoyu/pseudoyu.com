@@ -130,7 +130,7 @@ X-CMD 我已经用了有两年了，每次换新电脑之类的都用来管理�
 
 虽然大部分有意思的输入会在 「[Yu's Life](https://t.me/s/pseudoyulife)」 Telegram 频道里自动同步，不过还是挑选一部分在这里列举一下，感觉更像一个 newsletter 了。
 
-我把 Telegram Channel 消息作为内容源搭建了一个微博客 —— 「[daily.pseudoyu.com](https://daily.pseudoyu.com/)」，可以更方便浏览了。
+我把 Telegram Channel 消息作为内容源搭建了一个微博客 —— 「[Daily](/daily)」，可以更方便浏览了。
 
 #### 收藏
 
