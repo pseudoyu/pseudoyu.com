@@ -1,7 +1,7 @@
 {
   "type": "module",
   "private": true,
-  "packageManager": "pnpm@10.6.2",
+  "packageManager": "pnpm@11.24.0",
   "scripts": {
     "build": "cross-env NODE_ENV=production vite-ssg build && tsx ./scripts/copy-fonts.ts && tsx ./scripts/rss.ts && cp _redirects dist/_redirects",
     "dev": "vite --port 3333",
@@ -12,6 +12,7 @@
     "prepare": "simple-git-hooks"
   },
   "dependencies": {
+    "@shikijs/magic-move": "catalog:frontend",
     "@unhead/vue": "catalog:frontend",
     "@unocss/reset": "catalog:frontend",
     "@vercel/og": "catalog:",
@@ -28,7 +29,6 @@
     "pixi.js": "catalog:frontend",
     "satori": "catalog:",
     "shiki": "catalog:frontend",
-    "shiki-magic-move": "catalog:frontend",
     "simplex-noise": "catalog:frontend",
     "vue": "catalog:frontend",
     "vue-router": "catalog:frontend",
@@ -39,7 +39,7 @@
     "@iconify/json": "catalog:dev",
     "@octokit/core": "catalog:dev",
     "@octokit/rest": "catalog:dev",
-    "@shikijs/markdown-it": "catalog:build",
+    "@shikijs/markdown-exit": "catalog:build",
     "@shikijs/transformers": "catalog:build",
     "@shikijs/twoslash": "catalog:build",
     "@types/d3-hierarchy": "catalog:types",
@@ -66,6 +66,7 @@
     "fs-extra": "catalog:dev",
     "gray-matter": "catalog:build",
     "lint-staged": "catalog:dev",
+    "markdown-exit": "catalog:build",
     "markdown-it": "catalog:build",
     "markdown-it-anchor": "catalog:build",
     "markdown-it-github-alerts": "catalog:build",
@@ -87,7 +88,6 @@
     "unplugin-icons": "catalog:build",
     "unplugin-vue-components": "catalog:build",
     "unplugin-vue-markdown": "catalog:build",
-    "unplugin-vue-router": "catalog:build",
     "vite": "catalog:build",
     "vite-plugin-inspect": "catalog:build",
     "vite-plugin-optimize-exclude": "catalog:build",

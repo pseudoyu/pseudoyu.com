@@ -2,8 +2,8 @@ export interface WorkerRemoteMessage {
   type: 'ready'
 }
 
-export type WorkerMessage =
-  | {
+export type WorkerMessage
+  = | {
     type: 'attach'
     canvas: OffscreenCanvas
   }

@@ -5,11 +5,14 @@ import antfu from '@antfu/eslint-config'
 export default antfu(
   {
     formatters: true,
-    markdown: {
-      overrides: {
-      },
-    },
     pnpm: true,
+  },
+  {
+    // Code samples inside posts keep the formatting they were published with
+    files: ['**/*.md/**'],
+    rules: {
+      'style/indent': 'off',
+    },
   },
 ).removeRules(
   'no-labels',
@@ -25,4 +28,8 @@ export default antfu(
   'ts/no-unnecessary-type-constraint',
   'vue/no-template-shadow',
   'vue/no-v-text-v-html-on-component',
+  'e18e/prefer-static-regex',
+  'markdown/heading-increment',
+  'markdown/no-missing-atx-heading-space',
+  'markdown/require-alt-text',
 )
