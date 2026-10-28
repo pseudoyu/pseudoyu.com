@@ -48,10 +48,11 @@ function renderFeed(posts: DailyPost[]): string {
 function renderContent(post: DailyPost): string {
   // Readers open items outside the site, so every link and image needs the full origin
   const html = post.html.replaceAll('href="/', `href="${SITE}/`)
-  const images = post.images.map(image => `<p><img src="${mediaUrl(image.url, SITE)}"></p>`)
-  // Telegram's video links expire; the poster leads to the post instead
-  const videos = post.videos.flatMap(video => video.poster
-    ? [`<p><a href="${SITE}/daily/${post.id}"><img src="${mediaUrl(video.poster, SITE)}"></a></p>`]
+  const media = (file: string) => escapeXml(mediaUrl(post.id, file, SITE))
+  const images = post.images.map((_, index) => `<p><img src="${media(`photo-${index}`)}"></p>`)
+  // The video itself plays on the site; the feed shows its poster, linking to the post
+  const videos = post.videos.flatMap((video, index) => video.poster
+    ? [`<p><a href="${SITE}/daily/${post.id}"><img src="${media(`poster-${index}`)}"></a></p>`]
     : [])
   const link = post.link
     ? `<p><a href="${escapeXml(post.link.url)}">${escapeXml(post.link.title ?? post.link.url)}</a></p>`

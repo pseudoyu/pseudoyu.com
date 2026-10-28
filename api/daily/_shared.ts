@@ -59,9 +59,27 @@ export function isTelegramMedia(url: string): boolean {
   }
 }
 
-/** Telegram media is blocked in mainland China, so it goes through our own proxy */
-export function mediaUrl(url: string, origin = ''): string {
-  return `${origin}/api/daily/media?url=${encodeURIComponent(url)}`
+/**
+ * Telegram media is blocked in mainland China, so it goes through our own proxy.
+ * It names a file of a post ("photo-1", "video-0", "poster-0", "link"), so the
+ * proxy only ever serves media of this channel.
+ */
+export function mediaUrl(postId: number, file: string, origin = ''): string {
+  return `${origin}/api/daily/media?post=${postId}&file=${file}`
+}
+
+/** The Telegram URL of a file named as in mediaUrl, if the post has it */
+export function mediaOf(post: DailyPost, file: string): string | undefined {
+  if (file === 'link')
+    return post.link?.image
+  const [, kind, index] = file.match(/^(photo|video|poster)-(\d+)$/) ?? []
+  if (kind === 'photo')
+    return post.images[Number(index)]?.url
+  if (kind === 'video')
+    return post.videos[Number(index)]?.url
+  if (kind === 'poster')
+    return post.videos[Number(index)]?.poster
+  return undefined
 }
 
 const dateFormat = new Intl.DateTimeFormat('en-US', {

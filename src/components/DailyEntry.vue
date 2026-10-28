@@ -40,7 +40,7 @@ const columns = computed(() => [2, 4].includes(post.images.length) ? 2 : 3)
          (so the preview in App.vue does not inherit the crop) and data-photo-index for ←/→ -->
     <div v-if="post.images.length === 1" class="photos" mt-4>
       <img
-        :src="mediaUrl(post.images[0].url)"
+        :src="mediaUrl(post.id, 'photo-0')"
         :style="{ aspectRatio: post.images[0].ratio, width: `min(100%, ${28 * (post.images[0].ratio ?? 1)}rem)` }"
         :data-photo-index="photoIndex"
         alt=""
@@ -52,7 +52,7 @@ const columns = computed(() => [2, 4].includes(post.images.length) ? 2 : 3)
       <img
         v-for="(image, index) in post.images"
         :key="image.url"
-        :src="mediaUrl(image.url)"
+        :src="mediaUrl(post.id, `photo-${index}`)"
         :data-photo-index="photoIndex + index"
         alt=""
         loading="lazy"
@@ -60,11 +60,11 @@ const columns = computed(() => [2, 4].includes(post.images.length) ? 2 : 3)
       >
     </div>
 
-    <template v-for="video in post.videos" :key="video.poster ?? video.url">
+    <template v-for="(video, index) in post.videos" :key="video.poster ?? video.url">
       <video
         v-if="video.url"
-        :src="mediaUrl(video.url)"
-        :poster="video.poster && mediaUrl(video.poster)"
+        :src="mediaUrl(post.id, `video-${index}`)"
+        :poster="video.poster && mediaUrl(post.id, `poster-${index}`)"
         :style="{ aspectRatio: video.ratio }"
         controls
         playsinline
@@ -78,7 +78,7 @@ const columns = computed(() => [2, 4].includes(post.images.length) ? 2 : 3)
         rel="noopener"
         class="!border-none relative block mt-4"
       >
-        <img v-if="video.poster" :src="mediaUrl(video.poster)" :style="{ aspectRatio: video.ratio }" class="w-full my-0! rounded-lg" alt="">
+        <img v-if="video.poster" :src="mediaUrl(post.id, `poster-${index}`)" :style="{ aspectRatio: video.ratio }" class="w-full my-0! rounded-lg" alt="">
         <span absolute inset-0 flex items-center justify-center gap-1 text-white bg-black:40 rounded-lg>
           <div i-ri-play-circle-line text-xl />
           Watch on Telegram
@@ -94,7 +94,7 @@ const columns = computed(() => [2, 4].includes(post.images.length) ? 2 : 3)
           <div v-if="post.link.description" text-sm op60 line-clamp-2 leading-normal>{{ post.link.description }}</div>
         </div>
         <div v-if="post.link.image" relative w-24 flex-none>
-          <img :src="mediaUrl(post.link.image)" class="absolute inset-0 h-full my-0! object-cover" alt="" loading="lazy">
+          <img :src="mediaUrl(post.id, 'link')" class="absolute inset-0 h-full my-0! object-cover" alt="" loading="lazy">
         </div>
       </a>
     </div>

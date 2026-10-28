@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs'
 // The blog has no test framework; Node's built-in runner keeps it that way
 // eslint-disable-next-line test/no-import-node-test
 import { describe, it } from 'node:test'
-import { formatDailyDate, isTelegramMedia, mediaUrl } from '../_shared.js'
+import { formatDailyDate, isTelegramMedia, mediaOf, mediaUrl } from '../_shared.js'
 import { channelUrl, parseChannel, parsePost, postUrl } from '../_telegram.js'
 
 const fixture = (name: string) => readFileSync(new URL(`./fixtures/${name}`, import.meta.url), 'utf-8')
@@ -166,9 +166,23 @@ describe('parsePost', () => {
 })
 
 describe('mediaUrl', () => {
-  it('routes Telegram media through the blog proxy', () => {
-    assert.equal(mediaUrl('https://cdn5.telesco.pe/file/a.jpg'), '/api/daily/media?url=https%3A%2F%2Fcdn5.telesco.pe%2Ffile%2Fa.jpg')
-    assert.equal(mediaUrl('https://cdn5.telesco.pe/file/a.jpg', 'https://www.pseudoyu.com'), 'https://www.pseudoyu.com/api/daily/media?url=https%3A%2F%2Fcdn5.telesco.pe%2Ffile%2Fa.jpg')
+  it('names a file of a channel post, never a raw Telegram URL', () => {
+    assert.equal(mediaUrl(4572, 'photo-1'), '/api/daily/media?post=4572&file=photo-1')
+    assert.equal(mediaUrl(4617, 'poster-0', 'https://www.pseudoyu.com'), 'https://www.pseudoyu.com/api/daily/media?post=4617&file=poster-0')
+  })
+})
+
+describe('mediaOf', () => {
+  it('finds each named file in a post', () => {
+    assert.equal(mediaOf(byId(4572), 'photo-1'), byId(4572).images[1].url)
+    assert.equal(mediaOf(byId(4617), 'video-0'), byId(4617).videos[0].url)
+    assert.equal(mediaOf(byId(4617), 'poster-0'), byId(4617).videos[0].poster)
+    assert.equal(mediaOf(byId(4633), 'link'), byId(4633).link!.image)
+  })
+
+  it('finds nothing for a file the post does not have', () => {
+    for (const file of ['photo-0', 'photo-9', 'link', 'video-1', 'nope'])
+      assert.equal(mediaOf(byId(4617), file), undefined, file)
   })
 })
 

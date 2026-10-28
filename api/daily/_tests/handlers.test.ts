@@ -9,11 +9,11 @@ import getMedia from '../media.js'
 
 const fixture = (name: string) => readFileSync(new URL(`./fixtures/${name}`, import.meta.url), 'utf-8')
 
-function stubFetch(respond: () => Response) {
+function stubFetch(respond: (url: string) => Response) {
   const calls: { url: string, headers: Headers, redirect?: RequestRedirect }[] = []
   mock.method(globalThis, 'fetch', async (input: string | URL, init?: RequestInit) => {
     calls.push({ url: String(input), headers: new Headers(init?.headers), redirect: init?.redirect })
-    return respond()
+    return respond(String(input))
   })
   return calls
 }
@@ -88,24 +88,28 @@ describe('GET /daily/feed.xml', () => {
     assert.ok(xml.includes('<link>https://www.pseudoyu.com/daily/4633</link>'))
     assert.ok(xml.includes('<title>去 Randy 家作客，厨艺大比拼！</title>'))
     assert.ok(xml.includes('&lt;a href=&quot;https://www.pseudoyu.com/daily?tag=douban&quot;&gt;#douban&lt;/a&gt;'))
-    assert.ok(xml.includes('https://www.pseudoyu.com/api/daily/media?url=https%3A%2F%2Fcdn5.telesco.pe%2Ffile%2FaB8HzM1T7wit'))
+    assert.ok(xml.includes('&lt;img src=&quot;https://www.pseudoyu.com/api/daily/media?post=4595&amp;amp;file=photo-0&quot;&gt;'))
   })
 })
 
 describe('GET /api/daily/media', () => {
-  const mediaRequest = (target: string, headers?: HeadersInit) =>
-    new Request(`https://www.pseudoyu.com/api/daily/media?url=${encodeURIComponent(target)}`, { headers })
+  const mediaRequest = (query: string, headers?: HeadersInit) =>
+    new Request(`https://www.pseudoyu.com/api/daily/media?${query}`, { headers })
+  // Telegram's embed page of post 4617 (a video) for t.me, the given answer for its CDN
+  const telegram = (media: () => Response) => (url: string) =>
+    url.startsWith('https://t.me/') ? new Response(fixture('embed-4617.html')) : media()
 
-  it('streams Telegram media with the visitor\'s range and a long cache', async () => {
-    const calls = stubFetch(() => new Response('part', {
+  it('streams a file of a channel post with the visitor\'s range and a long cache', async () => {
+    const calls = stubFetch(telegram(() => new Response('part', {
       status: 206,
       headers: { 'content-type': 'video/mp4', 'content-range': 'bytes 0-3/100', 'set-cookie': 'a=b' },
-    }))
-    const response = await getMedia(mediaRequest('https://cdn5.telesco.pe/file/v.mp4', { range: 'bytes=0-3', cookie: 'secret=1' }))
+    })))
+    const response = await getMedia(mediaRequest('post=4617&file=video-0', { range: 'bytes=0-3', cookie: 'secret=1' }))
 
-    assert.equal(calls[0].url, 'https://cdn5.telesco.pe/file/v.mp4')
-    assert.equal(calls[0].headers.get('range'), 'bytes=0-3')
-    assert.equal(calls[0].headers.get('cookie'), null)
+    assert.equal(calls[0].url, 'https://t.me/pseudoyulife/4617?embed=1&mode=tme')
+    assert.match(calls[1].url, /^https:\/\/cdn\d\.telesco\.pe\/file\/.+\?token=/)
+    assert.equal(calls[1].headers.get('range'), 'bytes=0-3')
+    assert.equal(calls[1].headers.get('cookie'), null)
     assert.equal(response.status, 206)
     assert.equal(response.headers.get('content-range'), 'bytes 0-3/100')
     assert.equal(response.headers.get('set-cookie'), null)
@@ -113,31 +117,39 @@ describe('GET /api/daily/media', () => {
     assert.equal(await response.text(), 'part')
   })
 
-  it('refuses anything outside Telegram\'s CDN without fetching it', async () => {
+  it('only takes a post number and a file name, so it cannot fetch arbitrary URLs', async () => {
     const calls = stubFetch(() => new Response(''))
-    assert.equal((await getMedia(new Request('https://www.pseudoyu.com/api/daily/media'))).status, 400)
-    for (const target of ['https://evil.example/a.jpg', 'https://cdn5.telesco.pe.evil.example/a.jpg', 'http://cdn5.telesco.pe/a.jpg', 'not a url'])
-      assert.equal((await getMedia(mediaRequest(target))).status, 403, target)
+    for (const query of ['', 'url=https%3A%2F%2Fcdn5.telesco.pe%2Ffile%2Fa.jpg', 'post=4617', 'post=abc&file=photo-0', 'post=4617&file=..%2Fx', 'post=4617&file=photo-0&url=x'])
+      assert.equal((await getMedia(mediaRequest(query))).status, 400, query)
     assert.equal(calls.length, 0)
   })
 
+  it('answers 404 without caching for a missing post or a file the post does not have', async () => {
+    stubFetch(url => url.includes('/99999') ? new Response(fixture('embed-missing.html')) : new Response(fixture('embed-4617.html')))
+    for (const query of ['post=99999&file=photo-0', 'post=4617&file=photo-0', 'post=4617&file=link']) {
+      const response = await getMedia(mediaRequest(query))
+      assert.equal(response.status, 404, query)
+      assert.equal(response.headers.get('cache-control'), 'no-store')
+    }
+  })
+
   it('refuses upstream content that is not an image or a video', async () => {
-    stubFetch(() => new Response('<script>alert(1)</script>', { headers: { 'content-type': 'text/html' } }))
-    const response = await getMedia(mediaRequest('https://cdn5.telesco.pe/file/page'))
+    stubFetch(telegram(() => new Response('<script>alert(1)</script>', { headers: { 'content-type': 'text/html' } })))
+    const response = await getMedia(mediaRequest('post=4617&file=poster-0'))
     assert.equal(response.status, 502)
     assert.equal(await response.text(), 'Unsupported media')
   })
 
   it('refuses SVG, which could run script on the blog\'s origin', async () => {
-    stubFetch(() => new Response('<svg><script>alert(1)</script></svg>', { headers: { 'content-type': 'image/svg+xml' } }))
-    const response = await getMedia(mediaRequest('https://cdn5.telesco.pe/file/a.svg'))
+    stubFetch(telegram(() => new Response('<svg><script>alert(1)</script></svg>', { headers: { 'content-type': 'image/svg+xml' } })))
+    const response = await getMedia(mediaRequest('post=4617&file=poster-0'))
     assert.equal(response.status, 502)
   })
 
   it('does not follow an upstream redirect, which could leave Telegram\'s CDN', async () => {
-    const calls = stubFetch(() => new Response(null, { status: 302, headers: { location: 'https://evil.example/a.jpg' } }))
-    const response = await getMedia(mediaRequest('https://cdn5.telesco.pe/file/a.jpg'))
-    assert.equal(calls[0].redirect, 'manual')
+    const calls = stubFetch(telegram(() => new Response(null, { status: 302, headers: { location: 'https://evil.example/a.jpg' } })))
+    const response = await getMedia(mediaRequest('post=4617&file=poster-0'))
+    assert.equal(calls[1].redirect, 'manual')
     assert.equal(response.status, 502)
   })
 })
