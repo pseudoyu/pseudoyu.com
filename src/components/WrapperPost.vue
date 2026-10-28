@@ -198,13 +198,13 @@ onMounted(() => {
         return
 
       event.preventDefault()
-      const { pathname, hash } = url
+      const { pathname, search, hash } = url
       if (hash && (!pathname || pathname === location.pathname)) {
         window.history.replaceState({}, '', hash)
         navigate()
       }
       else {
-        router.push({ path: pathname, hash })
+        router.push(pathname + search + hash)
       }
     }
   }
