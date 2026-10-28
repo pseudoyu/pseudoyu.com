@@ -59,6 +59,20 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/daily/': RouteRecordInfo<
+      '/daily/',
+      '/daily',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/daily/[id]': RouteRecordInfo<
+      '/daily/[id]',
+      '/daily/:id',
+      { id: ParamValue<true> },
+      { id: ParamValue<false> },
+      | never
+    >,
     '/friends': RouteRecordInfo<
       '/friends',
       '/friends',
@@ -1629,6 +1643,22 @@ declare module 'vue-router/auto-routes' {
         | never
       pathParamNames:
         | never
+    }
+    'pages/daily/index.md': {
+      routes:
+        | '/daily/'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'pages/daily/[id].md': {
+      routes:
+        | '/daily/[id]'
+      views:
+        | never
+      pathParamNames:
+        | 'id'
     }
     'pages/friends.md': {
       routes:
