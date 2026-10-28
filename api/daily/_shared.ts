@@ -92,6 +92,30 @@ const dateFormat = new Intl.DateTimeFormat('en-US', {
   hourCycle: 'h23',
 })
 
+export interface DailyDateParts {
+  year: string
+  month: string
+  day: string
+  time: string
+}
+
+const partsFormat = new Intl.DateTimeFormat('en-US', {
+  timeZone: TIMEZONE,
+  year: 'numeric',
+  month: 'long',
+  day: '2-digit',
+  hour: '2-digit',
+  minute: '2-digit',
+  hourCycle: 'h23',
+})
+
+/** The timeline groups posts by year and month and shows day and time beside each one, in Shanghai time */
+export function dailyDateParts(datetime: string): DailyDateParts {
+  const parts = partsFormat.formatToParts(new Date(datetime))
+  const part = (type: Intl.DateTimeFormatPartTypes) => parts.find(p => p.type === type)?.value ?? ''
+  return { year: part('year'), month: part('month'), day: part('day'), time: `${part('hour')}:${part('minute')}` }
+}
+
 export function formatDailyDate(datetime: string): string {
   const parts = dateFormat.formatToParts(new Date(datetime))
   const part = (type: Intl.DateTimeFormatPartTypes) => parts.find(p => p.type === type)?.value

@@ -2,7 +2,7 @@
 import type { DailyPost } from '../../api/daily/_shared'
 import { useHead } from '@unhead/vue'
 import { isDark } from '~/logics'
-import { CHANNEL } from '../../api/daily/_shared'
+import { CHANNEL, dailyDateParts } from '../../api/daily/_shared'
 
 const route = useRoute('/daily/[id]')
 
@@ -15,6 +15,11 @@ const { data, error, statusCode, isFetching, execute } = useFetch(() => `/api/da
 onMounted(execute)
 
 const missing = computed(() => statusCode.value === 400 || statusCode.value === 404)
+// The day column only shows the day, so the month and year go above the post
+const month = computed(() => {
+  const date = data.value && dailyDateParts(data.value.datetime)
+  return date ? `${date.month} ${date.year}` : ''
+})
 
 // Telegram's discussion widget replaces this script with the comments iframe; rebuilt on theme change
 const comments = ref<HTMLElement>()
@@ -55,13 +60,17 @@ useHead({
       { loading… }
     </div>
     <template v-else>
-      <DailyEntry :post="data" />
-      <p text-sm op50>
+      <div class="text-xs uppercase tracking-[0.2em] op50">
+        {{ month }}
+      </div>
+      <DailyEntry :post="data" mt-4 />
+      <!-- Lined up with the post's text, right of the day column -->
+      <p text-sm op50 pl-14>
         <a :href="`https://t.me/${CHANNEL}/${data.id}`" target="_blank" rel="noopener">
           <span i-ri-telegram-line /> View on Telegram
         </a>
       </p>
-      <div ref="comments" />
+      <div ref="comments" pl-14 />
     </template>
   </div>
 </template>

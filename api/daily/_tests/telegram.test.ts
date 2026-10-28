@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs'
 // The blog has no test framework; Node's built-in runner keeps it that way
 // eslint-disable-next-line test/no-import-node-test
 import { describe, it } from 'node:test'
-import { formatDailyDate, isTelegramMedia, mediaOf, mediaUrl } from '../_shared.js'
+import { dailyDateParts, formatDailyDate, isTelegramMedia, mediaOf, mediaUrl } from '../_shared.js'
 import { channelUrl, parseChannel, parsePost, postUrl } from '../_telegram.js'
 
 const fixture = (name: string) => readFileSync(new URL(`./fixtures/${name}`, import.meta.url), 'utf-8')
@@ -183,6 +183,16 @@ describe('mediaOf', () => {
   it('finds nothing for a file the post does not have', () => {
     for (const file of ['photo-0', 'photo-9', 'link', 'video-1', 'nope'])
       assert.equal(mediaOf(byId(4617), file), undefined, file)
+  })
+})
+
+describe('dailyDateParts', () => {
+  it('splits a post time in Shanghai into the parts the timeline shows', () => {
+    assert.deepEqual(dailyDateParts('2026-10-27T14:25:34+00:00'), { year: '2026', month: 'October', day: '27', time: '22:25' })
+  })
+
+  it('puts a post in Shanghai\'s year and month, across New Year', () => {
+    assert.deepEqual(dailyDateParts('2025-12-31T20:05:00+00:00'), { year: '2026', month: 'January', day: '01', time: '04:05' })
   })
 })
 
