@@ -1,12 +1,12 @@
+import type { PluginSimple as MarkdownItPlugin } from 'markdown-exit'
 import { basename, resolve } from 'node:path'
-import MarkdownItShiki from '@shikijs/markdown-it'
+import MarkdownItShiki from '@shikijs/markdown-exit'
 import { transformerNotationDiff, transformerNotationHighlight, transformerNotationWordHighlight } from '@shikijs/transformers'
 import { rendererRich, transformerTwoslash } from '@shikijs/twoslash'
 import Vue from '@vitejs/plugin-vue'
 import fs from 'fs-extra'
 import matter from 'gray-matter'
 import anchor from 'markdown-it-anchor'
-// @ts-expect-error missing types
 import GitHubAlerts from 'markdown-it-github-alerts'
 import LinkAttributes from 'markdown-it-link-attributes'
 import MarkdownItMagicLink from 'markdown-it-magic-link'
@@ -18,12 +18,12 @@ import IconsResolver from 'unplugin-icons/resolver'
 import Icons from 'unplugin-icons/vite'
 import Components from 'unplugin-vue-components/vite'
 import Markdown from 'unplugin-vue-markdown/vite'
-import { VueRouterAutoImports } from 'unplugin-vue-router'
-import VueRouter from 'unplugin-vue-router/vite'
 import { defineConfig } from 'vite'
 import Inspect from 'vite-plugin-inspect'
 import Exclude from 'vite-plugin-optimize-exclude'
 import SVG from 'vite-svg-loader'
+import { VueRouterAutoImports } from 'vue-router/unplugin'
+import VueRouter from 'vue-router/vite'
 import { generateOGImage } from './scripts/og'
 import { slugify } from './scripts/slugify'
 
@@ -83,8 +83,8 @@ export default defineConfig({
       markdownItOptions: {
         quotes: '""\'\'',
       },
-      async markdownItSetup(md) {
-        md.use(await MarkdownItShiki({
+      async markdownSetup(md) {
+        md.use((await MarkdownItShiki({
           themes: {
             dark: 'vitesse-dark',
             light: 'vitesse-light',
@@ -100,9 +100,9 @@ export default defineConfig({
             transformerNotationHighlight(),
             transformerNotationWordHighlight(),
           ],
-        }))
+        })) as unknown as MarkdownItPlugin)
 
-        md.use(anchor, {
+        md.use(anchor as unknown as MarkdownItPlugin, {
           slugify,
           permalink: anchor.permalink.linkInsideHeader({
             symbol: '#',
@@ -110,7 +110,7 @@ export default defineConfig({
           }),
         })
 
-        md.use(LinkAttributes, {
+        md.use(LinkAttributes as unknown as MarkdownItPlugin, {
           matcher: (link: string) => /^https?:\/\//.test(link),
           attrs: {
             target: '_blank',
@@ -124,7 +124,7 @@ export default defineConfig({
           containerHeaderHtml: '<div class="table-of-contents-anchor"><div class="i-ri-menu-2-fill" /></div>',
         })
 
-        md.use(MarkdownItMagicLink, {
+        md.use(MarkdownItMagicLink as unknown as MarkdownItPlugin, {
           linksMap: {
             'RSS3': 'https://rss3.io',
             'Open Network': 'https://open.network',
@@ -150,7 +150,7 @@ export default defineConfig({
           ],
         })
 
-        md.use(GitHubAlerts)
+        md.use(GitHubAlerts as unknown as MarkdownItPlugin)
       },
       frontmatterPreprocess(frontmatter, options, id, defaults) {
         (() => {

@@ -1,7 +1,8 @@
 import dayjs from 'dayjs'
 
 export const isDark = useDark()
-export const englishOnly = useStorage('antfu-english-only', false)
+export const englishOnly = useLocalStorage('antfu-english-only', false)
+export const galleryView = useLocalStorage<'cover' | 'contain'>('antfu-gallery-view', 'contain')
 
 /**
  * Credit to [@hooray](https://github.com/hooray)
@@ -23,7 +24,6 @@ export function toggleDark(event: MouseEvent) {
     Math.max(x, innerWidth - x),
     Math.max(y, innerHeight - y),
   )
-  // @ts-expect-error: Transition API
   const transition = document.startViewTransition(async () => {
     isDark.value = !isDark.value
     await nextTick()
@@ -43,6 +43,7 @@ export function toggleDark(event: MouseEvent) {
         {
           duration: 400,
           easing: 'ease-out',
+          fill: 'forwards',
           pseudoElement: isDark.value
             ? '::view-transition-old(root)'
             : '::view-transition-new(root)',

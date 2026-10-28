@@ -5,11 +5,14 @@ import antfu from '@antfu/eslint-config'
 export default antfu(
   {
     formatters: true,
-    markdown: {
-      overrides: {
-      },
-    },
     pnpm: true,
+  },
+  {
+    // This post's code samples keep the formatting they were published with
+    files: ['pages/zh/2022/06/09/learn_solidity_from_scratch_hardhat.md/**'],
+    rules: {
+      'style/indent': 'off',
+    },
   },
 ).removeRules(
   'no-labels',
@@ -25,4 +28,8 @@ export default antfu(
   'ts/no-unnecessary-type-constraint',
   'vue/no-template-shadow',
   'vue/no-v-text-v-html-on-component',
+  'e18e/prefer-static-regex',
+  'markdown/heading-increment',
+  'markdown/no-missing-atx-heading-space',
+  'markdown/require-alt-text',
 )
