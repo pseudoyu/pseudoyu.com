@@ -34,6 +34,10 @@ const { y: scroll } = useWindowScroll()
           <span class="lt-md:hidden">Blog</span>
           <div i-ri-article-line md:hidden />
         </RouterLink>
+        <RouterLink to="/daily" title="Daily">
+          <span class="lt-md:hidden">Daily</span>
+          <div i-ri-quill-pen-line md:hidden />
+        </RouterLink>
         <RouterLink to="/projects" title="Projects">
           <span class="lt-md:hidden">Projects</span>
           <div i-ri-lightbulb-line class="md:hidden" />
@@ -46,11 +50,11 @@ const { y: scroll } = useWindowScroll()
           <span class="lt-md:hidden">Media</span>
           <div i-ri-movie-line class="md:hidden" />
         </RouterLink>
-        <RouterLink to="/sponsors-list" title="Sponsors">
+        <RouterLink to="/sponsors-list" class="lt-md:hidden" title="Sponsors">
           <span class="lt-md:hidden">Sponsors</span>
           <div i-ri-heart-line class="md:hidden" />
         </RouterLink>
-        <RouterLink to="/chat" title="Let's Chat">
+        <RouterLink to="/chat" class="lt-md:hidden" title="Let's Chat">
           <span class="lt-md:hidden">Let's Chat</span>
           <div i-ri-chat-1-line class="md:hidden" />
         </RouterLink>
