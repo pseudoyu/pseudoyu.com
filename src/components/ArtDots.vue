@@ -52,14 +52,18 @@ async function setup() {
     return
   const app = new Application()
   await app.init({
-    background: '#ffffff',
+    backgroundAlpha: 0,
+    // background: '#ffffff',
     antialias: true,
     resolution: window.devicePixelRatio,
-    resizeTo: el.value,
+    // resizeTo: el.value,
     eventMode: 'none',
     autoDensity: true,
   })
   el.value.appendChild(app.canvas)
+
+  await nextTick()
+  app.renderer.resize(window.innerWidth, window.innerHeight)
 
   const particleContainer = new ParticleContainer({ dynamicProperties: { position: true, alpha: true } })
   app.stage.addChild(particleContainer)
@@ -84,13 +88,20 @@ async function setup() {
   })
 
   mountedScope.run(() => {
-    useEventListener('resize', () => {
+    useEventListener('resize', async () => {
       w = window.innerWidth
       h = window.innerHeight
+      app.renderer.resize(w, h)
       addPoints({ dotTexture, particleContainer })
     })
     onScopeDispose(() => {
-      app?.destroy(true, { children: true, texture: true, textureSource: true })
+      // For some reason this throws an error, maybe something wrong with pixi.js
+      try {
+        app?.destroy(true, { children: true, texture: true, textureSource: true })
+      }
+      catch (error) {
+        console.error(error)
+      }
     })
   })
 }
