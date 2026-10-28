@@ -59,6 +59,8 @@ async function buildBlogRSS() {
 
           const html = markdown.render(content)
             .replace('src="/', `src="${DOMAIN}/`)
+            // Internal links like /daily stay relative on the site; feed readers need the full URL
+            .replace(/href="\/(?!\/)/g, `href="${DOMAIN}/`)
 
           if (data.image?.startsWith('/'))
             data.image = DOMAIN + data.image
